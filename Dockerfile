@@ -14,3 +14,6 @@ FROM nginx:latest
 
 COPY --from=build /app/dist/quote-web/* /usr/share/nginx/html/
 
+EXPOSE 80
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
