@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private url: string = isDevMode() ? 'http://localhost:8000' : 'http://wquote-api.onrender.com'
+  private url: string = isDevMode() ? 'http://localhost:8000' : 'https://wquote-api.onrender.com'
 
 
   constructor(private httpClient: HttpClient) { }
