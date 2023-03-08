@@ -12,6 +12,9 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { HomeComponent } from './views/home/home.component';
 import { CustomerListComponent } from './views/customer-list/customer-list.component';
 import { CustomerEditComponent } from './views/customer-edit/customer-edit.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DeckListComponent } from './views/deck-list/deck-list.component';
+import { DeckEditComponent } from './views/deck-edit/deck-edit.component';
 
 
 @NgModule({
@@ -22,13 +25,16 @@ import { CustomerEditComponent } from './views/customer-edit/customer-edit.compo
     SideBarComponent,
     HomeComponent,
     CustomerListComponent,
-    CustomerEditComponent
+    CustomerEditComponent,
+    DeckListComponent,
+    DeckEditComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

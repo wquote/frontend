@@ -1,9 +1,10 @@
-export class Customer {
+export class CustomerModel {
 
   constructor(
-    public id?: string,
+    public _id?: string,
     public name?: string,
+    public address?: string,
+    public email?: string,
     public phone?: string,
-    public address?: string
   ) {}
 }

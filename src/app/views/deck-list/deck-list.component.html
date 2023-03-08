@@ -1,0 +1,57 @@
+<h2>Decking</h2>
+
+<div class="d-flex justify-content-end">
+  <button class="btn btn-primary" [routerLink]="[ '/decks/new' ]">
+    <i class="bi bi-plus"></i>
+  </button>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Address</th>
+      <th scope="col">Quote (US$)</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Auciomar</td>
+      <td>Rua Arapé, 131</td>
+      <td>10,000.00</td>
+      <td>
+        <a [routerLink]="[ '/decks/edit/', 1 ]">
+          <i class="bi bi-pencil"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Waleska</td>
+      <td>Rua Arapé, 131</td>
+      <td>12,020.47</td>
+      <td>
+        <a [routerLink]="[ '/decks/edit/', 2 ]">
+          <i class="bi bi-pencil"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Webster</td>
+      <td>Boston City</td>
+      <td>30,231.53</td>
+      <td>
+        <a [routerLink]="[ '/decks/edit/', 3 ]">
+          <i class="bi bi-pencil"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+

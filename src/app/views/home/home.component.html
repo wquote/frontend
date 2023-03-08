@@ -1,1 +1,40 @@
-<p>home works!</p>
+<h1 class="mb-3">
+  wQuote
+</h1>
+
+<p class="mb-5">
+  it's a webApp that helps you to quote and estimate yours buildings projects.
+</p>
+
+
+<div class="d-flex justify-content-evenly">
+
+  <div class="card text-center mx-2">
+    <div class="card-body">
+      <h4 class="card-title">Decking</h4>
+      <p class="card-text py-4 border-bottom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, adipisci similique aliquam molestiae, cumque facere quibusdam quod accusamus vitae aperiam accusantium debitis hic est voluptas veniam, doloribus nam. Dolorem, accusamus.</p>
+      <a [routerLink]="[ '/decks/new' ]" class="btn btn-primary">Quote</a>
+    </div>
+  </div>
+
+  <div class="card text-center mx-2">
+    <div class="card-header bg-primary-subtle">
+      <h5>Roofing</h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae illum maiores magni ducimus tenetur cum repellendus neque deleniti, magnam, cupiditate necessitatibus nam totam, nihil architecto doloremque rem non beatae esse!</p>
+      <a [routerLink]="[ '/roofs/new' ]" class="btn btn-primary">Quote</a>
+    </div>
+  </div>
+
+  <div class="card text-center mx-2 bg-primary-subtle">
+    <div class="card-body">
+      <h5 class="card-title">Siding</h5>
+      <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id in vitae nemo doloremque dolore quam eligendi, asperiores placeat iste saepe voluptatibus temporibus voluptatum pariatur earum ab doloribus praesentium harum corrupti.</p>
+    </div>
+    <div class="card-footer">
+      <a [routerLink]="[ '/sides/new' ]" class="btn btn-primary">Quote</a>
+    </div>
+  </div>
+
+</div>
