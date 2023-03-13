@@ -14,6 +14,8 @@ FROM nginx:latest
 
 COPY --from=build /app/dist/quote-web/* /usr/share/nginx/html/
 
-EXPOSE 80
+COPY nginx.conf /etc/nginx/
+
+EXPOSE 80 443
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
