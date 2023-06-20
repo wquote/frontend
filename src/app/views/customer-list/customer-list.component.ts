@@ -11,7 +11,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 export class CustomerListComponent implements OnInit {
 
   customers: CustomerModel[] = []
-  customerToDelete: CustomerModel = new CustomerModel()
+  customerToDelete: CustomerModel | undefined
   deleteCustomerModal: any
 
   constructor(private customerService: CustomerService) { }
@@ -28,7 +28,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   deleteCustomer() {
-    this.customerService.delete(String(this.customerToDelete._id)).subscribe(
+    this.customerToDelete?.id && this.customerService.delete(this.customerToDelete.id).subscribe(
       result => {
         console.log(result)
 

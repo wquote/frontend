@@ -1,57 +1,60 @@
 <h2>Decking</h2>
 
 <div class="d-flex justify-content-end">
-  <button class="btn btn-primary" [routerLink]="[ '/decks/new' ]">
-    <i class="bi bi-plus"></i>
+  <button class="btn btn-primary" [routerLink]="[ '/customers/new' ]">
+    <i class="bi bi-plus-circle-fill"></i>
   </button>
 </div>
 
-<table class="table table-hover">
+<!-- <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Customer</th>
+      <th scope="col">Name</th>
       <th scope="col">Address</th>
-      <th scope="col">Quote (US$)</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Auciomar</td>
-      <td>Rua Arapé, 131</td>
-      <td>10,000.00</td>
-      <td>
-        <a [routerLink]="[ '/decks/edit/', 1 ]">
-          <i class="bi bi-pencil"></i>
-        </a>
+    <tr *ngFor="let deck of decks">
+      <td> {{ deck.name }} </td>
+      <td> {{ deck.address }} </td>
+      <td> {{ deck.email }} </td>
+      <td> {{ deck.phone }} </td>
+      <td class="d-flex justify-content-center">
+
+        <button class="btn btn-primary btn-sm me-1" [routerLink]="[ '/customers/edit/', customer.id ]">
+          <i class="bi bi-pencil-fill"></i>
+        </button>
+
+        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCustomerModal"
+          (click)="updateCustomerToDelete(customer)">
+          <i class="bi bi-trash-fill"></i>
+        </button>
+
+        <div class="modal fade" id="deleteCustomerModal" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Delete Customer</h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure to delete this customer?</p>
+                <p class="text-muted">{{customerToDelete.name}}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                  (click)="deleteCustomer()">Yes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Waleska</td>
-      <td>Rua Arapé, 131</td>
-      <td>12,020.47</td>
-      <td>
-        <a [routerLink]="[ '/decks/edit/', 2 ]">
-          <i class="bi bi-pencil"></i>
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Webster</td>
-      <td>Boston City</td>
-      <td>30,231.53</td>
-      <td>
-        <a [routerLink]="[ '/decks/edit/', 3 ]">
-          <i class="bi bi-pencil"></i>
-        </a>
-      </td>
-    </tr>
+
   </tbody>
-</table>
-
-
-
+</table> -->

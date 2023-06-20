@@ -1,11 +1,11 @@
 <h2 class="mb-5">Decking</h2>
 
-<ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
+<ul class="nav nav-tabs nav-justified mb-3" id="pills-tab" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="pills-quote-info-tab" data-bs-toggle="pill" data-bs-target="#pills-quote-info" type="button" role="tab">Quote Info</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="pills-deck-takeoff-tab" data-bs-toggle="pill" data-bs-target="#pills-deck-takeoff" type="button" role="tab">Deck Take-Off</button>
+    <button class="nav-link active" id="nav-deck-takeoff-tab" data-bs-toggle="pill" data-bs-target="#nav-deck-takeoff" type="button" role="tab">Deck Take-Off</button>
   </li>
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="pills-estimate-tab" data-bs-toggle="pill" data-bs-target="#pills-estimate" type="button" role="tab">Estimate</button>
@@ -15,6 +15,7 @@
   </li>
 </ul>
 
+
 <div class="tab-content" id="pills-tabContent">
   <!-- Quote Info -->
   <div class="tab-pane fade" id="pills-quote-info" role="tabpanel" tabindex="0">
@@ -22,20 +23,25 @@
   </div>
 
   <!-- Deck Take-Off -->
-  <div class="tab-pane fade show active" id="pills-deck-takeoff" role="tabpanel" tabindex="1">
-    <div class="d-flex align-items-start">
-      <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <button class="nav-link active mt-5 mb-2" id="v-pills-footing-tab" data-bs-toggle="pill" data-bs-target="#v-pills-footing" type="button" role="tab">Footing</button>
-        <button class="nav-link my-2" id="v-pills-frame-tab" data-bs-toggle="pill" data-bs-target="#v-pills-frame" type="button" role="tab">Frame</button>
-        <button class="nav-link my-2" id="v-pills-railing-tab" data-bs-toggle="pill" data-bs-target="#v-pills-railing" type="button" role="tab">Railing System</button>
-        <button class="nav-link my-2" id="v-pills-finishing-tab" data-bs-toggle="pill" data-bs-target="#v-pills-finishing" type="button" role="tab">Finishing</button>
-        <button class="nav-link my-2" id="v-pills-rainscape-tab" data-bs-toggle="pill" data-bs-target="#v-pills-rainscape" type="button" role="tab">Rain Scape</button>
-        <button class="nav-link my-2" id="v-pills-extra-tab" data-bs-toggle="pill" data-bs-target="#v-pills-extra" type="button" role="tab">Exta Material</button>
-        <button class="nav-link my-2" id="v-pills-labor-tab" data-bs-toggle="pill" data-bs-target="#v-pills-labor" type="button" role="tab">Labor</button>
+  <div class="tab-pane fade show active" id="nav-deck-takeoff" role="tabpanel" tabindex="1">
+      <div class="d-flex justify-content-evenly nav nav-underline mb-4" id="v-pills-tab" role="tablist">
+        <button class="nav-link active" id="subnav-footing-tab" data-bs-toggle="pill" data-bs-target="#subnav-footing" type="button" role="tab">Footing</button>
+        <button class="nav-link" id="v-pills-frame-tab" data-bs-toggle="pill" data-bs-target="#v-pills-frame" type="button" role="tab">Frame</button>
+        <button class="nav-link" id="v-pills-railing-tab" data-bs-toggle="pill" data-bs-target="#v-pills-railing" type="button" role="tab">Railing System</button>
+        <button class="nav-link" id="v-pills-finishing-tab" data-bs-toggle="pill" data-bs-target="#v-pills-finishing" type="button" role="tab">Finishing</button>
+        <button class="nav-link" id="v-pills-rainscape-tab" data-bs-toggle="pill" data-bs-target="#v-pills-rainscape" type="button" role="tab">Rain Scape</button>
+        <button class="nav-link" id="v-pills-extra-tab" data-bs-toggle="pill" data-bs-target="#v-pills-extra" type="button" role="tab">Exta Material</button>
+        <button class="nav-link" id="v-pills-labor-tab" data-bs-toggle="pill" data-bs-target="#v-pills-labor" type="button" role="tab">Labor</button>
       </div>
+
       <div class="tab-content" id="v-pills-tabContent">
-        <div class="tab-pane fade show active" id="v-pills-footing" role="tabpanel" tabindex="0">
+        <div class="tab-pane fade show active" id="subnav-footing" role="tabpanel" tabindex="0">
           <div class="d-flex flex-row justify-content-evenly">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="ledger-board" name="ledger-board">
+              <label class="form-label" for="ledger-board">Ledger Board (lf)</label>
+            </div>
+
             <div class="form-floating mb-3">
               <input type="text" class="form-control" id="ledger-board" name="ledger-board">
               <label class="form-label" for="ledger-board">Ledger Board (lf)</label>
@@ -67,7 +73,6 @@
 
         </div>
       </div>
-    </div>
   </div>
 
   <!-- Estimate -->

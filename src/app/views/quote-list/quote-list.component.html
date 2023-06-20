@@ -1,0 +1,84 @@
+<h2>Quotes</h2>
+
+<div class="d-flex justify-content-end">
+  <!-- <button class="btn btn-primary dropdown" [routerLink]="[ '/quotes/decks/new' ]">
+    <i class="bi bi-plus-circle-fill"></i>
+  </button> -->
+
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+      <i class="bi bi-plus-fill"></i>
+      New Quote
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" routerLink="/quotes/decks/new">Decking </a></li>
+      <li><a class="dropdown-item" href="#">Roofing</a></li>
+      <li><a class="dropdown-item" href="#">Siding</a></li>
+    </ul>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Type</th>
+      <th scope="col">Date</th>
+      <th scope="col">Profit</th>
+      <th scope="col">Total Cost</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let quote of quotes; index as index">
+      <td> {{ index + 1 }} </td>
+      <td> {{ getCustomerName(quote.id_customer) }} </td>
+      <td> {{ quote.type }} </td>
+      <td> {{ quote.date | date }} </td>
+      <td> {{ quote.profit.toFixed(2) }} </td>
+      <td> {{ quote.total_cost.toFixed(2) }} </td>
+
+      <!-- Actions -->
+      <td class="d-flex">
+        <!-- Button Edit -->
+        <button class="btn btn-primary btn-sm me-1" [routerLink]="[ '/quotes/'+quote.type+'s/edit/', quote.id ]">
+          <i class="bi bi-pencil-fill"></i>
+        </button>
+
+        <!-- Button Delete -->
+        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCustomerModal"
+          (click)="updateQuoteToDelete(quote)">
+          <i class="bi bi-trash-fill"></i>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="deleteCustomerModal" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title">Delete Quote</h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <div class="modal-body">
+                <p>Are you sure to delete this quote?</p>
+                <p class="text-muted">{{quoteToDelete?.id}}</p>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                  (click)="deleteQuote()">Yes</button>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+      </td>
+    </tr>
+
+  </tbody>
+</table>

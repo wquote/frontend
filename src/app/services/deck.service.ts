@@ -1,44 +1,44 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
 import { Observable } from 'rxjs';
-import { CustomerModel } from 'src/app/models/customer.model';
+import { ApiService } from './api.service';
+import { DeckModel } from '../models/deck-quote.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService {
+export class DeckService {
 
-  endpoint: string = '/customers/'
+  endpoint: string = '/decks/'
 
   constructor(private apiService: ApiService) { }
 
-  create(item: CustomerModel): Observable<CustomerModel> {
+  create(item: DeckModel): Observable<DeckModel> {
     let url: string = this.endpoint
     const body: Object = item
 
     return this.apiService.post(url, body)
   }
 
-  readAll(): Observable<CustomerModel[]> {
+  readAll(): Observable<DeckModel[]> {
     let url: string = this.endpoint
 
     return this.apiService.get(url)
   }
 
-  read(itemId: string): Observable<CustomerModel> {
+  read(itemId: string): Observable<DeckModel> {
     let url: string = this.endpoint + itemId
 
     return this.apiService.get(url)
   }
 
-  update(itemId: string, customer: CustomerModel): Observable<CustomerModel> {
+  update(itemId: string, item: DeckModel): Observable<DeckModel> {
     let url: string = this.endpoint + itemId
-    const body: Object = customer
+    const body: Object = item
 
     return this.apiService.put(url, body)
   }
 
-  delete(itemId: string): Observable<CustomerModel> {
+  delete(itemId: string): Observable<DeckModel> {
     let url: string = this.endpoint + itemId
 
     return this.apiService.delete(url)

@@ -1,5 +1,9 @@
+// ToDo:
+// - [ ] tratar retorno da api com interceptor
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { CustomerModel } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
 
@@ -11,8 +15,8 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class CustomerEditComponent implements OnInit {
 
-  creatingCustomer: boolean = false
-  customer: CustomerModel = new CustomerModel()
+  customerId: string | null = null
+  customer: CustomerModel | null = null
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -20,39 +24,21 @@ export class CustomerEditComponent implements OnInit {
     private customerService: CustomerService
   ) { }
 
-  ngOnInit() {
-
-    if (this.router.url.includes('new')) {
-      this.creatingCustomer = true
-    }
-
-    else {
-      this.creatingCustomer = false
-
-      let customerId: string = String(this.activatedRoute.snapshot.paramMap.get('id'))
-      this.customerService.read(customerId).subscribe(
-        result => {
-          this.customer = result
-        }
-      )
-    }
+  ngOnInit(): void {
+    this.customerId = this.activatedRoute.snapshot.paramMap.get('id')
+    
+    this.customerId && this.customerService.read(this.customerId).subscribe(c => this.customer = c)
   }
 
-  updateCustomer() {
-    this.customerService.update(this.customer).subscribe(
-      result => {
-        console.log(result)
-        this.router.navigate([ '/customers/list' ])
-      }
-    )
+  submit() {
+    this.save().subscribe( 
+      response => {
+        console.log(response)
+        this.router.navigate(['/customers/list']) 
+    })
   }
 
-  createCustomer() {
-    this.customerService.create(this.customer).subscribe(
-      result => {
-        console.log(result)
-        this.router.navigate([ '/customers/list' ])
-      }
-    )
+  save(): Observable<CustomerModel> {
+    return this.customerId ? this.customerService.update(this.customerId, this.customer!) : this.customerService.create(this.customer!)
   }
 }

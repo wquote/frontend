@@ -1,4 +1,4 @@
-<h2>Customers</h2>
+<!-- <h2>Deck Quotes</h2>
 
 <div class="d-flex justify-content-end">
   <button class="btn btn-primary" [routerLink]="[ '/customers/new' ]">
@@ -17,14 +17,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let customer of customers">
-      <td> {{ customer.name }} </td>
-      <td> {{ customer.address }} </td>
-      <td> {{ customer.email }} </td>
-      <td> {{ customer.phone }} </td>
+    <tr *ngFor="let quote of deckQuotes">
+      <td> {{ quote.name }} </td>
+      <td> {{ quote.address }} </td>
+      <td> {{ quote.email }} </td>
+      <td> {{ quote.phone }} </td>
       <td class="d-flex justify-content-center">
 
-        <button class="btn btn-primary btn-sm me-1" [routerLink]="[ '/customers/edit/', customer.id ]">
+        <button class="btn btn-primary btn-sm me-1" [routerLink]="[ '/deck-quotes/edit/', quote.id ]">
           <i class="bi bi-pencil-fill"></i>
         </button>
 
@@ -42,7 +42,7 @@
               </div>
               <div class="modal-body">
                 <p>Are you sure to delete this customer?</p>
-                <p class="text-muted">{{customerToDelete?.name}}</p>
+                <p class="text-muted">{{customerToDelete.name}}</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
@@ -57,4 +57,4 @@
     </tr>
 
   </tbody>
-</table>
+</table> -->

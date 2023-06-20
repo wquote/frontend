@@ -22,7 +22,7 @@ export class ApiService {
     return this.httpClient.post(this.url + endpoint, body)
   }
 
-  put(endpoint: string, body: Object){
+  put(endpoint: string, body: Object): Observable<any>{
     return this.httpClient.put(this.url + endpoint, body)
   }
 
