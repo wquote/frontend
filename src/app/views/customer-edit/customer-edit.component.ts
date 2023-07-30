@@ -15,8 +15,10 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class CustomerEditComponent implements OnInit {
 
-  customerId: string | null = null
-  customer: CustomerModel | null = null
+  customerId: string | undefined
+  customer: CustomerModel = {} as CustomerModel
+  customerToDelete: CustomerModel | undefined
+  // deleteCustomerModal: any
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,20 +27,35 @@ export class CustomerEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.customerId = this.activatedRoute.snapshot.paramMap.get('id')
-    
-    this.customerId && this.customerService.read(this.customerId).subscribe(c => this.customer = c)
+    this.customerId = this.activatedRoute.snapshot.paramMap.get('id') as string
+
+    if (this.customerId && this.customerId != 'new') {
+      this.customerService.read(this.customerId).subscribe(c => this.customer = c)
+    }
   }
 
   submit() {
-    this.save().subscribe( 
+    this.save().subscribe(
       response => {
-        console.log(response)
-        this.router.navigate(['/customers/list']) 
+        this.router.navigate(['/customers/'])
     })
   }
 
   save(): Observable<CustomerModel> {
-    return this.customerId ? this.customerService.update(this.customerId, this.customer!) : this.customerService.create(this.customer!)
+    return this.customerId && this.customerId != 'new' ?
+      this.customerService.update(this.customerId, this.customer) :
+      this.customerService.create(this.customer!)
+  }
+
+  updateCustomerToDelete(customer: CustomerModel) {
+    this.customerToDelete = customer
+  }
+
+  deleteCustomer() {
+    this.customerToDelete?.id && this.customerService.delete(this.customerToDelete.id).subscribe(
+      result => {
+        this.router.navigate(['/customers/'])
+      }
+    )
   }
 }

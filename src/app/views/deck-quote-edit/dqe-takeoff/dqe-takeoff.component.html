@@ -1,0 +1,381 @@
+<div class="row">
+    <!-- Deck Take-off menu -->
+    <!-- <div class="col-md-2">
+      <nav class="nav nav-underline flex-column align-content-start" id="deck-take-off-tab" role="tablist">
+        <a class="nav-link active mb-3" type="button" data-bs-toggle="tab" data-bs-target="#footing">Footing</a>
+        <a class="nav-link mb-3" type="button" data-bs-toggle="tab" data-bs-target="#frame">Frame</a>
+        <a class="nav-link mb-3" type="button" data-bs-toggle="tab" data-bs-target="#railing">Railing System</a>
+        <a class="nav-link mb-3" type="button" data-bs-toggle="tab" data-bs-target="#finishing">Finishing</a>
+        <a class="nav-link mb-3" type="button" data-bs-toggle="tab" data-bs-target="#rain-scape">Rain Scape</a>
+        <a class="nav-link mb-3" type="button" data-bs-toggle="tab" data-bs-target="#extra-material">Extra
+          Material</a>
+        <a class="nav-link mb-3" type="button" data-bs-toggle="tab" data-bs-target="#labor">Labor</a>
+      </nav>
+    </div> -->
+
+    <nav class="nav nav-underline justify-content-between mb-5" id="deck-take-off-tab" role="tablist">
+      <a class="nav-link active " type="button" data-bs-toggle="tab" data-bs-target="#footing">Footing</a>
+      <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#frame">Frame</a>
+      <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#railing">Railing System</a>
+      <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#finishing">Finishing</a>
+      <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#rain-scape">Rain Scape</a>
+      <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#extra-material">Extra Material</a>
+      <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#labor">Labor</a>
+    </nav>
+
+    <!-- Deck Take-off Panel -->
+    <div class="col-md-12">
+      <div class="tab-content" id="deck-take-off-panel">
+
+        <!-- Footing -->
+        <div class="tab-pane active" id="footing">
+          <div class="d-flex flex-column align-items-center">
+
+            <!-- Big foot -->
+            <div class="col-sm-12 col-md-6 mb-3">
+              <label for="big-foot" class="form-label">Big Foot</label>
+              <input type="text" class="form-control form-control-sm" id="big-foot" placeholder="quantity" />
+            </div>
+
+            <!-- Helical Post -->
+            <div class="col-sm-12 col-md-6 mb-3">
+              <label for="helical-post" class="form-label">Helical Post</label>
+              <input type="text" class="form-control form-control-sm" id="helical-post" placeholder="quantity" />
+            </div>
+
+            <!-- Sonotubes -->
+            <div class="col-sm-12 col-md-6 mb-3">
+              <label for="sonotubes" class="form-label">Sonotubes</label>
+              <input type="text" class="form-control form-control-sm" id="sonotubes" placeholder="quantity" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Frame -->
+        <div class="tab-pane" id="frame">
+          <div class="row">
+
+            <!-- Area -->
+            <div class="col-sm-12 col-md-4">
+              <h5 class="mb-4">Area</h5>
+
+              <div *ngFor="let d of mainAreaList; index as i">
+                <h6 class="mb-3">{{ "Area " + (i + 1) }}</h6>
+
+                <div class="mb-3">
+                  <label class="form-label">Deck Grade</label>
+                  <select class="form-select form-select-sm">
+                    <option hidden>
+                      <p><strong>Choose an option</strong></p>
+                    </option>
+                    <option value="1">10x10x10</option>
+                    <option value="2">20x20x20</option>
+                    <option value="3">30x30x30</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Ledger Board</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Linear Foot" />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Ledger Attaches</label>
+                  <select class="form-select form-select-sm">
+                    <option selected>Choose an option</option>
+                    <option value="1">Wood</option>
+                    <option value="2">Concrete</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Support Post Grade</label>
+                  <div class="row">
+                    <div class="col-sm-12 col-md-8">
+                      <select class="form-select form-select-sm">
+                        <option selected>Choose an option</option>
+                        <option value="1">4x4</option>
+                        <option value="2">4x6</option>
+                        <option value="3">6x6</option>
+                      </select>
+                    </div>
+
+                    <div class="col-sm-12 col-md-4">
+                      <input type="text" class="form-control form-control-sm" placeholder="Ct" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Width</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="ft" />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Depth</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="ft" />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Height</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="ft" />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Picture Frame</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="lf" />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Beam Grade</label>
+                  <div class="row">
+                    <div class="col-sm-12 col-md-8">
+                      <select class="form-select form-select-sm">
+                        <option selected>Choose an option</option>
+                        <option value="1">Double by 8</option>
+                        <option value="2">Triple by 8</option>
+                        <option value="3">Double by 10</option>
+                        <option value="4">Triple by 10</option>
+                      </select>
+                    </div>
+
+                    <div class="col-sm-12 col-md-4">
+                      <input type="text" class="form-control form-control-sm" placeholder="lf" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-5">
+                  <label class="form-label">Decking Area</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="<COMPUTE VALUE>" />
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-primary me-2" (click)="mainAreaList.push(1)">
+                  <i class="bi bi-plus"></i>
+                </button>
+                <button class="btn btn-primary" (click)="mainAreaList.pop()">
+                  <i class="bi bi-dash"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Stair -->
+            <div class="col-sm-12 col-md-4">
+              <h5 class="mb-4">Stair</h5>
+
+              <div *ngFor="let d of stairList; index as i">
+                <h6 class="mb-3">{{ "Stair " + (i + 1) }}</h6>
+
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control form-control-sm" />
+                  <label>Width (ft)</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control form-control-sm" />
+                  <label>Riser (ft)</label>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-sm-12 col-md-8">
+                    <div class="form-floating">
+                      <select class="form-select form-select-sm">
+                        <option selected></option>
+                        <option value="1">4x4</option>
+                        <option value="2">4x6</option>
+                        <option value="3">6x6</option>
+                      </select>
+                      <label>Support Post Grade</label>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12 col-md-4">
+                    <div class="form-floating">
+                      <input type="text" class="form-control form-control-sm" />
+                      <label>(Ct)</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control form-control-sm" />
+                  <label>Riser (ft)</label>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12 col-md-8">
+                    <div class="form-floating mb-3">
+                      <select class="form-select form-select-sm">
+                        <option selected></option>
+                        <option value="1">Double by 8</option>
+                        <option value="2">Triple by 8</option>
+                        <option value="3">Double by 10</option>
+                        <option value="4">Triple by 10</option>
+                      </select>
+                      <label>Beam Grade (lf)</label>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12 col-md-4">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control form-control-sm" />
+                      <label>(lf)</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-floating mb-5">
+                  <select class="form-select form-select-sm">
+                    <option selected></option>
+                    <option value="1">Yes, both sides</option>
+                    <option value="2">No, one side</option>
+                  </select>
+                  <label>Railings on Both Sides</label>
+                </div>
+
+                <!-- end of *ngFor -->
+              </div>
+
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-primary me-2" (click)="stairList.push(1)">
+                  <i class="bi bi-plus"></i>
+                </button>
+                <button class="btn btn-primary" (click)="stairList.pop()">
+                  <i class="bi bi-dash"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Land -->
+            <div class="col-sm-12 col-md-4">
+              <h5 class="mb-4">Land</h5>
+
+              <div *ngFor="let d of landList; index as i">
+                <h6 class="mb-3">{{ "Land " + (i + 1) }}</h6>
+
+                <div class="row mb-1">
+                  <div class="col-sm-12 col-md-6">
+                    <label class="form-label m-1">Width</label>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <input class="form-control form-control-sm" type="text" placeholder="ft" />
+                  </div>
+                </div>
+
+                <div class="row mb-1">
+                  <div class="col-sm-12 col-md-6">
+                    <label class="form-label m-1">Depth</label>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <input class="form-control form-control-sm" type="text" placeholder="ft" />
+                  </div>
+                </div>
+
+                <div class="row mb-1">
+                  <div class="col-sm-12 col-md-6">
+                    <label class="form-label m-1">Height</label>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <input class="form-control form-control-sm" type="text" placeholder="ft" />
+                  </div>
+                </div>
+
+                <div class="row mb-1">
+                  <div class="col-sm-12 col-md-6">
+                    <label class="form-label m-1">Ledger Board</label>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <input class="form-control form-control-sm" type="text" placeholder="ft" />
+                  </div>
+                </div>
+
+                <div class="row mb-1">
+                  <div class="col-sm-12 col-md-6">
+                    <label class="form-label m-1">Ledger Attaches to</label>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <select class="form-select form-select-sm">
+                      <option selected>Select...</option>
+                      <option value="1">Wood</option>
+                      <option value="2">Concrete</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row mb-1">
+                  <div class="col-sm-12 col-md-6">
+                    <label class="form-label m-1">Support Post Grade</label>
+                  </div>
+                  <div class="col-sm-12 col-md-3">
+                    <select class="form-select form-select-sm">
+                      <option selected>Select...</option>
+                      <option value="1">4x4</option>
+                      <option value="2">4x6</option>
+                      <option value="2">6x6</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-12 col-md-3">
+                    <input class="form-control form-control-sm" type="text" placeholder="Ct" />
+                  </div>
+                </div>
+
+                <div class="row mb-5">
+                  <div class="col-sm-12 col-md-6">
+                    <label class="form-label m-1">Picture Frame</label>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <input class="form-control form-control-sm" type="text" placeholder="lt" />
+                  </div>
+                </div>
+
+                <!-- end of *ngFor -->
+              </div>
+
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-primary me-2" (click)="landList.push(1)">
+                  <i class="bi bi-plus"></i>
+                </button>
+                <button class="btn btn-primary" (click)="landList.pop()">
+                  <i class="bi bi-dash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Railing System -->
+        <div class="tab-pane" id="railing">Railing</div>
+
+        <!-- Finishing -->
+        <div class="tab-pane" id="finishing">Finishing</div>
+
+        <!-- Rain Scape -->
+        <div class="tab-pane" id="rain-scape">Rain scape</div>
+
+        <!-- Extra Material -->
+        <div class="tab-pane" id="extra-material">Extra Material
+
+          <div *ngFor="let d of extraMaterialList; index as i">
+            <div class="mb-3">
+              <label class="form-label">Extra Mateiral</label>
+              <input type="text" class="form-control form-control-sm" placeholder="lf" />
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-primary me-2" (click)="extraMaterialList.push(1)">
+              <i class="bi bi-plus"></i>
+            </button>
+            <button class="btn btn-primary" (click)="extraMaterialList.pop()">
+              <i class="bi bi-dash"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Labor -->
+        <div class="tab-pane" id="labor">Labor</div>
+      </div>
+    </div>
+  </div>

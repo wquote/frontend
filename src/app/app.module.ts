@@ -9,15 +9,17 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { HomeComponent } from './views/home/home.component';
 import { CustomerListComponent } from './views/customer-list/customer-list.component';
 import { CustomerEditComponent } from './views/customer-edit/customer-edit.component';
-import { DeckListComponent } from './views/deck-list/deck-list.component';
-import { DeckEditComponent } from './views/deck-edit/deck-edit.component';
-import { DeckQuoteListComponent } from './views/deck-quote-list/deck-quote-list.component';
-import { DeckQuoteEditComponent } from './views/deck-quote-edit/deck-quote-edit.component';
 import { QuoteListComponent } from './views/quote-list/quote-list.component';
+import { DeckQuoteEditComponent } from './views/deck-quote-edit/deck-quote-edit.component';
+import { DqeCustomerComponent } from './views/deck-quote-edit/dqe-customer/dqe-customer.component';
+import { DqeEstimateComponent } from './views/deck-quote-edit/dqe-estimate/dqe-estimate.component';
+import { DqeOrderComponent } from './views/deck-quote-edit/dqe-order/dqe-order.component';
+import { DqeTakeoffComponent } from './views/deck-quote-edit/dqe-takeoff/dqe-takeoff.component';
+import { CustomerQuotesListComponent } from './views/customer-quotes-list/customer-quotes-list.component';
+import { LandingPageComponent } from './views/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -25,15 +27,17 @@ import { QuoteListComponent } from './views/quote-list/quote-list.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    SideBarComponent,
     HomeComponent,
     CustomerListComponent,
     CustomerEditComponent,
-    DeckListComponent,
-    DeckEditComponent,
-    DeckQuoteListComponent,
+    QuoteListComponent,
     DeckQuoteEditComponent,
-    QuoteListComponent
+    DqeCustomerComponent,
+    DqeEstimateComponent,
+    DqeOrderComponent,
+    DqeTakeoffComponent,
+    CustomerQuotesListComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,229 +1,78 @@
-<h2 class="mb-5">Decking</h2>
-
-<ul class="nav nav-tabs nav-justified mb-3" id="pills-tab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="pills-quote-info-tab" data-bs-toggle="pill" data-bs-target="#pills-quote-info" type="button" role="tab">Quote Info</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="nav-deck-takeoff-tab" data-bs-toggle="pill" data-bs-target="#nav-deck-takeoff" type="button" role="tab">Deck Take-Off</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="pills-estimate-tab" data-bs-toggle="pill" data-bs-target="#pills-estimate" type="button" role="tab">Estimate</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="material-order-tab" data-bs-toggle="pill" data-bs-target="#material-order" type="button" role="tab">Material Order</button>
-  </li>
-</ul>
-
-
-<div class="tab-content" id="pills-tabContent">
-  <!-- Quote Info -->
-  <div class="tab-pane fade" id="pills-quote-info" role="tabpanel" tabindex="0">
-
+<div class="d-flex mb-4">
+  <div class="flex-fill border-bottom pb-2">
+    <h2 >Deck {{ this.quoteId != 'new' ? 'Edit' : 'Create'}}</h2>
   </div>
 
-  <!-- Deck Take-Off -->
-  <div class="tab-pane fade show active" id="nav-deck-takeoff" role="tabpanel" tabindex="1">
-      <div class="d-flex justify-content-evenly nav nav-underline mb-4" id="v-pills-tab" role="tablist">
-        <button class="nav-link active" id="subnav-footing-tab" data-bs-toggle="pill" data-bs-target="#subnav-footing" type="button" role="tab">Footing</button>
-        <button class="nav-link" id="v-pills-frame-tab" data-bs-toggle="pill" data-bs-target="#v-pills-frame" type="button" role="tab">Frame</button>
-        <button class="nav-link" id="v-pills-railing-tab" data-bs-toggle="pill" data-bs-target="#v-pills-railing" type="button" role="tab">Railing System</button>
-        <button class="nav-link" id="v-pills-finishing-tab" data-bs-toggle="pill" data-bs-target="#v-pills-finishing" type="button" role="tab">Finishing</button>
-        <button class="nav-link" id="v-pills-rainscape-tab" data-bs-toggle="pill" data-bs-target="#v-pills-rainscape" type="button" role="tab">Rain Scape</button>
-        <button class="nav-link" id="v-pills-extra-tab" data-bs-toggle="pill" data-bs-target="#v-pills-extra" type="button" role="tab">Exta Material</button>
-        <button class="nav-link" id="v-pills-labor-tab" data-bs-toggle="pill" data-bs-target="#v-pills-labor" type="button" role="tab">Labor</button>
-      </div>
+  <!-- Main Menu -->
+  <nav class="nav nav-tabs" id="deck-tab">
+    <a class="nav-link active" type="button" data-bs-toggle="tab" data-bs-target="#customer-info">Job Info</a>
+    <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#deck-take-off">Deck Take-off</a>
+    <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#estimate">Estimate</a>
+    <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#material-order">Material Order</a>
+  </nav>
+</div>
 
-      <div class="tab-content" id="v-pills-tabContent">
-        <div class="tab-pane fade show active" id="subnav-footing" role="tabpanel" tabindex="0">
-          <div class="d-flex flex-row justify-content-evenly">
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="ledger-board" name="ledger-board">
-              <label class="form-label" for="ledger-board">Ledger Board (lf)</label>
-            </div>
+<!-- Main Panel -->
+<div class="tab-content" id="deck-panel">
 
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="ledger-board" name="ledger-board">
-              <label class="form-label" for="ledger-board">Ledger Board (lf)</label>
-            </div>
-          </div>
-        </div>
+  <!-- Customer Info -->
+  <div class="tab-pane show active" id="customer-info">
+    <app-dqe-customer [customer]="customer"></app-dqe-customer>
+    <!-- <pre>{{ deckQuote | json }}</pre> -->
+  </div>
 
-        <div class="tab-pane fade" id="v-pills-frame" role="tabpanel" tabindex="0">
-
-        </div>
-
-        <div class="tab-pane fade" id="v-pills-railing" role="tabpanel" tabindex="0">
-
-        </div>
-
-        <div class="tab-pane fade" id="v-pills-finishing" role="tabpanel" tabindex="0">
-
-        </div>
-
-        <div class="tab-pane fade" id="v-pills-rainscape" role="tabpanel" tabindex="0">
-
-        </div>
-
-        <div class="tab-pane fade" id="v-pills-extra" role="tabpanel" tabindex="0">
-
-        </div>
-
-        <div class="tab-pane fade" id="v-pills-labor" role="tabpanel" tabindex="0">
-
-        </div>
-      </div>
+  <!-- Deck Take-off -->
+  <div class="tab-pane" id="deck-take-off">
+    <app-dqe-takeoff></app-dqe-takeoff>
   </div>
 
   <!-- Estimate -->
-  <div class="tab-pane fade" id="pills-estimate" role="tabpanel" tabindex="2">
-
+  <div class="tab-pane " id="estimate">
+    <app-dqe-estimate></app-dqe-estimate>
   </div>
 
   <!-- Material Order -->
-  <div class="tab-pane fade" id="material-order" role="tabpanel" tabindex="3">
-
+  <div class="tab-pane" id="material-order">
+    <app-dqe-order></app-dqe-order>
   </div>
 </div>
 
-<!-- <form>
-  <div class="d-flex flex-row justify-content-evenly">
-    <div>
-      <h4 class="mb-4">Main Area</h4>
 
-      <div class="form-floating mb-3">
-        <select class="form-select" id="grade" name="grade">
-          <option selected>Select frame grade</option>
-          <option value="2x8">2 x 8 frame</option>
-          <option value="2x10">2 x 10 frame</option>
-        </select>
-        <label for="grade" class="form-label">Deck Grade</label>
-      </div>
 
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="ledger-board" name="ledger-board">
-        <label class="form-label" for="ledger-board">Ledger Board (lf)</label>
-      </div>
 
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Ledger Attaches to...</label>
-      </div>
 
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Support Post Grade</label>
-      </div>
 
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Width</label>
-      </div>
+<!-- <div class="d-flex justify-content-evenly mb-5">
+        <button type="button" class="btn btn-outline-primary">Footing</button>
+        <button type="button" class="btn btn-outline-primary">Frame</button>
+        <button type="button" class="btn btn-outline-primary">Railing System</button>
+        <button type="button" class="btn btn-outline-primary">Finishing</button>
+        <button type="button" class="btn btn-outline-primary">Rain Scape</button>
+        <button type="button" class="btn btn-outline-primary">Extra Material</button>
+        <button type="button" class="btn btn-outline-primary">Labor</button>
+    </div> -->
 
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Depth</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Height</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Picture Frame</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Beaming Grade</label>
-      </div>
+<!-- <div class="d-flex justify-content-evenly my-3 border-bottom">
+      <a href="javascript:;" (click)="menu='footing1'" class="border-bottom border-3 border-primary pb-3">Footing</a>
+      <a [class.border-bottom]="menu=='footing1'">Frame</a>
+      <div>Railing System</div>
+      <div>Finishing</div>
+      <div>Rain Scape</div>
+      <div>Extra Material</div>
+      <div>Labor</div>
     </div>
 
-    <div>
-      <h4 class="mb-4">Stair</h4>
+    <div *ngIf="menu=='footing1'">
+      Opa nene
+    </div> -->
 
-      <div class="input-group mb-3">
-        <label class="input-group-text" for="#">Width</label>
-        <input type="text" class="form-control" id="#" name="#">
-      </div>
-
-      <div class="input-group mb-3">
-        <label class="input-group-text" for="#">Riser</label>
-        <input type="text" class="form-control" id="#" name="#">
-      </div>
-
-      <div class="input-group mb-3">
-        <label class="input-group-text" for="#">Support Post Grade</label>
-        <input type="text" class="form-control" id="#" name="#">
-      </div>
-
-      <div class="input-group mb-3">
-        <label class="input-group-text" for="#">Beam Grade</label>
-        <input type="text" class="form-control" id="#" name="#">
-      </div>
-
-      <div class="input-group mb-3">
-        <label class="input-group-text" for="#">Railling on Both Sides?</label>
-        <input type="text" class="form-control" id="#" name="#">
-      </div>
-
-      <div class="input-group mb-3">
-        <label class="input-group-text" for="#">Handrails</label>
-        <input type="text" class="form-control" id="#" name="#">
-      </div>
-    </div>
-
-
-    <div>
-      <h4 class="mb-4">Landing</h4>
-
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Frame Grade</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Width</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Depth</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Height</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Ledger Board</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Ledger Attaches to...</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Support Post Grade</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="#" name="#">
-        <label class="form-label" for="#">Picture Frame</label>
-      </div>
-    </div>
-  </div>
-
-  <div class="d-flex  justify-content-end">
-    <button type="submit" class="btn btn-primary" (click)="onClick()">Submit</button>
-  </div>
-
-</form>
- -->
+<!-- <nav class="nav nav-pills nav-fill bg-body-secondary" id="deck-take-off-tab" role="tablist">
+      <a class="nav-link active" type="button" data-bs-toggle="tab" data-bs-target="#footing">Footing</a>
+      <a class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#frame">Frame</a>
+      <a class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#railing">Railing System</a>
+      <a class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#finishing">Finishing</a>
+      <a class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#rain-scape">Rain Scape</a>
+      <a class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#extra-material">Extra
+        Material</a>
+      <a class="nav-link" type="button" data-bs-toggle="tab" data-bs-target="#labor">Labor</a>
+    </nav> -->

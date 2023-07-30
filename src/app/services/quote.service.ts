@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { QuoteModel } from '../models/quote.models';
 import { Observable } from 'rxjs';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +19,22 @@ export class QuoteService {
 
     return this.apiService.post(url, body)
   }
+  
+    read(itemId: string): Observable<QuoteModel> {
+      let url: string = this.endpoint + itemId
+  
+      return this.apiService.get(url)
+    }
 
-  readAll(): Observable<QuoteModel[]> {
+  readAll(customerId?: string): Observable<QuoteModel[]> {
     let url: string = this.endpoint
+    let queryParams: HttpParams | undefined
 
-    return this.apiService.get(url)
-  }
-
-  read(itemId: string): Observable<QuoteModel> {
-    let url: string = this.endpoint + itemId
-
-    return this.apiService.get(url)
+    if (customerId){
+      queryParams = new HttpParams({fromObject: {'idCustomer': customerId}})
+    }
+    
+    return this.apiService.get(url, queryParams)
   }
 
   update(itemId: string, customer: QuoteModel): Observable<QuoteModel> {

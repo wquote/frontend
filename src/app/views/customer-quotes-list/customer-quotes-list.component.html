@@ -1,0 +1,85 @@
+<div class="d-flex mb-5">
+  <div class="border-bottom flex-fill pb-2">
+    <h2>{{ this.customer?.name }}'s Quotes</h2>
+  </div>
+
+  <div class="border-bottom">
+
+    <button class="btn btn-outline-primary" id="dropdownMenuButton" data-bs-toggle="dropdown">
+      <i class="bi bi-plus"></i>
+      New
+    </button>
+    
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" routerLink="/quotes/decks/new">Decking </a></li>
+      <li><a class="dropdown-item" href="#">Roofing</a></li>
+      <li><a class="dropdown-item" href="#">Siding</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="card mb-5">
+  <div class="card-body">
+    <div class="row">
+
+      <div class="col-md-6 col-sm-12">
+        <div class="mb-3">
+          <label class="form-label" for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" *ngIf="customer" [value]="customer.name"
+            readonly>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-12">
+        <div class="col mb-3">
+          <label class="form-label" for="phone">Phone</label>
+          <input type="text" class="form-control" id="phone" name="phone" *ngIf="customer" [value]="customer.phone"
+            readonly>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr class="table-light">
+      <th>#</th>
+      <th>Customer</th>
+      <th>Type</th>
+      <th>Date</th>
+      <th>Profit</th>
+      <th>Total Cost</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let quote of customerQuotes; index as index">
+      <td> {{ index + 1 }} </td>
+      <td> {{ this.customer?.name }} </td>
+      <td> {{ quote.type }} </td>
+      <td> {{ quote.date | date }} </td>
+      <td> {{ quote.profit.toFixed(2) }} </td>
+      <td> {{ quote.total_cost.toFixed(2) }} </td>
+
+      <!-- Actions -->
+      <td class="d-flex">
+        <!-- Button Edit -->
+        <button class="btn btn-primary btn-sm me-2" [routerLink]="[ '/customers', customerId, 'quotes', quote.id ]"
+          data-bs-toggle="tooltip" data-placement="bottom" title="Edit">
+          <i class="bi bi-pencil-fill"></i>
+        </button>
+
+        <!-- Duplicate -->
+        <button class="btn btn-warning btn-sm me-2" [routerLink]="[ '/quotes/'+quote.type+'s/edit/', quote.id ]"
+          data-bs-toggle="tooltip" data-placement="bottom" title="Duplicate">
+          <i class="bi bi-stickies-fill"></i>
+        </button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>

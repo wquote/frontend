@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SideBarComponent } from './side-bar.component';
+import { DqeEstimateComponent } from './dqe-estimate.component';
 
-describe('SideBarComponent', () => {
-  let component: SideBarComponent;
-  let fixture: ComponentFixture<SideBarComponent>;
+describe('DqeEstimateComponent', () => {
+  let component: DqeEstimateComponent;
+  let fixture: ComponentFixture<DqeEstimateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SideBarComponent ]
+      declarations: [ DqeEstimateComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SideBarComponent);
+    fixture = TestBed.createComponent(DqeEstimateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

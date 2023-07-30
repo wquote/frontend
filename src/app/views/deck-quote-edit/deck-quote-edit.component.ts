@@ -1,8 +1,11 @@
+// ToDo
+// paginacao
+// aggregate no mongodb pra trazer o nome do customer 
+
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { CustomerModel } from 'src/app/models/customer.model';
-import { DeckModel, DeckQuoteModel } from 'src/app/models/deck-quote.model';
+import { DeckQuoteModel } from 'src/app/models/deck-quote.model';
 import { CustomerService } from 'src/app/services/customer.service';
 import { DeckQuoteService } from 'src/app/services/deck-quote.service';
 
@@ -12,45 +15,42 @@ import { DeckQuoteService } from 'src/app/services/deck-quote.service';
   styleUrls: ['./deck-quote-edit.component.css']
 })
 export class DeckQuoteEditComponent {
-  deckQuoteId: string | null = null
-  deckQuote: DeckQuoteModel | null = null
-  deck: DeckModel | null = null
+  customerId: string | undefined
+  customer: CustomerModel | undefined
+  quoteId: string | undefined
+  deckQuote: DeckQuoteModel | undefined
 
-  customers: CustomerModel[] = []
+  // mainAreaList: any[] = [1]
+  // stairList: any[] = [1]
+  // landList: any[] = [1]
+  // extraMaterialList: any[] = [1]
+
+  // menu: string = 'footing'
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private deckQuoteService: DeckQuoteService,
     private customerService: CustomerService,
+    private deckQuoteService: DeckQuoteService,
   ) { }
 
   ngOnInit(): void {
-    this.customerService.readAll().subscribe( c => {
-      this.customers = c
-    })
-
-    this.deckQuoteId = this.activatedRoute.snapshot.paramMap.get('id')
-    this.deckQuoteId && this.deckQuoteService.read(this.deckQuoteId).subscribe(d => {
-
-      this.deckQuote = d
-    })
+    this.readCustomer()
+    this.readDeckQuote()
   }
 
-  getCustomerInfo(id: string){
-    let customer: CustomerModel = this.customers.filter( c => c.id == id)[0]
-    return customer
+  readCustomer() {
+    this.customerId = this.activatedRoute.snapshot.paramMap.get('id') as string
+
+    if (this.customerId && this.customerId != 'new') {
+      this.customerService.read(this.customerId).subscribe( c => this.customer = c )
+    }
   }
 
-  submit() {
-    this.save().subscribe( () => this.router.navigate(['/quotes/decks/list']) )
-  }
+  readDeckQuote() {
+    this.quoteId = this.activatedRoute.snapshot.paramMap.get('quoteId') as string
 
-  save(): Observable<DeckQuoteModel> {
-    return this.deckQuoteId ? this.deckQuoteService.update(this.deckQuoteId, this.deckQuote!) : this.deckQuoteService.create(this.deckQuote!)
-  }
-
-  onClick() {
-    console.log("click")
+    if (this.quoteId && this.quoteId != 'new') {
+      this.deckQuoteService.read(this.quoteId).subscribe( dq => this.deckQuote = dq )
+    }
   }
 }

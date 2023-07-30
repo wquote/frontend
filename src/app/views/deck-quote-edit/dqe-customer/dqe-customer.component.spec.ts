@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeckEditComponent } from './deck-edit.component';
+import { DqeCustomerComponent } from './dqe-customer.component';
 
-describe('DeckEditComponent', () => {
-  let component: DeckEditComponent;
-  let fixture: ComponentFixture<DeckEditComponent>;
+describe('DqeCustomerComponent', () => {
+  let component: DqeCustomerComponent;
+  let fixture: ComponentFixture<DqeCustomerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeckEditComponent ]
+      declarations: [ DqeCustomerComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DeckEditComponent);
+    fixture = TestBed.createComponent(DqeCustomerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

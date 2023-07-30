@@ -13,8 +13,8 @@ export class ApiService {
   constructor(private httpClient: HttpClient) { }
 
 
-  get(endpoint: string): Observable<any> {
-    return this.httpClient.get(this.url + endpoint)
+  get(endpoint: string, queryParams?: HttpParams): Observable<any> {
+    return this.httpClient.get(this.url + endpoint, {params: queryParams})
     // .pipe(retryWhen((errors) => this.handleRetry(errors)));
   }
 
