@@ -1,14 +1,26 @@
 export interface CustomerModel {
   id: string,
-  name: string,
-  address: string,
-  email: string,
-  phone: string,
-  job_address: CustomerJobAddress[]
-}
 
-interface CustomerJobAddress {
-  id: string,
+  /**
+  * @deprecated Name will be removed. Use first_name and last_name instead.
+  */
+  name: string,
+  /**
+  * @deprecated Name will be removed. Use emails instead.
+  */
+  email: string,
+  /**
+  * @deprecated Name will be removed. Use phones instead.
+  */
+  phone: string,
+
+  first_name: string,
+  last_name: string,
   address: string,
-  alias: string
+  land_line: string,
+
+  phones: string[],
+  emails: string[],
+
+  notes: string
 }

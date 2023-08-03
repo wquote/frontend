@@ -20,6 +20,9 @@ export class CustomerEditComponent implements OnInit {
   customerToDelete: CustomerModel | undefined
   // deleteCustomerModal: any
 
+  newPhone: string | undefined
+  newEmail: string | undefined
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -38,7 +41,7 @@ export class CustomerEditComponent implements OnInit {
     this.save().subscribe(
       response => {
         this.router.navigate(['/customers/'])
-    })
+      })
   }
 
   save(): Observable<CustomerModel> {
@@ -58,4 +61,35 @@ export class CustomerEditComponent implements OnInit {
       }
     )
   }
+
+  addNewPhone() {
+    if (!this.newPhone) {
+      return
+    }
+    if (!this.customer.phones) {
+      this.customer.phones = []
+    }
+    this.customer.phones.push(this.newPhone)
+    this.newPhone = undefined
+  }
+
+  removePhone(phone: string){
+    this.customer.phones = this.customer.phones.filter(p => p != phone)
+  }
+
+  addNewEmail() {
+    if (!this.newEmail) {
+      return
+    }
+    if (!this.customer.emails) {
+      this.customer.emails = []
+    }
+    this.customer.emails.push(this.newEmail)
+    this.newEmail = undefined
+  }
+
+  removeEmail(email: string){
+    this.customer.emails = this.customer.emails.filter(e => e != email)
+  }
+
 }
