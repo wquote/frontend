@@ -38,7 +38,7 @@ export class QuoteListComponent {
   }
 
   getCustomerName(id: string): string {
-    let name: string | undefined = this.customers.filter( c => c.id == id)[0]?.name
+    let name: string | undefined = this.customers.filter( c => c.id == id)[0]?.lastName
     return name ? name : ''
   }
 

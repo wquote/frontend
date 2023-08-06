@@ -1,6 +1,6 @@
 <div class="d-flex mb-5">
   <div class="border-bottom flex-fill pb-2">
-    <h2>{{ this.customer?.name }}'s Quotes</h2>
+    <h2>{{ this.customer?.lastName }}'s Quotes</h2>
   </div>
 
   <div class="border-bottom">
@@ -26,7 +26,7 @@
       <div class="col-md-6 col-sm-12">
         <div class="mb-3">
           <label class="form-label" for="name">Name</label>
-          <input type="text" class="form-control" id="name" name="name" *ngIf="customer" [value]="customer.name"
+          <input type="text" class="form-control" id="name" name="name" *ngIf="customer" [value]="customer.lastName"
             readonly>
         </div>
       </div>
@@ -34,7 +34,7 @@
       <div class="col-md-6 col-sm-12">
         <div class="col mb-3">
           <label class="form-label" for="phone">Phone</label>
-          <input type="text" class="form-control" id="phone" name="phone" *ngIf="customer" [value]="customer.phone"
+          <input type="text" class="form-control" id="phone" name="phone" *ngIf="customer" [value]="customer.phones"
             readonly>
         </div>
       </div>
@@ -59,7 +59,7 @@
   <tbody>
     <tr *ngFor="let quote of customerQuotes; index as index">
       <td> {{ index + 1 }} </td>
-      <td> {{ this.customer?.name }} </td>
+      <td> {{ this.customer?.firstName + ' ' + this.customer?.lastName }} </td>
       <td> {{ quote.type }} </td>
       <td> {{ quote.date | date }} </td>
       <td> {{ quote.profit.toFixed(2) }} </td>
