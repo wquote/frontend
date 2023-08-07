@@ -9,5 +9,5 @@ export interface CustomerModel {
   emails: string[],
 
   notes: string,
-  jobAddress: any[]
+  jobAddress: string[]
 }
