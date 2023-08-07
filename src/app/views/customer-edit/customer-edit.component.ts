@@ -50,6 +50,10 @@ export class CustomerEditComponent implements OnInit {
       this.customerService.create(this.customer!)
   }
 
+  cancel() {
+    this.router.navigate(['/customers'])
+  }
+
   updateCustomerToDelete(customer: CustomerModel) {
     this.customerToDelete = customer
   }

@@ -9,9 +9,9 @@
       <i class="bi bi-plus"></i>
       New
     </button>
-    
+
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" routerLink="/quotes/decks/new">Decking </a></li>
+      <li><a class="dropdown-item" [routerLink]="['/customers',customerId, 'quotes', 'new']">Decking </a></li>
       <li><a class="dropdown-item" href="#">Roofing</a></li>
       <li><a class="dropdown-item" href="#">Siding</a></li>
     </ul>
