@@ -55,7 +55,7 @@ export class CustomerEditComponent implements OnInit {
   }
 
   deleteCustomer() {
-    this.customerToDelete?.id && this.customerService.delete(this.customerToDelete.id).subscribe(
+    this.customerToDelete?._id && this.customerService.delete(this.customerToDelete._id).subscribe(
       result => {
         this.router.navigate(['/customers/'])
       }
