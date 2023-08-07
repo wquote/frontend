@@ -1,4 +1,4 @@
-FROM node:18.13 AS build
+FROM node:18 AS build
 
 WORKDIR /app
 
@@ -14,8 +14,12 @@ FROM nginx:latest
 
 COPY --from=build /app/dist/quote-web/* /usr/share/nginx/html/
 
-COPY nginx.conf /etc/nginx/
+# COPY nginx.conf /etc/nginx/
 
 EXPOSE 80 443
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
+
+
+# docker run --name wq-web-render -p 81:80 wquote-fe 
+# docker container start wq-web-render
