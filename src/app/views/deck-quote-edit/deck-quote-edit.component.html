@@ -17,7 +17,7 @@
 
   <!-- Customer Info -->
   <div class="tab-pane show active" id="customer-info">
-    <app-dqe-customer [customer]="customer"></app-dqe-customer>
+    <app-dqe-customer [customer]="customer" [deckQuote]="deckQuote" *ngIf="customer && deckQuote"></app-dqe-customer>
     <!-- <pre>{{ deckQuote | json }}</pre> -->
   </div>
 

@@ -1,23 +1,50 @@
-<div class="d-flex flex-column align-items-center mt-5">
+<div class="row mt-5">
 
   <div class="col-sm-12 col-md-6 mb-3">
-    <label>Name</label>
-    <input type="text" class="form-control form-control-sm" [readonly]="customer" [value]="customer?.lastName" />
+    <label>First Name</label>
+    <div>{{customer?.firstName}}</div>
   </div>
 
   <div class="col-sm-12 col-md-6 mb-3">
-    <label>Address</label>
-    <input type="text" class="form-control form-control-sm" [value]="customer?.homeAddress" />
+    <label>Last Name</label>
+    <div>{{customer?.lastName}}</div>
   </div>
 
   <div class="col-sm-12 col-md-6 mb-3">
     <label>Cell Phone</label>
-    <input type="text" class="form-control form-control-sm" [value]="customer?.phones" />
+    <div>{{customer?.phones}}</div>
   </div>
 
   <div class="col-sm-12 col-md-6 mb-3">
     <label>E-mail</label>
-    <input type="text" class="form-control form-control-sm" [value]="customer?.emails" />
+    <div>{{customer?.emails}}</div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col d-flex flex-column">
+    <label>Job Address</label>
+    <div class="btn btn-outline-dark mt-2 d-flex align-items-center"
+      (click)="changeJobAddress(customer?.homeAddress);newAddress = undefined">
+      <i class="bi bi-check-circle-fill me-2" *ngIf="deckQuote?.jobAddress == customer?.homeAddress"></i>
+      <i class="bi bi-circle me-2" *ngIf="deckQuote?.jobAddress != customer?.homeAddress"></i>
+      {{customer?.homeAddress}}
+    </div>
+    <div class="btn btn-outline-dark mt-2 d-flex align-items-center" *ngFor="let a of customer?.jobAddress">
+      <i class="bi bi-circle me-2"></i>
+      {{a}}
+    </div>
+    <div class="btn btn-outline-dark mt-2 d-flex align-items-center" (click)="changeJobAddress(undefined)">
+      <i class="bi bi-check-circle-fill me-2" *ngIf="deckQuote?.jobAddress == newAddress"></i>
+      <i class="bi bi-circle me-2" *ngIf="deckQuote?.jobAddress != newAddress"></i>
+      New Address
+    </div>
+    <div class="my-2" *ngIf="deckQuote?.jobAddress == newAddress">
+      <input type="text" class="form-control" id="newAddress" name="newAddress" [(ngModel)]="newAddress"
+        (ngModelChange)="changeJobAddress(newAddress)">
+    </div>
   </div>
 
 </div>

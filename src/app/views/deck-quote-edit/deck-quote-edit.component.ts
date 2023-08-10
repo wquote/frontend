@@ -18,7 +18,7 @@ export class DeckQuoteEditComponent {
   customerId: string | undefined
   customer: CustomerModel | undefined
   quoteId: string | undefined
-  deckQuote: DeckQuoteModel | undefined
+  deckQuote: DeckQuoteModel = {} as DeckQuoteModel
 
   // mainAreaList: any[] = [1]
   // stairList: any[] = [1]
