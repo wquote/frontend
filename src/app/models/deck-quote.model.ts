@@ -1,37 +1,22 @@
 import { QuoteModel } from "./quote.models"
 
-interface Area{
-  width: number
-  depth: number
+interface Area {
+  width: number | undefined
+  depth: number | undefined
+  height: number | undefined
 }
 
-interface Stair{
-  width: number
-  riser: number
+interface Stair {
+  width: number | undefined
+  riser: number | undefined
 }
 
-export interface DeckModel{
-  main_areas: Area[]
-  lading_areas: Area[]
-  stairs: Stair[]
+export interface DeckModel {
+  main_areas: Area[] | undefined
+  lading_areas: Area[] | undefined
+  stairs: Stair[] | undefined
 }
 
-interface DeckBoardSpecMaterialModel{
-  id: string
-  desc: string
-  qty: number
-  price_snapshot: number
-}
-
-interface DeckBoardSpecification{
-  id_deckboard_template: string
-  name: string
-  materials: DeckBoardSpecMaterialModel[]
-  tax: number
-  cost: number
-}
-
-export interface DeckQuoteModel extends QuoteModel{
-  deck: DeckModel
-  board_specs: DeckBoardSpecification[]
+export interface DeckQuoteModel extends QuoteModel {
+  deck: DeckModel | undefined
 }

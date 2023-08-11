@@ -8,12 +8,12 @@ import { DeckQuoteModel } from '../models/deck-quote.model';
 })
 export class DeckQuoteService {
   
-  endpoint: string = '/quotes/decks/'
+  endpoint: string = '/quotes/'
 
   constructor(private apiService: ApiService) { }
 
   create(item: DeckQuoteModel): Observable<DeckQuoteModel> {
-    let url: string = this.endpoint
+    let url: string = this.endpoint + 'decks/'
     const body: Object = item
 
     return this.apiService.post(url, body)

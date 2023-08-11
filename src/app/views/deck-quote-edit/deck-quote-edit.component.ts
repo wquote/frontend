@@ -18,14 +18,7 @@ export class DeckQuoteEditComponent {
   customerId: string | undefined
   customer: CustomerModel | undefined
   quoteId: string | undefined
-  deckQuote: DeckQuoteModel = {} as DeckQuoteModel
-
-  // mainAreaList: any[] = [1]
-  // stairList: any[] = [1]
-  // landList: any[] = [1]
-  // extraMaterialList: any[] = [1]
-
-  // menu: string = 'footing'
+  deckQuote: DeckQuoteModel | undefined
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -42,7 +35,7 @@ export class DeckQuoteEditComponent {
     this.customerId = this.activatedRoute.snapshot.paramMap.get('id') as string
 
     if (this.customerId && this.customerId != 'new') {
-      this.customerService.read(this.customerId).subscribe( c => this.customer = c )
+      this.customerService.read(this.customerId).subscribe(c => this.customer = c)
     }
   }
 
@@ -50,7 +43,30 @@ export class DeckQuoteEditComponent {
     this.quoteId = this.activatedRoute.snapshot.paramMap.get('quoteId') as string
 
     if (this.quoteId && this.quoteId != 'new') {
-      this.deckQuoteService.read(this.quoteId).subscribe( dq => this.deckQuote = dq )
+      this.deckQuoteService.read(this.quoteId).subscribe(dq => this.deckQuote = dq)
+    } else {
+      this.deckQuote = {
+        jobAddress: undefined,
+        type: 'deck',
+        deck: {
+          mainAreas: [
+            { width: 0, depth: 0, height: 0 }
+          ],
+          ladingAreas: [
+            { width: 0, depth: 0, height: 0 }
+          ],
+          stairs: [
+            { width: 0, riser: 0 }
+          ]
+        }
+      } as any
+    }
+  }
+
+  save() {
+    if(this.deckQuote){
+      this.deckQuote.idCustomer = this.customerId
+      this.deckQuoteService.create(this.deckQuote).subscribe(r => console.log(r))
     }
   }
 }

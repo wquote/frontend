@@ -25,19 +25,19 @@
       <th >Customer</th>
       <th >Type</th>
       <th >Date</th>
-      <th >Profit</th>
-      <th >Total Cost</th>
+      <!-- <th >Profit</th> -->
+      <!-- <th >Total Cost</th> -->
       <th >Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let quote of quotes; index as index">
       <td> {{ index + 1 }} </td>
-      <td> {{ getCustomerName(quote.id_customer) }} </td>
+      <td> {{ getCustomerName(quote.idCustomer) }} </td>
       <td> {{ quote.type }} </td>
       <td> {{ quote.date | date }} </td>
-      <td> {{ quote.profit.toFixed(2) }} </td>
-      <td> {{ quote.total_cost.toFixed(2) }} </td>
+      <!-- <td> {{ quote.profit.toFixed(2) }} </td> -->
+      <!-- <td> {{ quote.total_cost.toFixed(2) }} </td> -->
 
       <!-- Actions -->
       <td class="d-flex">

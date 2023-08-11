@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeckQuoteListComponent } from './deck-quote-edit.component';
+import { DeckQuoteEditComponent } from './deck-quote-edit.component';
 
-describe('DeckQuoteListComponent', () => {
-  let component: DeckQuoteListComponent;
-  let fixture: ComponentFixture<DeckQuoteListComponent>;
+describe('DeckQuoteEditComponent', () => {
+  let component: DeckQuoteEditComponent;
+  let fixture: ComponentFixture<DeckQuoteEditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeckQuoteListComponent ]
+      declarations: [ DeckQuoteEditComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DeckQuoteListComponent);
+    fixture = TestBed.createComponent(DeckQuoteEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

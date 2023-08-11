@@ -38,12 +38,15 @@ export class HomeComponent {
   readAllQuotes() {
     this.quoteService.readAll().subscribe( q => {
       // Sort by date - desc
-      q.sort( (a,b) => new Date(b.date).getTime() - new Date(a.date).getTime() )
+      // q.sort( (a,b) => new Date(b.date).getTime() - new Date(a.date).getTime() )
       this.quotes = q
     })
   }
 
-  getCustomerName(id: string): string {
+  getCustomerName(id: string | undefined): string | undefined {
+    if(!id){
+      return
+    }
     let name: string | undefined = this.customers.filter( c => c._id == id)[0]?.lastName
     return name ? name : ''
   }

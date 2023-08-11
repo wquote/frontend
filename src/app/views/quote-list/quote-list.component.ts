@@ -23,7 +23,7 @@ export class QuoteListComponent {
   constructor(
     private quoteService: QuoteService,
     private customerService: CustomerService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.customerService.readAll().subscribe(c => {
@@ -32,13 +32,16 @@ export class QuoteListComponent {
 
     this.quoteService.readAll().subscribe(q => {
       // Sort by date
-      q.sort( (a,b) => new Date(a.date).getTime() - new Date(b.date).getTime() )
+      // q.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
       this.quotes = q
     })
   }
 
-  getCustomerName(id: string): string {
-    let name: string | undefined = this.customers.filter( c => c._id == id)[0]?.lastName
+  getCustomerName(id: string | undefined): string | undefined {
+    if (!id) {
+      return
+    }
+    let name: string | undefined = this.customers.filter(c => c._id == id)[0]?.lastName
     return name ? name : ''
   }
 

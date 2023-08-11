@@ -38,7 +38,7 @@ export class CustomerQuotesListComponent implements OnInit {
   readCustomerQuotes() {
     this.quoteService.readAll(this.customerId).subscribe( q => {
       // Sort by date
-      q.sort( (a,b) => new Date(b.date).getTime() - new Date(a.date).getTime() )
+      // q.sort( (a,b) => new Date(b.date).getTime() - new Date(a.date).getTime() )
       this.customerQuotes = q
     })
   }
