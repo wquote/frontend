@@ -31,12 +31,12 @@
       <td> {{ customer.phones }} </td>
       <td class="d-flex">
 
-        <button class="btn btn-primary btn-sm me-2" [routerLink]="[ '/customers', customer._id ]" 
+        <button class="btn btn-primary btn-sm me-2" [routerLink]="[ '/customers', customer.id ]" 
         data-toggle="tooltip" data-placement="bottom" title="Edit">
           <i class="bi bi-pencil-fill"></i>
         </button>
         
-        <button class="btn btn-success btn-sm me-2" [routerLink]="[ '/customers', customer._id, 'quotes' ]"
+        <button class="btn btn-success btn-sm me-2" [routerLink]="[ '/customers', customer.id, 'quotes' ]"
         data-toggle="tooltip" data-placement="bottom" title="Quotes">
           <i class="bi bi-currency-dollar"></i>
         </button>

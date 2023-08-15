@@ -47,7 +47,7 @@ export class HomeComponent {
     if(!id){
       return
     }
-    let name: string | undefined = this.customers.filter( c => c._id == id)[0]?.lastName
+    let name: string | undefined = this.customers.filter( c => c.id == id)[0]?.lastName
     return name ? name : ''
   }
 

@@ -3,9 +3,10 @@
 // aggregate no mongodb pra trazer o nome do customer 
 
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerModel } from 'src/app/models/customer.model';
 import { DeckQuoteModel } from 'src/app/models/deck-quote.model';
+import { JobType } from 'src/app/models/type.model';
 import { CustomerService } from 'src/app/services/customer.service';
 import { DeckQuoteService } from 'src/app/services/deck-quote.service';
 
@@ -24,6 +25,7 @@ export class DeckQuoteEditComponent {
     private activatedRoute: ActivatedRoute,
     private customerService: CustomerService,
     private deckQuoteService: DeckQuoteService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -47,7 +49,7 @@ export class DeckQuoteEditComponent {
     } else {
       this.deckQuote = {
         jobAddress: undefined,
-        type: 'deck',
+        type: JobType.DECKING,
         deck: {
           mainAreas: [
             { width: 0, depth: 0, height: 0 }
@@ -66,7 +68,7 @@ export class DeckQuoteEditComponent {
   save() {
     if(this.deckQuote){
       this.deckQuote.idCustomer = this.customerId
-      this.deckQuoteService.create(this.deckQuote).subscribe(r => console.log(r))
+      this.deckQuoteService.create(this.deckQuote).subscribe(r => this.router.navigate(['customers', this.customerId, 'quotes']))
     }
   }
 }
