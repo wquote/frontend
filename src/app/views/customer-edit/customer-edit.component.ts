@@ -45,6 +45,11 @@ export class CustomerEditComponent implements OnInit {
   }
 
   save(): Observable<CustomerModel> {
+
+    this.newPhone && this.addNewPhone()
+
+    this.newEmail && this.addNewEmail()
+
     return this.customerId && this.customerId != 'new' ?
       this.customerService.update(this.customerId, this.customer) :
       this.customerService.create(this.customer!)
