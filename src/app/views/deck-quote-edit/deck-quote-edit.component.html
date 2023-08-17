@@ -23,7 +23,7 @@
 
   <!-- Deck Take-off -->
   <div class="tab-pane" id="deck-take-off">
-    <app-dqe-takeoff></app-dqe-takeoff>
+    <app-dqe-takeoff [deckQuote]="deckQuote" *ngIf="deckQuote"></app-dqe-takeoff>
   </div>
 
   <!-- Estimate -->

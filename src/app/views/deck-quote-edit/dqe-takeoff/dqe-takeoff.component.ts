@@ -1,14 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Area, DeckModel, DeckQuoteModel, Stair } from 'src/app/models/deck-quote.model';
 
 @Component({
   selector: 'app-dqe-takeoff',
   templateUrl: './dqe-takeoff.component.html',
   styleUrls: ['./dqe-takeoff.component.css']
 })
-export class DqeTakeoffComponent {
+export class DqeTakeoffComponent implements OnInit {
 
-  mainAreaList: any[] = [1]
-  stairList: any[] = [1]
-  landList: any[] = [1]
-  extraMaterialList: any[] = [1]
+  @Input()
+  deckQuote: DeckQuoteModel | undefined
+
+  ngOnInit(): void {
+    if (!this.deckQuote) {
+      return
+    }
+    if (!this.deckQuote.decking) {
+      this.deckQuote.decking = {} as DeckModel
+    }
+    if (!this.deckQuote.decking.mainAreas) {
+      this.deckQuote.decking.mainAreas = [{
+        width: undefined,
+        depth: undefined,
+        height: undefined
+      } as Area]
+    }
+    if (!this.deckQuote.decking.ladingAreas) {
+      this.deckQuote.decking.ladingAreas = [{
+        width: undefined,
+        depth: undefined,
+        height: undefined
+      } as Area]
+    }
+    if (!this.deckQuote.decking.stairs) {
+      this.deckQuote.decking.stairs = [{
+        width: undefined,
+        riser: undefined,
+      } as Stair]
+    }
+  }
+
 }

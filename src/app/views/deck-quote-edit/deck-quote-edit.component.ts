@@ -67,8 +67,13 @@ export class DeckQuoteEditComponent {
 
   save() {
     if(this.deckQuote){
-      this.deckQuote.idCustomer = this.customerId
-      this.deckQuoteService.create(this.deckQuote).subscribe(r => this.router.navigate(['customers', this.customerId, 'quotes']))
+      this.deckQuote.customerId = this.customerId
+
+      if(!this.deckQuote.id){
+        this.deckQuoteService.create(this.deckQuote).subscribe(r => this.router.navigate(['customers', this.customerId, 'quotes']))
+      } else {
+        this.deckQuoteService.update(this.deckQuote.id, this.deckQuote).subscribe(r => this.router.navigate(['customers', this.customerId, 'quotes']))
+      }
     }
   }
 }
