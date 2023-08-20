@@ -26,25 +26,51 @@
 
   <div class="col d-flex flex-column">
     <label>Job Address</label>
-    <div class="btn btn-outline-dark mt-2 d-flex align-items-center"
-      (click)="changeJobAddress(customer?.homeAddress);newAddress = undefined">
+    <div class="btn btn-outline-dark mt-2 d-flex align-items-center" (click)="changeJobAddress(customer?.homeAddress)">
       <i class="bi bi-check-circle-fill me-2" *ngIf="deckQuote?.jobAddress == customer?.homeAddress"></i>
       <i class="bi bi-circle me-2" *ngIf="deckQuote?.jobAddress != customer?.homeAddress"></i>
-      {{customer?.homeAddress}}
+      {{customer?.homeAddress}} <i class="ms-2">(Home Address)</i>
     </div>
-    <div class="btn btn-outline-dark mt-2 d-flex align-items-center" *ngFor="let a of customer?.jobAddress">
-      <i class="bi bi-circle me-2"></i>
-      {{a}}
+    <div *ngFor="let a of customer?.jobAddress" class="d-flex">
+      <div class="btn btn-outline-dark mt-2 d-flex align-items-center flex-fill" (click)="changeJobAddress(a)">
+        <i class="bi bi-check-circle-fill me-2" *ngIf="deckQuote?.jobAddress == a"></i>
+        <i class="bi bi-circle me-2" *ngIf="deckQuote?.jobAddress != a"></i>
+        {{a}}
+      </div>
+      <button class="btn btn-outline-danger mt-2 mx-2" (click)="removeJobAddress(a)">
+        <i class="bi bi-trash"></i>
+      </button>
     </div>
-    <div class="btn btn-outline-dark mt-2 d-flex align-items-center" (click)="changeJobAddress(undefined)">
-      <i class="bi bi-check-circle-fill me-2" *ngIf="deckQuote?.jobAddress == newAddress"></i>
-      <i class="bi bi-circle me-2" *ngIf="deckQuote?.jobAddress != newAddress"></i>
-      New Address
+    <div class="btn btn-outline-dark mt-2 d-flex align-items-center" data-bs-toggle="modal"
+      data-bs-target="#addNewAddressModal">
+      <i class="bi bi-plus me-2"></i>
+      New Job Address
     </div>
-    <div class="my-2" *ngIf="deckQuote?.jobAddress == newAddress">
-      <input type="text" class="form-control" id="newAddress" name="newAddress" [(ngModel)]="newAddress"
-        (ngModelChange)="changeJobAddress(newAddress)" placeholder="Type a new address">
+
+    <div class="modal fade" id="addNewAddressModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add new job address</h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="my-2">
+              <input type="text" class="form-control" id="newAddress" name="newAddress" [(ngModel)]="newAddress"
+                placeholder="Type a new job address">
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addNewAddress()">Yes</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+
 
 </div>
