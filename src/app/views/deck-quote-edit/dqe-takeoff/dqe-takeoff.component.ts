@@ -40,4 +40,46 @@ export class DqeTakeoffComponent implements OnInit {
     }
   }
 
+  addArea() {
+    if(!this.deckQuote || !this.deckQuote.decking) {
+      return
+    }
+    this.deckQuote.decking.mainAreas?.push({} as Area)
+  }
+
+  addLandingArea() {
+    if(!this.deckQuote || !this.deckQuote.decking) {
+      return
+    }
+    this.deckQuote.decking.ladingAreas?.push({} as Area)
+  }
+
+  addStair() {
+    if(!this.deckQuote || !this.deckQuote.decking) {
+      return
+    }
+    this.deckQuote.decking.stairs?.push({} as Stair)
+  }
+
+  removeArea(mainArea: Area){
+    if(!this.deckQuote || !this.deckQuote.decking || !this.deckQuote.decking.mainAreas){
+      return
+    }
+    this.deckQuote.decking.mainAreas = this.deckQuote.decking.mainAreas.filter(a => a!= mainArea)
+  }
+
+  removeLandingArea(landingArea: Area){
+    if(!this.deckQuote || !this.deckQuote.decking || !this.deckQuote.decking.ladingAreas){
+      return
+    }
+    this.deckQuote.decking.ladingAreas = this.deckQuote.decking.ladingAreas.filter(a => a!= landingArea)
+  }
+
+  removeStair(stair: Stair){
+    if(!this.deckQuote || !this.deckQuote.decking || !this.deckQuote.decking.stairs){
+      return
+    }
+    this.deckQuote.decking.stairs = this.deckQuote.decking.stairs.filter(a => a!= stair)
+  }
+
 }
