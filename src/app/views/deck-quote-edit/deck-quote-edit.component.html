@@ -28,12 +28,12 @@
 
   <!-- Estimate -->
   <div class="tab-pane " id="estimate">
-    <app-dqe-estimate></app-dqe-estimate>
+    <app-dqe-estimate [deckQuote]="deckQuote" *ngIf="deckQuote"></app-dqe-estimate>
   </div>
 
   <!-- Material Order -->
   <div class="tab-pane" id="material-order">
-    <app-dqe-order></app-dqe-order>
+    <app-dqe-order [deckQuote]="deckQuote" *ngIf="deckQuote"></app-dqe-order>
   </div>
 </div>
 

@@ -1,124 +1,31 @@
-<nav class="nav nav-underline justify-content-evenly mb-3" id="estimate-tab">
-    <a class="nav-link active" type="button" data-bs-toggle="tab" data-bs-target="#general-estimate">General</a>
-    <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#xy-view">X-Y View</a>
-  </nav>
+<div class="d-flex flex-column align-items-center">
 
-  <!-- Estimate Panel -->
-  <div class="tab-content" id="deck-take-off-panel">
-
-    <!-- General -->
-    <div class="tab-pane show active" id="general-estimate" role="tabpanel">
-      <div class="d-flex flex-column align-items-center">
-
-        <table class="table table-hover mb-5">
-          <thead>
-            <tr class="table-light text-center">
-              <th class="w-75">Material</th>
-              <th class="w-25">Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <select class="form-select form-select-sm" name="" id="">
-                  <option selected>Decking board</option>
-                  <option value="">New Delhi</option>
-                  <option value="">Istanbul</option>
-                  <option value="">Jakarta</option>
-                </select>
-              </td>
-              <td class="text-center">123123</td>
-            </tr>
-            <tr>
-              <td>
-                <select class="form-select form-select-sm" name="" id="">
-                  <option selected>Railling</option>
-                  <option value="">New Delhi</option>
-                  <option value="">Istanbul</option>
-                  <option value="">Jakarta</option>
-                </select>
-              </td>
-              <td class="text-center">987756</td>
-            </tr>
-            <tr>
-              <td>PT Frame</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Galvanized Strap - Footings</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><select class="form-select form-select-sm" name="" id="">
-                <option selected>Finishing</option>
-                <option value="">New Delhi</option>
-                <option value="">Istanbul</option>
-                <option value="">Jakarta</option>
-              </select></td>
-              <td></td>
-            </tr>
-
-          </tbody>
-        </table>
-
-        <table class="table table-hover">
-          <thead>
-            <tr class="table-light text-center">
-              <th class="w-75">Other Cost</th>
-              <th class="w-25">Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                Building permit
-              </td>
-              <td class="text-center">123123</td>
-            </tr>
-            <tr>
-              <td>
-                Portable toialet
-              </td>
-              <td class="text-center">987756</td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- X-Y View -->
-    <div class="tab-pane " id="xy-view">
-      <table class="table table-hover table-bordered text-center">
-        <thead>
-          <tr class="table-light ">
-            <th></th>
-            <th>A</th>
-            <th>B</th>
-            <th>C</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th class="table-light ">1</th>
-            <td>123</td>
-            <td>123</td>
-            <td>123</td>
-          </tr>
-          <tr>
-            <th class="table-light ">2</th>
-            <td>123</td>
-            <td>123</td>
-            <td>123</td>
-          </tr>
-          <tr>
-            <th class="table-light ">3</th>
-            <td>123</td>
-            <td>123</td>
-            <td>123</td>
-          </tr>
-        </tbody>
-      </table>
-
-    </div>
-  </div>
+  <table class="table table-hover mb-3">
+    <thead>
+      <tr class="table-light">
+        <th colspan="2">Material</th>
+        <th class="text-center">Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Decking Board</td>
+        <td>
+          <div *ngIf="deckQuote && deckQuote.deckingBoardSpecs">
+            <select class="form-select form-select-sm" name="deckingBoardSpecs" id="deckingBoardSpecs"
+              [(ngModel)]="deckQuote.deckingBoardSpecs.selectedSpecIndex">
+              <option *ngFor="let spec of deckQuote?.deckingBoardSpecs?.catalogsSpec; let i = index" [ngValue]="i">
+                {{spec.name}}</option>
+            </select>
+          </div>
+        </td>
+        <td class="text-center">
+          <div
+            *ngIf="deckQuote && deckQuote.deckingBoardSpecs">
+            {{deckQuote.deckingBoardSpecs.catalogsSpec[deckQuote.deckingBoardSpecs.selectedSpecIndex || 0].cost.toFixed(2)}}
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

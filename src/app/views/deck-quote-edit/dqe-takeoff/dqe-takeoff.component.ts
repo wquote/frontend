@@ -15,25 +15,25 @@ export class DqeTakeoffComponent implements OnInit {
     if (!this.deckQuote) {
       return
     }
-    if (!this.deckQuote.decking) {
-      this.deckQuote.decking = {} as DeckModel
+    if (!this.deckQuote.deckingInfo) {
+      this.deckQuote.deckingInfo = {} as DeckModel
     }
-    if (!this.deckQuote.decking.mainAreas) {
-      this.deckQuote.decking.mainAreas = [{
+    if (!this.deckQuote.deckingInfo.mainAreas) {
+      this.deckQuote.deckingInfo.mainAreas = [{
         width: undefined,
         depth: undefined,
         height: undefined
       } as Area]
     }
-    if (!this.deckQuote.decking.ladingAreas) {
-      this.deckQuote.decking.ladingAreas = [{
+    if (!this.deckQuote.deckingInfo.ladingAreas) {
+      this.deckQuote.deckingInfo.ladingAreas = [{
         width: undefined,
         depth: undefined,
         height: undefined
       } as Area]
     }
-    if (!this.deckQuote.decking.stairs) {
-      this.deckQuote.decking.stairs = [{
+    if (!this.deckQuote.deckingInfo.stairs) {
+      this.deckQuote.deckingInfo.stairs = [{
         width: undefined,
         riser: undefined,
       } as Stair]
@@ -41,45 +41,45 @@ export class DqeTakeoffComponent implements OnInit {
   }
 
   addArea() {
-    if(!this.deckQuote || !this.deckQuote.decking) {
+    if(!this.deckQuote || !this.deckQuote.deckingInfo) {
       return
     }
-    this.deckQuote.decking.mainAreas?.push({} as Area)
+    this.deckQuote.deckingInfo.mainAreas?.push({} as Area)
   }
 
   addLandingArea() {
-    if(!this.deckQuote || !this.deckQuote.decking) {
+    if(!this.deckQuote || !this.deckQuote.deckingInfo) {
       return
     }
-    this.deckQuote.decking.ladingAreas?.push({} as Area)
+    this.deckQuote.deckingInfo.ladingAreas?.push({} as Area)
   }
 
   addStair() {
-    if(!this.deckQuote || !this.deckQuote.decking) {
+    if(!this.deckQuote || !this.deckQuote.deckingInfo) {
       return
     }
-    this.deckQuote.decking.stairs?.push({} as Stair)
+    this.deckQuote.deckingInfo.stairs?.push({} as Stair)
   }
 
   removeArea(mainArea: Area){
-    if(!this.deckQuote || !this.deckQuote.decking || !this.deckQuote.decking.mainAreas){
+    if(!this.deckQuote || !this.deckQuote.deckingInfo || !this.deckQuote.deckingInfo.mainAreas){
       return
     }
-    this.deckQuote.decking.mainAreas = this.deckQuote.decking.mainAreas.filter(a => a!= mainArea)
+    this.deckQuote.deckingInfo.mainAreas = this.deckQuote.deckingInfo.mainAreas.filter(a => a!= mainArea)
   }
 
   removeLandingArea(landingArea: Area){
-    if(!this.deckQuote || !this.deckQuote.decking || !this.deckQuote.decking.ladingAreas){
+    if(!this.deckQuote || !this.deckQuote.deckingInfo || !this.deckQuote.deckingInfo.ladingAreas){
       return
     }
-    this.deckQuote.decking.ladingAreas = this.deckQuote.decking.ladingAreas.filter(a => a!= landingArea)
+    this.deckQuote.deckingInfo.ladingAreas = this.deckQuote.deckingInfo.ladingAreas.filter(a => a!= landingArea)
   }
 
   removeStair(stair: Stair){
-    if(!this.deckQuote || !this.deckQuote.decking || !this.deckQuote.decking.stairs){
+    if(!this.deckQuote || !this.deckQuote.deckingInfo || !this.deckQuote.deckingInfo.stairs){
       return
     }
-    this.deckQuote.decking.stairs = this.deckQuote.decking.stairs.filter(a => a!= stair)
+    this.deckQuote.deckingInfo.stairs = this.deckQuote.deckingInfo.stairs.filter(a => a!= stair)
   }
 
 }

@@ -18,5 +18,24 @@ export interface DeckModel {
 }
 
 export interface DeckQuoteModel extends QuoteModel {
-  decking: DeckModel | undefined
+  deckingInfo: DeckModel | undefined
+  deckingBoardSpecs: DeckingBoardSpecsModel | undefined
+}
+
+export interface DeckingBoardSpecsModel {
+  selectedSpecIndex: number | undefined
+  catalogsSpec: CatalogSpecModel[]
+}
+
+export interface CatalogSpecModel {
+  name: string | undefined
+  materials: MaterialModel[] | undefined
+  tax: number
+  cost: number
+}
+
+export interface MaterialModel {
+  descSnapshot: string | undefined
+  priceSnapshot: number | undefined
+  qty: number | undefined
 }

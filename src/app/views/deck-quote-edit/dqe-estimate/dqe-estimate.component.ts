@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { DeckQuoteModel } from 'src/app/models/deck-quote.model';
 
 @Component({
   selector: 'app-dqe-estimate',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./dqe-estimate.component.css']
 })
 export class DqeEstimateComponent {
+
+  @Input()
+  deckQuote: DeckQuoteModel | undefined
 
 }

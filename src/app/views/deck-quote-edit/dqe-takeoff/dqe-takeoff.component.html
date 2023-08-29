@@ -14,7 +14,7 @@
 
 <div class="row">
   <div class="col">
-    <div class="card mb-3" *ngFor="let mainArea of deckQuote?.decking?.mainAreas; let i = index">
+    <div class="card mb-3" *ngFor="let mainArea of deckQuote?.deckingInfo?.mainAreas; let i = index">
       <div class="card-header d-flex justify-content-between align-items-center">
         <b>Area {{i+1}}</b>
         <button class="btn btn-outline-danger" (click)="removeArea(mainArea)">
@@ -47,7 +47,7 @@
   </div>
 
   <div class="col">
-    <div class="card mb-3" *ngFor="let ladingArea of deckQuote?.decking?.ladingAreas; let i = index">
+    <div class="card mb-3" *ngFor="let ladingArea of deckQuote?.deckingInfo?.ladingAreas; let i = index">
       <div class="card-header d-flex justify-content-between align-items-center">
         <b>Landing Area {{i+1}}</b>
         <button class="btn btn-outline-danger" (click)="removeLandingArea(ladingArea)">
@@ -80,7 +80,7 @@
   </div>
 
   <div class="col">
-    <div class="card mb-3" *ngFor="let stair of deckQuote?.decking?.stairs; let i = index">
+    <div class="card mb-3" *ngFor="let stair of deckQuote?.deckingInfo?.stairs; let i = index">
       <div class="card-header d-flex justify-content-between align-items-center">
         <b>Stair {{i+1}}</b>
         <button class="btn btn-outline-danger" (click)="removeStair(stair)">
