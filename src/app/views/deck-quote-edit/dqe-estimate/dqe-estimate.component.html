@@ -1,5 +1,7 @@
 <div class="d-flex flex-column align-items-center">
 
+  <h4>Material</h4>
+
   <table class="table table-hover mb-3">
     <thead>
       <tr class="table-light">
@@ -9,23 +11,141 @@
     </thead>
     <tbody>
       <tr>
-        <td>Decking Board</td>
+        <td>Board</td>
         <td>
-          <div *ngIf="deckQuote && deckQuote.deckingBoardSpecs">
-            <select class="form-select form-select-sm" name="deckingBoardSpecs" id="deckingBoardSpecs"
-              [(ngModel)]="deckQuote.deckingBoardSpecs.selectedSpecIndex">
-              <option *ngFor="let spec of deckQuote?.deckingBoardSpecs?.catalogsSpec; let i = index" [ngValue]="i">
+          <div *ngIf="deckQuote && deckQuote.boardSpecs">
+            <select class="form-select form-select-sm" name="boardSpecs" id="boardSpecs"
+              [(ngModel)]="deckQuote.boardSpecs.selectedSpecIndex">
+              <option *ngFor="let spec of deckQuote?.boardSpecs?.catalogsSpec; let i = index" [ngValue]="i">
                 {{spec.name}}</option>
             </select>
           </div>
         </td>
         <td class="text-center">
-          <div
-            *ngIf="deckQuote && deckQuote.deckingBoardSpecs">
-            {{deckQuote.deckingBoardSpecs.catalogsSpec[deckQuote.deckingBoardSpecs.selectedSpecIndex || 0].cost.toFixed(2)}}
+          <div *ngIf="deckQuote && deckQuote.boardSpecs">
+            {{deckQuote.boardSpecs.catalogsSpec[deckQuote.boardSpecs.selectedSpecIndex || 0].cost.toFixed(2)}}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Railing</td>
+        <td>
+          <div *ngIf="deckQuote && deckQuote.railingSpecs">
+            <select class="form-select form-select-sm" name="railingSpecs" id="railingSpecs"
+              [(ngModel)]="deckQuote.railingSpecs.selectedSpecIndex">
+              <option *ngFor="let spec of deckQuote?.railingSpecs?.catalogsSpec; let i = index" [ngValue]="i">
+                {{spec.name}}</option>
+            </select>
+          </div>
+        </td>
+        <td class="text-center">
+          <div *ngIf="deckQuote && deckQuote.railingSpecs">
+            {{deckQuote.railingSpecs.catalogsSpec[deckQuote.railingSpecs.selectedSpecIndex || 0].cost.toFixed(2)}}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Pressure Treated</td>
+        <td>
+          <div *ngIf="deckQuote && deckQuote.pressureTreatedSpecs">
+            <select class="form-select form-select-sm" name="pressureTreatedSpecs" id="pressureTreatedSpecs"
+              [(ngModel)]="deckQuote.pressureTreatedSpecs.selectedSpecIndex">
+              <option *ngFor="let spec of deckQuote?.pressureTreatedSpecs?.catalogsSpec; let i = index" [ngValue]="i">
+                {{spec.name}}</option>
+            </select>
+          </div>
+        </td>
+        <td class="text-center">
+          <div *ngIf="deckQuote && deckQuote.pressureTreatedSpecs">
+            {{deckQuote.pressureTreatedSpecs.catalogsSpec[deckQuote.pressureTreatedSpecs.selectedSpecIndex ||
+            0].cost.toFixed(2)}}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Structural</td>
+        <td>
+          <div *ngIf="deckQuote && deckQuote.structuralSpecs">
+            <select class="form-select form-select-sm" name="structuralSpecs" id="structuralSpecs"
+              [(ngModel)]="deckQuote.structuralSpecs.selectedSpecIndex">
+              <option *ngFor="let spec of deckQuote?.structuralSpecs?.catalogsSpec; let i = index" [ngValue]="i">
+                {{spec.name}}</option>
+            </select>
+          </div>
+        </td>
+        <td class="text-center">
+          <div *ngIf="deckQuote && deckQuote.structuralSpecs">
+            {{deckQuote.structuralSpecs.catalogsSpec[deckQuote.structuralSpecs.selectedSpecIndex || 0].cost.toFixed(2)}}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Finishing</td>
+        <td>
+          <div *ngIf="deckQuote && deckQuote.finishingSpecs">
+            <select class="form-select form-select-sm" name="finishingSpecs" id="finishingSpecs"
+              [(ngModel)]="deckQuote.finishingSpecs.selectedSpecIndex">
+              <option *ngFor="let spec of deckQuote?.finishingSpecs?.catalogsSpec; let i = index" [ngValue]="i">
+                {{spec.name}}</option>
+            </select>
+          </div>
+        </td>
+        <td class="text-center">
+          <div *ngIf="deckQuote && deckQuote.finishingSpecs">
+            {{deckQuote.finishingSpecs.catalogsSpec[deckQuote.finishingSpecs.selectedSpecIndex || 0].cost.toFixed(2)}}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Rain Scape</td>
+        <td>
+          <div *ngIf="deckQuote && deckQuote.rainScapeSpecs">
+            <select class="form-select form-select-sm" name="rainScapeSpecs" id="rainScapeSpecs"
+              [(ngModel)]="deckQuote.rainScapeSpecs.selectedSpecIndex">
+              <option *ngFor="let spec of deckQuote?.rainScapeSpecs?.catalogsSpec; let i = index" [ngValue]="i">
+                {{spec.name}}</option>
+            </select>
+          </div>
+        </td>
+        <td class="text-center">
+          <div *ngIf="deckQuote && deckQuote.rainScapeSpecs">
+            {{deckQuote.rainScapeSpecs.catalogsSpec[deckQuote.rainScapeSpecs.selectedSpecIndex || 0].cost.toFixed(2)}}
           </div>
         </td>
       </tr>
     </tbody>
   </table>
+
+  <h4>Extra Material</h4>
+
+  <table class="table table-hover mb-3">
+    <thead>
+      <tr class="table-light">
+        <th colspan="2">Material</th>
+        <th class="text-center">Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>
+          <input type="text" class="form-control form-control-sm"><!-- id="x" name="x" [(ngModel)]="x" -->
+        </td>
+        <td class="text-center">
+          <input type="text" class="form-control form-control-sm"><!-- id="x" name="x" [(ngModel)]="x" -->
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>
+          <input type="text" class="form-control form-control-sm"><!-- id="x" name="x" [(ngModel)]="x" -->
+        </td>
+        <td class="text-center">
+          <input type="text" class="form-control form-control-sm"><!-- id="x" name="x" [(ngModel)]="x" -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
 </div>
