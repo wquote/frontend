@@ -12,7 +12,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './views/home/home.component';
 import { CustomerListComponent } from './views/customer-list/customer-list.component';
 import { CustomerEditComponent } from './views/customer-edit/customer-edit.component';
-import { QuoteListComponent } from './views/quote-list/quote-list.component';
 import { DeckQuoteEditComponent } from './views/deck-quote-edit/deck-quote-edit.component';
 import { DqeCustomerComponent } from './views/deck-quote-edit/dqe-customer/dqe-customer.component';
 import { DqeEstimateComponent } from './views/deck-quote-edit/dqe-estimate/dqe-estimate.component';
@@ -30,7 +29,6 @@ import { LandingPageComponent } from './views/landing-page/landing-page.componen
     HomeComponent,
     CustomerListComponent,
     CustomerEditComponent,
-    QuoteListComponent,
     DeckQuoteEditComponent,
     DqeCustomerComponent,
     DqeEstimateComponent,

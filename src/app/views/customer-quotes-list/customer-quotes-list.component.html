@@ -47,7 +47,8 @@
     <tr class="table-light">
       <th>Job Type</th>
       <th>Job Address</th>
-      <th>Date</th>
+      <th>Created At</th>
+      <th>Updated At</th>
       <th>Profit</th>
       <th>Value</th>
       <th>Actions</th>
@@ -57,7 +58,8 @@
     <tr *ngFor="let quote of customerQuotes">
       <td> {{ quote.type || '-' }} </td>
       <td> {{ quote.jobAddress || '-' }} </td>
-      <td> {{ quote.date | date }} </td>
+      <td> {{ quote.createdAt | date }} </td>
+      <td> {{ quote.updatedAt | date }} </td>
       <td> {{ quote.profit }} </td>
       <td> {{ quote.value }} </td>
       <td class="d-flex">

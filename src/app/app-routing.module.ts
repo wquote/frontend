@@ -5,13 +5,10 @@ import { CustomerEditComponent } from './views/customer-edit/customer-edit.compo
 import { CustomerListComponent } from './views/customer-list/customer-list.component';
 import { CustomerQuotesListComponent } from './views/customer-quotes-list/customer-quotes-list.component';
 import { DeckQuoteEditComponent } from './views/deck-quote-edit/deck-quote-edit.component';
-import { QuoteListComponent } from './views/quote-list/quote-list.component';
-import { LandingPageComponent } from './views/landing-page/landing-page.component';
-
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'landing', component: LandingPageComponent, pathMatch: 'full' },
+  { path: 'landing', component: HomeComponent, pathMatch: 'full' },
   
   { path: 'customers', component: CustomerListComponent },
   { path: 'customers/new', component: CustomerEditComponent },
@@ -19,8 +16,6 @@ const routes: Routes = [
   { path: 'customers/:id/quotes', component: CustomerQuotesListComponent },
   { path: 'customers/:id/quotes/new', component: DeckQuoteEditComponent },
   { path: 'customers/:id/quotes/:quoteId', component: DeckQuoteEditComponent },
-
-  { path: 'quotes/list', component: QuoteListComponent },
 
   { path: 'quotes/decks/:id', component: DeckQuoteEditComponent },
   { path: 'quotes/decks/new', component: DeckQuoteEditComponent },

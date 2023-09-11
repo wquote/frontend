@@ -5,7 +5,8 @@ export interface QuoteModel {
   customerId: string | undefined
   jobAddress: string | undefined
   type: JobType | undefined
-  date: Date | undefined
+  createdAt: Date | undefined
+  updatedAt: Date | undefined
   profit: number | undefined
   value: number | undefined
 }
