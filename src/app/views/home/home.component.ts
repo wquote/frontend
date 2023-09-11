@@ -47,7 +47,14 @@ export class HomeComponent {
     if(!id){
       return
     }
-    let name: string | undefined = this.customers.filter( c => c.id == id)[0]?.lastName
+
+    let customer = this.customers.filter( c => c.id == id)[0]
+
+    if(!customer){
+      return undefined
+    }
+
+    let name: string | undefined = customer.firstName + ' ' + customer.lastName
     return name ? name : ''
   }
 

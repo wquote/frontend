@@ -31,7 +31,7 @@ export class QuoteService {
     let queryParams: HttpParams | undefined
 
     if (customerId){
-      queryParams = new HttpParams({fromObject: {'idCustomer': customerId}})
+      queryParams = new HttpParams({fromObject: {'customerId': customerId}})
     }
     
     return this.apiService.get(url, queryParams)

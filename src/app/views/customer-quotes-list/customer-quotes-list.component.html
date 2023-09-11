@@ -63,13 +63,13 @@
       <td> {{ quote.profit }} </td>
       <td> {{ quote.value }} </td>
       <td class="d-flex">
-        <button class="btn btn-primary btn-sm me-2" [routerLink]="[ '/customers', customerId, 'quotes', quote.id ]"
-          data-bs-toggle="tooltip" data-placement="bottom" title="Edit">
+        <button class="btn btn-outline-primary btn-sm me-2"
+          [routerLink]="[ '/customers', customerId, 'quotes', quote.id ]" title="Edit">
           <i class="bi bi-pencil-fill"></i>
         </button>
-        <button class="btn btn-warning btn-sm me-2" [routerLink]="[ '/quotes/'+quote.type+'s/edit/', quote.id ]"
-          data-bs-toggle="tooltip" data-placement="bottom" title="Duplicate">
-          <i class="bi bi-stickies-fill"></i>
+        <button class="btn btn-outline-secondary btn-sm me-2"
+          [routerLink]="[ '/quotes/'+quote.type+'s/edit/', quote.id ]" title="Duplicate">
+          <i class="bi bi-files"></i>
         </button>
       </td>
     </tr>

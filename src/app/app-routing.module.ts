@@ -16,9 +16,6 @@ const routes: Routes = [
   { path: 'customers/:id/quotes', component: CustomerQuotesListComponent },
   { path: 'customers/:id/quotes/new', component: DeckQuoteEditComponent },
   { path: 'customers/:id/quotes/:quoteId', component: DeckQuoteEditComponent },
-
-  { path: 'quotes/decks/:id', component: DeckQuoteEditComponent },
-  { path: 'quotes/decks/new', component: DeckQuoteEditComponent },
 ];
 
 @NgModule({
