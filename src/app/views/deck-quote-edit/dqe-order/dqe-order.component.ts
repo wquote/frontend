@@ -8,6 +8,8 @@ import { DeckQuoteModel } from 'src/app/models/deck-quote.model';
 })
 export class DqeOrderComponent {
 
+  menu: string = 'board'
+
   @Input()
   deckQuote: DeckQuoteModel | undefined
 
