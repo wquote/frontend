@@ -7,6 +7,8 @@ import { Area, DeckModel, DeckQuoteModel, Stair } from 'src/app/models/deck-quot
   styleUrls: ['./dqe-takeoff.component.css']
 })
 export class DqeTakeoffComponent implements OnInit {
+  
+  menu: string = 'board'
 
   @Input()
   deckQuote: DeckQuoteModel | undefined

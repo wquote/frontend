@@ -1,44 +1,127 @@
-<div class="d-flex justify-content-end mb-3">
-
-  <button class="btn btn-outline-primary" id="dropdownMenuButton" data-bs-toggle="dropdown">
-    <i class="bi bi-plus"></i>
-    New
-  </button>
-
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="javascript:;" (click)="addArea()">Area</a></li>
-    <li><a class="dropdown-item" href="javascript:;" (click)="addLandingArea()">Landing Area</a></li>
-    <li><a class="dropdown-item" href="javascript:;" (click)="addStair()">Stair</a></li>
-  </ul>
+<div class="d-flex justify-content-around my-2">
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'board'"
+    [class.btn-light]="menu != 'board'" (click)="menu = 'board'">Layout</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'railing'"
+    [class.btn-light]="menu != 'railing'" (click)="menu = 'railing'">Railing</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
+    [class.btn-primary]="menu == 'pressure treated'" [class.btn-light]="menu != 'pressure treated'"
+    (click)="menu = 'pressure treated'">Pressure Treated</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
+    [class.btn-primary]="menu == 'structural'" [class.btn-light]="menu != 'structural'"
+    (click)="menu = 'structural'">Structural</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
+    [class.btn-primary]="menu == 'finishing'" [class.btn-light]="menu != 'finishing'"
+    (click)="menu = 'finishing'">Finishing</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
+    [class.btn-primary]="menu == 'rain scape'" [class.btn-light]="menu != 'rain scape'"
+    (click)="menu = 'rain scape'">Rain Scape</button>
 </div>
 
-<div class="row">
-  <div class="col">
-    <div class="card mb-3" *ngFor="let mainArea of deckQuote?.deckingInfo?.mainAreas; let i = index">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <b>Area {{i+1}}</b>
-        <button class="btn btn-outline-danger" (click)="removeArea(mainArea)">
-          <i class="bi bi-trash"></i>
-        </button>
+<div *ngIf="menu == 'board'">
+
+
+  <div class="d-flex justify-content-end mb-3">
+
+    <button class="btn btn-outline-primary" id="dropdownMenuButton" data-bs-toggle="dropdown">
+      <i class="bi bi-plus"></i>
+      New
+    </button>
+
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="javascript:;" (click)="addArea()">Area</a></li>
+      <li><a class="dropdown-item" href="javascript:;" (click)="addLandingArea()">Landing Area</a></li>
+      <li><a class="dropdown-item" href="javascript:;" (click)="addStair()">Stair</a></li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card mb-3" *ngFor="let mainArea of deckQuote?.deckingInfo?.mainAreas; let i = index">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <b>Area {{i+1}}</b>
+          <button class="btn btn-outline-danger" (click)="removeArea(mainArea)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-3">
+                <label class="form-label" for="width">Width</label>
+                <input type="text" class="form-control" id="width" name="width" [(ngModel)]="mainArea.width">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="mb-3">
+                <label class="form-label" for="depth">Depth</label>
+                <input type="text" class="form-control" id="depth" name="depth" [(ngModel)]="mainArea.depth">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="mb-3">
+                <label class="form-label" for="height">Height</label>
+                <input type="text" class="form-control" id="height" name="height" [(ngModel)]="mainArea.height">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-12">
-            <div class="mb-3">
-              <label class="form-label" for="width">Width</label>
-              <input type="text" class="form-control" id="width" name="width" [(ngModel)]="mainArea.width">
+    </div>
+
+    <div class="col">
+      <div class="card mb-3" *ngFor="let ladingArea of deckQuote?.deckingInfo?.ladingAreas; let i = index">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <b>Landing Area {{i+1}}</b>
+          <button class="btn btn-outline-danger" (click)="removeLandingArea(ladingArea)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-3">
+                <label class="form-label" for="width">Width</label>
+                <input type="text" class="form-control" id="width" name="width" [(ngModel)]="ladingArea.width">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="mb-3">
+                <label class="form-label" for="depth">Depth</label>
+                <input type="text" class="form-control" id="depth" name="depth" [(ngModel)]="ladingArea.depth">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="mb-3">
+                <label class="form-label" for="height">Height</label>
+                <input type="text" class="form-control" id="height" name="height" [(ngModel)]="ladingArea.height">
+              </div>
             </div>
           </div>
-          <div class="col-12">
-            <div class="mb-3">
-              <label class="form-label" for="depth">Depth</label>
-              <input type="text" class="form-control" id="depth" name="depth" [(ngModel)]="mainArea.depth">
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card mb-3" *ngFor="let stair of deckQuote?.deckingInfo?.stairs; let i = index">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <b>Stair {{i+1}}</b>
+          <button class="btn btn-outline-danger" (click)="removeStair(stair)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-3">
+                <label class="form-label" for="width">Width</label>
+                <input type="text" class="form-control" id="width" name="width" [(ngModel)]="stair.width">
+              </div>
             </div>
-          </div>
-          <div class="col-12">
-            <div class="mb-3">
-              <label class="form-label" for="height">Height</label>
-              <input type="text" class="form-control" id="height" name="height" [(ngModel)]="mainArea.height">
+            <div class="col-12">
+              <div class="mb-3">
+                <label class="form-label" for="riser">Riser</label>
+                <input type="text" class="form-control" id="riser" name="riser" [(ngModel)]="stair.riser">
+              </div>
             </div>
           </div>
         </div>
@@ -46,63 +129,5 @@
     </div>
   </div>
 
-  <div class="col">
-    <div class="card mb-3" *ngFor="let ladingArea of deckQuote?.deckingInfo?.ladingAreas; let i = index">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <b>Landing Area {{i+1}}</b>
-        <button class="btn btn-outline-danger" (click)="removeLandingArea(ladingArea)">
-          <i class="bi bi-trash"></i>
-        </button>
-      </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-12">
-            <div class="mb-3">
-              <label class="form-label" for="width">Width</label>
-              <input type="text" class="form-control" id="width" name="width" [(ngModel)]="ladingArea.width">
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="mb-3">
-              <label class="form-label" for="depth">Depth</label>
-              <input type="text" class="form-control" id="depth" name="depth" [(ngModel)]="ladingArea.depth">
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="mb-3">
-              <label class="form-label" for="height">Height</label>
-              <input type="text" class="form-control" id="height" name="height" [(ngModel)]="ladingArea.height">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="col">
-    <div class="card mb-3" *ngFor="let stair of deckQuote?.deckingInfo?.stairs; let i = index">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <b>Stair {{i+1}}</b>
-        <button class="btn btn-outline-danger" (click)="removeStair(stair)">
-          <i class="bi bi-trash"></i>
-        </button>
-      </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-12">
-            <div class="mb-3">
-              <label class="form-label" for="width">Width</label>
-              <input type="text" class="form-control" id="width" name="width" [(ngModel)]="stair.width">
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="mb-3">
-              <label class="form-label" for="riser">Riser</label>
-              <input type="text" class="form-control" id="riser" name="riser" [(ngModel)]="stair.riser">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
