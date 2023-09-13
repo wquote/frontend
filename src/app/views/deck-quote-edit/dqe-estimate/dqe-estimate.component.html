@@ -1,6 +1,34 @@
-<div class="d-flex flex-column align-items-center">
+<div class="d-flex justify-content-around my-2">
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'material'"
+    [class.btn-light]="menu != 'material'" (click)="menu = 'material'">Material</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'x-y view'"
+    [class.btn-light]="menu != 'x-y view'" (click)="menu = 'x-y view'">(X - Y) View</button>
+</div>
 
-  <h4 class="mb-3">Material</h4>
+
+<div class="d-flex flex-column align-items-center" *ngIf="menu == 'x-y view'">
+
+  <table class="table table-hover" *ngIf="deckQuote && deckQuote.boardSpecs && deckQuote.railingSpecs">
+    <tbody>
+      <tr>
+        <th></th>
+        <th *ngFor="let railing of deckQuote.railingSpecs.catalogsSpec">{{railing.name}}</th>
+      </tr>
+      <tr *ngFor="let decking of deckQuote.boardSpecs.catalogsSpec; let deckingIndex = index">
+        <th>{{decking.name}}</th>
+        <td *ngFor="let railing of deckQuote.railingSpecs.catalogsSpec; let railingIndex = index" [class.text-success]="minorCost(deckingIndex, railingIndex)" [class.fw-bold]="minorCost(deckingIndex, railingIndex)">
+          Cost: {{(decking.cost + railing.cost).toFixed(2)}}<br>
+          Tax: {{(decking.tax + railing.tax).toFixed(2)}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="d-flex flex-column align-items-center" *ngIf="menu == 'material'">
+
+  <!-- <h4 class="mb-3">Material</h4> -->
 
   <table class="table table-hover mb-3">
     <thead>

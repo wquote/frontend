@@ -1,14 +1,25 @@
-<div class="d-flex justify-content-around my-3">
-  <button type="button" class="btn" [class.btn-primary]="menu == 'board'" [class.btn-light]="menu != 'board'" (click)="menu = 'board'">Board</button>
-  <button type="button" class="btn" [class.btn-primary]="menu == 'railing'" [class.btn-light]="menu != 'railing'" (click)="menu = 'railing'">Railing</button>
-  <button type="button" class="btn" [class.btn-primary]="menu == 'pressure treated'" [class.btn-light]="menu != 'pressure treated'" (click)="menu = 'pressure treated'">Pressure Treated</button>
-  <button type="button" class="btn" [class.btn-primary]="menu == 'structural'" [class.btn-light]="menu != 'structural'" (click)="menu = 'structural'">Structural</button>
-  <button type="button" class="btn" [class.btn-primary]="menu == 'finishing'" [class.btn-light]="menu != 'finishing'" (click)="menu = 'finishing'">Finishing</button>
-  <button type="button" class="btn" [class.btn-primary]="menu == 'rain scape'" [class.btn-light]="menu != 'rain scape'" (click)="menu = 'rain scape'">Rain Scape</button>
+<div class="d-flex justify-content-around my-2">
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'board'"
+    [class.btn-light]="menu != 'board'" (click)="menu = 'board'">Board</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'railing'"
+    [class.btn-light]="menu != 'railing'" (click)="menu = 'railing'">Railing</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
+    [class.btn-primary]="menu == 'pressure treated'" [class.btn-light]="menu != 'pressure treated'"
+    (click)="menu = 'pressure treated'">Pressure Treated</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
+    [class.btn-primary]="menu == 'structural'" [class.btn-light]="menu != 'structural'"
+    (click)="menu = 'structural'">Structural</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
+    [class.btn-primary]="menu == 'finishing'" [class.btn-light]="menu != 'finishing'"
+    (click)="menu = 'finishing'">Finishing</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
+    [class.btn-primary]="menu == 'rain scape'" [class.btn-light]="menu != 'rain scape'"
+    (click)="menu = 'rain scape'">Rain Scape</button>
 </div>
 
-<div *ngIf="menu == 'board'">
-  <div class="p-2 text-center h4">Board</div>
+
+<div class="d-flex flex-fill flex-column" *ngIf="menu == 'board'">
+  <!-- <div class="p-2 text-center h4">Board</div> -->
   <table class="table table-hover mb-3">
     <thead>
       <tr class="table-light text-center">
@@ -33,8 +44,8 @@
   </table>
 </div>
 
-<div *ngIf="menu == 'railing'">
-  <div class="p-2 text-center h4">Railing</div>
+<div class="d-flex flex-fill flex-column" *ngIf="menu == 'railing'">
+  <!-- <div class="p-2 text-center h4">Railing</div> -->
   <table class="table table-hover mb-3">
     <thead>
       <tr class="table-light text-center">
@@ -61,8 +72,8 @@
 </div>
 
 
-<div *ngIf="menu == 'pressure treated'">
-  <div class="p-2 text-center h4">Pressure Treated</div>
+<div class="d-flex flex-fill flex-column" *ngIf="menu == 'pressure treated'">
+  <!-- <div class="p-2 text-center h4">Pressure Treated</div> -->
   <table class="table table-hover mb-3">
     <thead>
       <tr class="table-light text-center">
@@ -88,8 +99,8 @@
   </table>
 </div>
 
-<div *ngIf="menu == 'structural'">
-  <div class="p-2 text-center h4">Structural</div>
+<div class="d-flex flex-fill flex-column" *ngIf="menu == 'structural'">
+  <!-- <div class="p-2 text-center h4">Structural</div> -->
   <table class="table table-hover mb-3">
     <thead>
       <tr class="table-light text-center">
@@ -116,8 +127,8 @@
 </div>
 
 
-<div *ngIf="menu == 'finishing'">
-  <div class="p-2 text-center h4">Finishing</div>
+<div class="d-flex flex-fill flex-column" *ngIf="menu == 'finishing'">
+  <!-- <div class="p-2 text-center h4">Finishing</div> -->
   <table class="table table-hover mb-3">
     <thead>
       <tr class="table-light text-center">
@@ -144,8 +155,8 @@
 </div>
 
 
-<div *ngIf="menu == 'rain scape'">
-  <div class="p-2 text-center h4">Rain Scape</div>
+<div class="d-flex flex-fill flex-column" *ngIf="menu == 'rain scape'">
+  <!-- <div class="p-2 text-center h4">Rain Scape</div> -->
   <table class="table table-hover mb-3">
     <thead>
       <tr class="table-light text-center">
