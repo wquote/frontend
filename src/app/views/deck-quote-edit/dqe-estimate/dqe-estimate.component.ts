@@ -38,4 +38,29 @@ export class DqeEstimateComponent {
     return deckingIndex == minorDeckingIndex && railingIndex == minorRailingIndex
   }
 
+  majorCost(deckingIndex: number, railingIndex: number): boolean {
+
+    if (!this.deckQuote || !this.deckQuote.boardSpecs || !this.deckQuote.railingSpecs) {
+      return false
+    }
+
+    let majorDeckingIndex = 0
+    let majorRailingIndex = 0
+
+    this.deckQuote.boardSpecs.catalogsSpec.forEach((b, bi) => {
+      if(this.deckQuote && this.deckQuote.railingSpecs){
+        this.deckQuote.railingSpecs.catalogsSpec.forEach((r, ri) => {
+          if(this.deckQuote && this.deckQuote.boardSpecs && this.deckQuote.railingSpecs){
+            if(b.cost + r.cost > this.deckQuote.boardSpecs.catalogsSpec[majorDeckingIndex].cost + this.deckQuote.railingSpecs.catalogsSpec[majorRailingIndex].cost){
+              majorDeckingIndex = bi
+              majorRailingIndex = ri
+            }
+          }
+        })
+      }
+    })
+
+    return deckingIndex == majorDeckingIndex && railingIndex == majorRailingIndex
+  }
+
 }

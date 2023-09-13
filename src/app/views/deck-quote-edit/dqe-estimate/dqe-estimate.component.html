@@ -16,7 +16,7 @@
       </tr>
       <tr *ngFor="let decking of deckQuote.boardSpecs.catalogsSpec; let deckingIndex = index">
         <th>{{decking.name}}</th>
-        <td *ngFor="let railing of deckQuote.railingSpecs.catalogsSpec; let railingIndex = index" [class.text-success]="minorCost(deckingIndex, railingIndex)" [class.fw-bold]="minorCost(deckingIndex, railingIndex)">
+        <td *ngFor="let railing of deckQuote.railingSpecs.catalogsSpec; let railingIndex = index" [class.text-success]="minorCost(deckingIndex, railingIndex)" [class.text-danger]="majorCost(deckingIndex, railingIndex)" [class.fw-bold]="minorCost(deckingIndex, railingIndex) || majorCost(deckingIndex, railingIndex)">
           Cost: {{(decking.cost + railing.cost).toFixed(2)}}<br>
           Tax: {{(decking.tax + railing.tax).toFixed(2)}}
         </td>
