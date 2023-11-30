@@ -8,7 +8,7 @@ import { Area, DeckModel, DeckQuoteModel, Stair } from 'src/app/models/deck-quot
 })
 export class DqeTakeoffComponent implements OnInit {
   
-  menu: string = 'finishing'
+  menu: string = 'footing'
 
   @Input()
   deckQuote: DeckQuoteModel | undefined

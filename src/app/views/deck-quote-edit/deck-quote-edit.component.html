@@ -16,13 +16,13 @@
 <div class="tab-content" id="deck-panel">
 
   <!-- Customer Info -->
-  <div class="tab-pane " id="customer-info">
+  <div class="tab-pane show active" id="customer-info">
     <app-dqe-customer [customer]="customer" [deckQuote]="deckQuote" *ngIf="customer && deckQuote"></app-dqe-customer>
     <!-- <pre>{{ deckQuote | json }}</pre> -->
   </div>
 
   <!-- Deck Take-off -->
-  <div class="tab-pane show active" id="deck-take-off">
+  <div class="tab-pane " id="deck-take-off">
     <app-dqe-takeoff [deckQuote]="deckQuote" *ngIf="deckQuote"></app-dqe-takeoff>
   </div>
 
