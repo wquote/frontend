@@ -19,6 +19,8 @@ import { DqeOrderComponent } from './views/deck-quote-edit/dqe-order/dqe-order.c
 import { DqeTakeoffComponent } from './views/deck-quote-edit/dqe-takeoff/dqe-takeoff.component';
 import { CustomerQuotesListComponent } from './views/customer-quotes-list/customer-quotes-list.component';
 import { LandingPageComponent } from './views/landing-page/landing-page.component';
+import { PhoneNumberPipe } from './pipes/phone-number.pipe';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 
 @NgModule({
@@ -35,16 +37,18 @@ import { LandingPageComponent } from './views/landing-page/landing-page.componen
     DqeOrderComponent,
     DqeTakeoffComponent,
     CustomerQuotesListComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    PhoneNumberPipe
   ],
   imports: [
     BrowserModule,
     CommonModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMaskDirective
   ],
-  providers: [],
+  providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

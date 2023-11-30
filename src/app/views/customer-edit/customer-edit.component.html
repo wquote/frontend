@@ -76,7 +76,7 @@
         <form class="mt-1">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Add new phone number" id="newPhone" name="newPhone"
-              [(ngModel)]="newPhone">
+              [(ngModel)]="newPhone" [dropSpecialCharacters]="false" mask="(000) 000-0000">
             <button class="btn btn-outline-primary" type="submit" (click)="addNewPhone()">
               <i class="bi bi-plus"></i>
             </button>

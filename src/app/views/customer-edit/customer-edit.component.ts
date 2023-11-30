@@ -21,6 +21,7 @@ export class CustomerEditComponent implements OnInit {
   // deleteCustomerModal: any
 
   newPhone: string | undefined
+  maskedPhone: string | undefined
   newEmail: string | undefined
 
   constructor(
@@ -100,5 +101,4 @@ export class CustomerEditComponent implements OnInit {
   removeEmail(email: string){
     this.customer.emails = this.customer.emails.filter(e => e != email)
   }
-
 }

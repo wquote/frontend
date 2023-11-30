@@ -37,7 +37,7 @@
       <tr *ngFor="let material of deckQuote.boardSpecs.catalogsSpec[deckQuote.boardSpecs.selectedSpecIndex].materials">
         <td><input type="number" class="form-control" id="qty" name="qty" [(ngModel)]="material.qty"></td>
         <td>{{material.descSnapshot}}</td>
-        <td>{{material.priceSnapshot}}</td>
+        <td>{{material.priceSnapshot?.toFixed(2)}}</td>
         <td>{{((material.qty || 0) * (material.priceSnapshot || 0)).toFixed(2)}}</td>
       </tr>
     </tbody>

@@ -1,8 +1,9 @@
+<!-- Menu -->
 <div class="d-flex justify-content-around my-2">
   <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'footing'"
     [class.btn-light]="menu != 'footing'" (click)="menu = 'footing'">Footing</button>
-  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'board'"
-    [class.btn-light]="menu != 'board'" (click)="menu = 'board'">Layout</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'layout'"
+    [class.btn-light]="menu != 'layout'" (click)="menu = 'layout'">Layout</button>
   <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'railing'"
     [class.btn-light]="menu != 'railing'" (click)="menu = 'railing'">Railing</button>
   <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
@@ -13,43 +14,58 @@
     (click)="menu = 'rainscape'">RainScape</button>
 </div>
 
+<!-- Footing -->
 <div *ngIf="menu == 'footing'" class="mb-3">
-  <div class="row">
-    <b class="col-4 d-flex align-items-center">Big Foot</b>
-    <div class="col-4 mb-3">
+  <div class="row justify-content-center">
+    <b class="col-4 text-secondary ">Big Foot</b>
+    <b class="col-4"></b>
+  </div>
+  <div class="row justify-content-center mb-4">
+    <div class="col-4">
       <label class="form-label" for="big-foot-quantity">Quantity</label>
       <input type="text" class="form-control" id="big-foot-quantity" name="big-foot-quantity">
     </div>
-    <div class="col-4 mb-3">
+    <div class="col-4">
       <label class="form-label" for="big-foot-size">Size</label>
       <input type="text" class="form-control" id="big-foot-size" name="big-foot-size" value="20x20x20" disabled>
     </div>
   </div>
-  <div class="row">
-    <b class="col-4 d-flex align-items-center">Helical Post</b>
-    <div class="col-4 mb-3">
+
+  <div class="row justify-content-center">
+    <b class="col-4 text-secondary">Helical Post</b>
+    <b class="col-4"></b>
+  </div>
+  <div class="row justify-content-center mb-4">
+    <div class="col-4">
       <label class="form-label" for="helical-post-quantity">Quantity</label>
       <input type="text" class="form-control" id="helical-post-quantity" name="helical-post-quantity">
     </div>
-    <div class="col-4 mb-3">
+    <div class="col-4">
       <label class="form-label" for="helical-post-size">Size</label>
       <input type="text" class="form-control" id="helical-post-size" name="helical-post-size" value="3''x5'" disabled>
     </div>
   </div>
-  <div class="row">
-    <b class="col-4 d-flex align-items-center">Sonotubes</b>
-    <div class="col-4 mb-3">
+
+
+  <div class="row justify-content-center">
+    <b class="col-4 text-secondary ">Sonotubes</b>
+    <b class="col-4 "></b>
+  </div>
+  <div class="row justify-content-center mb-4">
+    <div class="col-4">
       <label class="form-label" for="sonotubes-quantity">Quantity</label>
       <input type="text" class="form-control" id="sonotubes-quantity" name="sonotubes-quantity">
     </div>
-    <div class="col-4 mb-3">
+    <div class="col-4">
       <label class="form-label" for="sonotubes-size">Size</label>
       <input type="text" class="form-control" id="sonotubes-size" name="sonotubes-size" value="12''x4'" disabled>
     </div>
   </div>
 </div>
 
-<div *ngIf="menu == 'board'">
+
+<!-- Layout -->
+<div *ngIf="menu == 'layout'">
   <div class="d-flex justify-content-end mb-3">
     <button class="btn btn-outline-primary" id="dropdownMenuButton" data-bs-toggle="dropdown">
       <i class="bi bi-plus"></i>
@@ -311,10 +327,12 @@
   </div>
 </div>
 
+
+<!-- Railing -->
 <div *ngIf="menu == 'railing'" class="mb-3">
   <div class="row">
     <div class="col">
-      <b class="d-flex justify-content-center mb-3 p-2">&nbsp;</b>
+      <b class="d-flex justify-content-center mb-3">&nbsp;</b>
       <div class="mb-3">
         <label class="form-label" for="36-height">36'' Height Deck Gate (No Wider than 48''')</label>
         <input type="text" class="form-control" id="36-height" name="36-height">
@@ -341,7 +359,7 @@
       </div>
     </div>
     <div class="col">
-      <b class="d-flex justify-content-center mb-3 p-2">CABLERAIL INFO</b>
+      <b class="d-flex mb-3 text-secondary ">Cablerail Info</b>
       <div class="mb-3">
         <label class="form-label" for="total-36-rail-length">Total 36'' Rail Length</label>
         <input type="text" class="form-control" id="total-36-rail-length" name="total-36-rail-length">
@@ -380,7 +398,7 @@
       </div>
     </div>
     <div class="col">
-      <b class="d-flex justify-content-center mb-3 p-2">DO NOT use Structural Posts for cablerail</b>
+      <b class="d-flex mb-3 text-secondary ">*DO NOT use Structural Posts for Cablerail</b>
       <div class="mb-3">
         <label class="form-label" for="flush-36">Flush Mount Structural Post 36''Rail Height</label>
         <input type="text" class="form-control" id="flush-36" name="flush-36">
@@ -405,10 +423,12 @@
   </div>
 </div>
 
+
+<!-- Finishing -->
 <div *ngIf="menu == 'finishing'" class="mb-3">
   <div class="row">
     <div class="col">
-      <b class="d-flex justify-content-center mb-3 p-2">&nbsp;</b>
+      <b class="d-flex mb-3 text-secondary ">&nbsp;</b>
       <div class="mb-3">
         <label class="form-label" for="gate-to-access">Gate to access under the deck</label>
         <input type="text" class="form-control" id="gate-to-access" name="gate-to-access">
@@ -431,7 +451,7 @@
       </div>
     </div>
     <div class="col">
-      <b class="d-flex justify-content-center mb-3 p-2">Farmer's Porch</b>
+      <b class="d-flex mb-3 text-secondary ">Farmer's Porch</b>
       <div class="mb-3">
         <label class="form-label" for="ceiling-beam">Ceiling Beam (PVC)</label>
         <input type="text" class="form-control" id="ceiling-beam" name="ceiling-beam">
@@ -471,25 +491,33 @@
     </div>
   </div>
 </div>
+
+
+<!-- RainScape -->
 <div *ngIf="menu == 'rainscape'" class="mb-3">
   <div class="row">
     <div class="col">
-      <b class="d-flex justify-content-center mb-3 p-2">Trex RainScape System</b>
       <div class="mb-3">
-        <label class="form-label" for="rainescape-deck-drainage-downpout">RainEscape Deck Drainage System Downspout</label>
-        <input type="text" class="form-control" id="rainescape-deck-drainage-downpout" name="rainescape-deck-drainage-downpout">
+        <label class="form-label" for="rainescape-deck-drainage-downpout">RainEscape Deck Drainage System
+          Downspout</label>
+        <input type="text" class="form-control" id="rainescape-deck-drainage-downpout"
+          name="rainescape-deck-drainage-downpout">
       </div>
       <div class="mb-3">
-        <label class="form-label" for="rainescape-deck-drainage-16">RainEscape Deck Drainage System Trough - 16' Length</label>
+        <label class="form-label" for="rainescape-deck-drainage-16">RainEscape Deck Drainage System Trough - 16'
+          Length</label>
         <input type="text" class="form-control" id="rainescape-deck-drainage-16" name="rainescape-deck-drainage-16">
       </div>
       <div class="mb-3">
-        <label class="form-label" for="rainescape-deck-drainage-12">RainEscape Deck Drainage System Trough - 12' Length</label>
+        <label class="form-label" for="rainescape-deck-drainage-12">RainEscape Deck Drainage System Trough - 12'
+          Length</label>
         <input type="text" class="form-control" id="rainescape-deck-drainage-12" name="rainescape-deck-drainage-12">
       </div>
       <div class="mb-3">
-        <label class="form-label" for="rainescape-deck-drainage-butyl">RainEscape Deck Drainage System Butyl Caulk Tube</label>
-        <input type="text" class="form-control" id="rainescape-deck-drainage-butyl" name="rainescape-deck-drainage-butyl">
+        <label class="form-label" for="rainescape-deck-drainage-butyl">RainEscape Deck Drainage System Butyl Caulk
+          Tube</label>
+        <input type="text" class="form-control" id="rainescape-deck-drainage-butyl"
+          name="rainescape-deck-drainage-butyl">
       </div>
       <div class="mb-3">
         <label class="form-label" for="rainescape-post">RainEscape Post Flashing - 4'' x 4''</label>
@@ -500,9 +528,12 @@
         <input type="text" class="form-control" id="rainescape-wall" name="rainescape-wall">
       </div>
       <div class="mb-3">
-        <label class="form-label" for="rainescape-deck-drainage">RainEscape Deck Drainage System Butyl Tape - 4'' x 50'</label>
+        <label class="form-label" for="rainescape-deck-drainage">RainEscape Deck Drainage System Butyl Tape - 4'' x
+          50'</label>
         <input type="text" class="form-control" id="rainescape-deck-drainage" name="rainescape-deck-drainage">
       </div>
+    </div>
+    <div class="col">
       <div class="mb-3">
         <label class="form-label" for="gutters">Gutters (LF)</label>
         <input type="text" class="form-control" id="gutters" name="gutters">

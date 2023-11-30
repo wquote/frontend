@@ -36,4 +36,18 @@ export class CustomerListComponent implements OnInit {
       }
     )
   }
+  
+  formatPhones(phones: string[]): string {
+    if (!phones) {
+      return '';
+    }
+    
+    return phones.map(phone => {
+      const match = phone.match(/^(\d{3})(\d{3})(\d{4})$/);
+      if (match) {
+        return `(${match[1]}) ${match[2]}-${match[3]}`;
+      }
+      return null;
+    }).join(', ');
+  }
 }
