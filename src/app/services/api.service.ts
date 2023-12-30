@@ -14,7 +14,7 @@ export class ApiService {
     const currentUrl = window.location.href
 
     if (currentUrl.startsWith('http://localhost')){
-      this.url = 'http://localhost:80'
+      this.url = 'http://localhost:8001'
       return
     }
 
