@@ -1,4 +1,4 @@
-import { Injectable, isDevMode } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { Observable } from 'rxjs';
 
@@ -7,11 +7,27 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private url: string = isDevMode() ? 'http://localhost:8000' : 'https://wquote-api.onrender.com'
+  private url: string | undefined
 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    const currentUrl = window.location.href
 
+    if (currentUrl.startsWith('http://localhost')){
+      this.url = 'http://localhost:80'
+      return
+    }
+
+    if (currentUrl.startsWith('https://h-wquote.onrender.com')){
+      this.url = 'https://h-wquote-api.onrender.com'
+      return
+    }
+
+    if (currentUrl.startsWith('https://wquote.onrender.com')){
+      this.url = 'https://wquote-api.onrender.com'
+      return
+    }
+  }
 
   get(endpoint: string, queryParams?: HttpParams): Observable<any> {
     return this.httpClient.get(this.url + endpoint, {params: queryParams})
