@@ -5,9 +5,9 @@
 
   <!-- Main Menu -->
   <nav class="nav nav-tabs" id="deck-tab">
-    <a class="nav-link active" type="button" data-bs-toggle="tab" data-bs-target="#customer-info">Job Info</a>
+    <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#customer-info">Job Info</a>
     <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#deck-take-off">Deck Take-off</a>
-    <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#estimate">Estimate</a>
+    <a class="nav-link active" type="button" data-bs-toggle="tab" data-bs-target="#estimate">Estimate</a>
     <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#material-order">Material Order</a>
   </nav>
 </div>
@@ -16,7 +16,7 @@
 <div class="tab-content" id="deck-panel">
 
   <!-- Customer Info -->
-  <div class="tab-pane show active" id="customer-info">
+  <div class="tab-pane " id="customer-info">
     <app-dqe-customer [customer]="customer" [deckQuote]="deckQuote" *ngIf="customer && deckQuote"></app-dqe-customer>
     <!-- <pre>{{ deckQuote | json }}</pre> -->
   </div>
@@ -27,8 +27,8 @@
   </div>
 
   <!-- Estimate -->
-  <div class="tab-pane " id="estimate">
-    <app-dqe-estimate [deckQuote]="deckQuote" *ngIf="deckQuote"></app-dqe-estimate>
+  <div class="tab-pane show active" id="estimate">
+    <app-dqe-estimate [customer]="customer" [deckQuote]="deckQuote" *ngIf="deckQuote"></app-dqe-estimate>
   </div>
 
   <!-- Material Order -->

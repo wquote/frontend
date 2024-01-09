@@ -25,6 +25,8 @@ export interface DeckQuoteModel extends QuoteModel {
   structuralSpecs: CatalogSpecsModel | undefined
   finishingSpecs: CatalogSpecsModel | undefined
   rainScapeSpecs: CatalogSpecsModel | undefined
+  extraMaterials: ExtraMaterialsModel[] | undefined
+  jobDescription: string | undefined
 }
 
 export interface CatalogSpecsModel {
@@ -42,5 +44,11 @@ export interface CatalogItemSpecModel {
 export interface CatalogItemMaterialSpecModel {
   descSnapshot: string | undefined
   priceSnapshot: number | undefined
+  qty: number | undefined
+}
+
+export interface ExtraMaterialsModel {
+  desc: string | undefined
+  price: number | undefined
   qty: number | undefined
 }

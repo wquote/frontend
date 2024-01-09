@@ -1,4 +1,5 @@
 import { Component, Input, defineInjectable } from '@angular/core';
+import { CustomerModel } from 'src/app/models/customer.model';
 import { DeckQuoteModel } from 'src/app/models/deck-quote.model';
 
 @Component({
@@ -12,6 +13,8 @@ export class DqeEstimateComponent {
 
   @Input()
   deckQuote: DeckQuoteModel | undefined
+  @Input()
+  customer: CustomerModel | undefined
 
   minorCost(deckingIndex: number, railingIndex: number): boolean {
 

@@ -1,36 +1,21 @@
-<div class="d-flex justify-content-around my-2">
-  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'material'"
-    [class.btn-light]="menu != 'material'" (click)="menu = 'material'">Material</button>
-  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'x-y view'"
-    [class.btn-light]="menu != 'x-y view'" (click)="menu = 'x-y view'">(X - Y) View</button>
+<div class="d-flex flex-column border-bottom ">
+  <p><strong> Customer: </strong> {{customer?.lastName}}, {{customer?.firstName}} </p>
+  <p><strong> Job Address: </strong> {{customer?.jobAddress}} </p>
 </div>
 
 
-<div class="d-flex flex-column align-items-center" *ngIf="menu == 'x-y view'">
+<div class="d-flex flex-column align-items-center">
 
-  <table class="table table-hover" *ngIf="deckQuote && deckQuote.boardSpecs && deckQuote.railingSpecs">
-    <tbody>
-      <tr>
-        <th></th>
-        <th *ngFor="let railing of deckQuote.railingSpecs.catalogsSpec">{{railing.name}}</th>
-      </tr>
-      <tr *ngFor="let decking of deckQuote.boardSpecs.catalogsSpec; let deckingIndex = index">
-        <th>{{decking.name}}</th>
-        <td *ngFor="let railing of deckQuote.railingSpecs.catalogsSpec; let railingIndex = index" [class.text-success]="minorCost(deckingIndex, railingIndex)" [class.text-danger]="majorCost(deckingIndex, railingIndex)" [class.fw-bold]="minorCost(deckingIndex, railingIndex) || majorCost(deckingIndex, railingIndex)">
-          Cost: {{(decking.cost + railing.cost).toFixed(2)}}<br>
-          Tax: {{(decking.tax + railing.tax).toFixed(2)}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <h4 class="my-3">Material</h4>
 
-</div>
+  <div class="my-2">
+    <button type="button" class="btn m-2 " [class.btn-primary]="menu == 'material'"
+      [class.btn-light]="menu != 'material'" (click)="menu = 'material'">Material</button>
+    <button type="button" class="btn m-2 " [class.btn-primary]="menu == 'x-y view'"
+      [class.btn-light]="menu != 'x-y view'" (click)="menu = 'x-y view'">(X - Y) View</button>
+  </div>
 
-<div class="d-flex flex-column align-items-center" *ngIf="menu == 'material'">
-
-  <!-- <h4 class="mb-3">Material</h4> -->
-
-  <table class="table table-hover mb-3">
+  <table class="table table-hover mb-3" *ngIf="menu == 'material'">
     <thead>
       <tr class="table-light">
         <th colspan="2">Material</th>
@@ -39,7 +24,49 @@
     </thead>
     <tbody>
       <tr>
-        <td>Board</td>
+        <td>Footings</td>
+        <td>
+          <div *ngIf="deckQuote && deckQuote.structuralSpecs">
+
+          </div>
+        </td>
+        <td class="text-center">
+          <div *ngIf="deckQuote && deckQuote.structuralSpecs">
+            {{deckQuote.structuralSpecs.catalogsSpec[deckQuote.structuralSpecs.selectedSpecIndex || 0].cost.toFixed(2)}}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Frame</td>
+        <td>
+          <div *ngIf="deckQuote && deckQuote.pressureTreatedSpecs">
+
+          </div>
+        </td>
+        <td class="text-center">
+          <div *ngIf="deckQuote && deckQuote.pressureTreatedSpecs">
+            {{deckQuote.pressureTreatedSpecs.catalogsSpec[deckQuote.pressureTreatedSpecs.selectedSpecIndex ||
+            0].cost.toFixed(2)}}
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Galvanized Strap</td>
+        <td>
+          <div *ngIf="deckQuote && deckQuote.structuralSpecs">
+
+          </div>
+        </td>
+        <td class="text-center">
+          <div *ngIf="deckQuote && deckQuote.structuralSpecs">
+            {{deckQuote.structuralSpecs.catalogsSpec[deckQuote.structuralSpecs.selectedSpecIndex || 0].cost.toFixed(2)}}
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Decking Board</td>
         <td>
           <div *ngIf="deckQuote && deckQuote.boardSpecs">
             <select class="form-select form-select-sm" name="boardSpecs" id="boardSpecs"
@@ -56,7 +83,7 @@
         </td>
       </tr>
       <tr>
-        <td>Railing</td>
+        <td>Railing System</td>
         <td>
           <div *ngIf="deckQuote && deckQuote.railingSpecs">
             <select class="form-select form-select-sm" name="railingSpecs" id="railingSpecs"
@@ -72,41 +99,9 @@
           </div>
         </td>
       </tr>
-      <tr>
-        <td>Pressure Treated</td>
-        <td>
-          <div *ngIf="deckQuote && deckQuote.pressureTreatedSpecs">
-            <select class="form-select form-select-sm" name="pressureTreatedSpecs" id="pressureTreatedSpecs"
-              [(ngModel)]="deckQuote.pressureTreatedSpecs.selectedSpecIndex">
-              <option *ngFor="let spec of deckQuote?.pressureTreatedSpecs?.catalogsSpec; let i = index" [ngValue]="i">
-                {{spec.name}}</option>
-            </select>
-          </div>
-        </td>
-        <td class="text-center">
-          <div *ngIf="deckQuote && deckQuote.pressureTreatedSpecs">
-            {{deckQuote.pressureTreatedSpecs.catalogsSpec[deckQuote.pressureTreatedSpecs.selectedSpecIndex ||
-            0].cost.toFixed(2)}}
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>Structural</td>
-        <td>
-          <div *ngIf="deckQuote && deckQuote.structuralSpecs">
-            <select class="form-select form-select-sm" name="structuralSpecs" id="structuralSpecs"
-              [(ngModel)]="deckQuote.structuralSpecs.selectedSpecIndex">
-              <option *ngFor="let spec of deckQuote?.structuralSpecs?.catalogsSpec; let i = index" [ngValue]="i">
-                {{spec.name}}</option>
-            </select>
-          </div>
-        </td>
-        <td class="text-center">
-          <div *ngIf="deckQuote && deckQuote.structuralSpecs">
-            {{deckQuote.structuralSpecs.catalogsSpec[deckQuote.structuralSpecs.selectedSpecIndex || 0].cost.toFixed(2)}}
-          </div>
-        </td>
-      </tr>
+
+
+
       <tr>
         <td>Finishing</td>
         <td>
@@ -141,15 +136,48 @@
           </div>
         </td>
       </tr>
+      <tr>
+        <td>Extra Materials</td>
+        <td>
+          <!-- <div *ngIf="deckQuote && deckQuote.extraMaterials">
+
+          </div> -->
+        </td>
+        <td class="text-center">
+          <div *ngIf="deckQuote && deckQuote.rainScapeSpecs">
+            {{deckQuote.rainScapeSpecs.catalogsSpec[deckQuote.rainScapeSpecs.selectedSpecIndex || 0].cost.toFixed(2)}}
+          </div>
+        </td>
+      </tr>
     </tbody>
   </table>
 
-  <h4 class="mb-3">Extra Material</h4>
+  <table class="table table-hover mb-3" *ngIf="menu == 'x-y view' && deckQuote && deckQuote.boardSpecs && deckQuote.railingSpecs">
+    <tbody>
+      <tr>
+        <th></th>
+        <th *ngFor="let railing of deckQuote.railingSpecs.catalogsSpec">{{railing.name}}</th>
+      </tr>
+      <tr *ngFor="let decking of deckQuote.boardSpecs.catalogsSpec; let deckingIndex = index">
+        <th>{{decking.name}}</th>
+        <td *ngFor="let railing of deckQuote.railingSpecs.catalogsSpec; let railingIndex = index"
+          [class.text-success]="minorCost(deckingIndex, railingIndex)"
+          [class.text-danger]="majorCost(deckingIndex, railingIndex)"
+          [class.fw-bold]="minorCost(deckingIndex, railingIndex) || majorCost(deckingIndex, railingIndex)">
+          Cost: {{(decking.cost + railing.cost).toFixed(2)}}<br>
+          Tax: {{(decking.tax + railing.tax).toFixed(2)}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 class="my-3">Labor Costs</h4>
 
   <table class="table table-hover mb-3">
     <thead>
       <tr class="table-light">
-        <th colspan="2">Material</th>
+        <th class="text-center ">#</th>
+        <th class="text-center" style="width: 70%;">Description</th>
         <th class="text-center">Cost</th>
       </tr>
     </thead>
@@ -175,28 +203,35 @@
     </tbody>
   </table>
 
-  <h4 class="mb-3">Other Costs</h4>
+  <h4 class="my-3">Description of Work</h4>
+
+  <textarea class="form-control mb-3" id="descriptionOfWork" name="descriptionOfWork" rows="3">
+    {{ deckQuote?.jobDescription }}
+  </textarea>
+
+  <h4 class="my-3">Other Costs</h4>
 
   <table class="table table-hover mb-3">
     <thead>
       <tr class="table-light">
-        <th colspan="2">Material</th>
-        <th class="text-center">Cost</th>
+        <th class="text-center ">#</th>
+        <th class="text-center" style="width: 60%;">Description</th>
+        <th class="text-center">Quantity</th>
+        <th class="text-center">Unit Cost</th>
+        <th class="text-center">Total</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>1</td>
         <td>
-          <input type="text" class="form-control form-control-sm"><!-- id="x" name="x" [(ngModel)]="x" -->
+          <input type="text" class="form-control form-control-sm"
+            value="Dumpster"><!-- id="x" name="x" [(ngModel)]="x" -->
         </td>
         <td class="text-center">
           <input type="text" class="form-control form-control-sm"><!-- id="x" name="x" [(ngModel)]="x" -->
         </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>
+        <td class="text-center">
           <input type="text" class="form-control form-control-sm"><!-- id="x" name="x" [(ngModel)]="x" -->
         </td>
         <td class="text-center">
@@ -206,5 +241,31 @@
     </tbody>
   </table>
 
+  <h4 class="my-3">Job Profitability</h4>
+
+  <table class="table table-hover mb-3">
+    <tbody>
+      <tr>
+        <th class="text-center">Material</th>
+        <td>data</td>
+      </tr>
+      <tr>
+        <th class="text-center">Labor</th>
+        <td>data</td>
+      </tr>
+      <tr>
+        <th class="text-center">Other Costs</th>
+        <td>data</td>
+      </tr>
+      <tr>
+        <th class="text-center">Total Cost</th>
+        <td>data</td>
+      </tr>
+      <tr>
+        <th class="text-center">Profit</th>
+        <td>data</td>
+      </tr>
+    </tbody>
+</table>
 
 </div>

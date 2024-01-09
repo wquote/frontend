@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Area, DeckModel, DeckQuoteModel, Stair } from 'src/app/models/deck-quote.model';
+import { Area, DeckModel, DeckQuoteModel, ExtraMaterialsModel, Stair } from 'src/app/models/deck-quote.model';
 
 @Component({
   selector: 'app-dqe-takeoff',
@@ -8,7 +8,7 @@ import { Area, DeckModel, DeckQuoteModel, Stair } from 'src/app/models/deck-quot
 })
 export class DqeTakeoffComponent implements OnInit {
   
-  menu: string = 'footing'
+  menu: string = 'extra-materials'
 
   @Input()
   deckQuote: DeckQuoteModel | undefined
@@ -40,6 +40,13 @@ export class DqeTakeoffComponent implements OnInit {
         riser: undefined,
       } as Stair]
     }
+    if (!this.deckQuote.extraMaterials) {
+      this.deckQuote.extraMaterials = [{
+        desc: undefined,
+        price: undefined,
+        qty: undefined
+      } as ExtraMaterialsModel]
+    }
   }
 
   addArea() {
@@ -63,6 +70,13 @@ export class DqeTakeoffComponent implements OnInit {
     this.deckQuote.deckingInfo.stairs?.push({} as Stair)
   }
 
+  addExtraMaterial() {
+    if(!this.deckQuote || !this.deckQuote.extraMaterials) {
+      return
+    }
+    this.deckQuote.extraMaterials?.push({} as ExtraMaterialsModel)
+  }
+
   removeArea(mainArea: Area){
     if(!this.deckQuote || !this.deckQuote.deckingInfo || !this.deckQuote.deckingInfo.mainAreas){
       return
@@ -82,6 +96,13 @@ export class DqeTakeoffComponent implements OnInit {
       return
     }
     this.deckQuote.deckingInfo.stairs = this.deckQuote.deckingInfo.stairs.filter(a => a!= stair)
+  }
+
+  removeExtraMaterial(extraMaterial: ExtraMaterialsModel){
+    if(!this.deckQuote || !this.deckQuote.extraMaterials){
+      return
+    }
+    this.deckQuote.extraMaterials = this.deckQuote.extraMaterials.filter(a => a!= extraMaterial)
   }
 
 }

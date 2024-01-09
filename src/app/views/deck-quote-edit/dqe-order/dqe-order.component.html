@@ -1,20 +1,26 @@
 <div class="d-flex justify-content-around my-2">
-  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'board'"
-    [class.btn-light]="menu != 'board'" (click)="menu = 'board'">Board</button>
-  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'railing'"
-    [class.btn-light]="menu != 'railing'" (click)="menu = 'railing'">Railing</button>
-  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
-    [class.btn-primary]="menu == 'pressure treated'" [class.btn-light]="menu != 'pressure treated'"
-    (click)="menu = 'pressure treated'">Pressure Treated</button>
   <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
     [class.btn-primary]="menu == 'structural'" [class.btn-light]="menu != 'structural'"
-    (click)="menu = 'structural'">Structural</button>
+    (click)="menu = 'structural'">Footings</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
+    [class.btn-primary]="menu == 'pressure treated'" [class.btn-light]="menu != 'pressure treated'"
+    (click)="menu = 'pressure treated'">Frame</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
+    [class.btn-primary]="menu == 'structural'" [class.btn-light]="menu != 'structural'"
+    (click)="menu = 'structural'">Galvanized Strap</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'board'"
+    [class.btn-light]="menu != 'board'" (click)="menu = 'board'">Decking Board</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center" [class.btn-primary]="menu == 'railing'"
+    [class.btn-light]="menu != 'railing'" (click)="menu = 'railing'">Railing System</button>
   <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
     [class.btn-primary]="menu == 'finishing'" [class.btn-light]="menu != 'finishing'"
     (click)="menu = 'finishing'">Finishing</button>
   <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
     [class.btn-primary]="menu == 'rain scape'" [class.btn-light]="menu != 'rain scape'"
     (click)="menu = 'rain scape'">Rain Scape</button>
+  <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
+    [class.btn-primary]="menu == 'rain scape'" [class.btn-light]="menu != 'extra-materials'"
+    (click)="menu = 'rain scape'">Extra Materials</button>
 </div>
 
 
