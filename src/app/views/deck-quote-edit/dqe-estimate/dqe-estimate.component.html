@@ -1,14 +1,10 @@
-<div class="d-flex flex-column border-bottom ">
-  <p><strong> Customer: </strong> {{customer?.lastName}}, {{customer?.firstName}} </p>
-  <p><strong> Job Address: </strong> {{customer?.jobAddress}} </p>
-</div>
+<div class="d-flex flex-column align-items-center  ">
 
+  <div>
+    <h4 class="mb-3 ">Material</h4>
+  </div>
 
-<div class="d-flex flex-column align-items-center">
-
-  <h4 class="my-3">Material</h4>
-
-  <div class="my-2">
+  <div>
     <button type="button" class="btn m-2 " [class.btn-primary]="menu == 'material'"
       [class.btn-light]="menu != 'material'" (click)="menu = 'material'">Material</button>
     <button type="button" class="btn m-2 " [class.btn-primary]="menu == 'x-y view'"
@@ -152,7 +148,8 @@
     </tbody>
   </table>
 
-  <table class="table table-hover mb-3" *ngIf="menu == 'x-y view' && deckQuote && deckQuote.boardSpecs && deckQuote.railingSpecs">
+  <table class="table table-hover mb-3"
+    *ngIf="menu == 'x-y view' && deckQuote && deckQuote.boardSpecs && deckQuote.railingSpecs">
     <tbody>
       <tr>
         <th></th>
@@ -171,7 +168,7 @@
     </tbody>
   </table>
 
-  <h4 class="my-3">Labor Costs</h4>
+  <h4 class="my-3 text-center ">Labor Costs</h4>
 
   <table class="table table-hover mb-3">
     <thead>
@@ -244,28 +241,34 @@
   <h4 class="my-3">Job Profitability</h4>
 
   <table class="table table-hover mb-3">
+    <thead>
+      <tr>
+        <th class="text-center ">Item</th>
+        <th>Cost</th>
+      </tr>
+    </thead>
     <tbody>
       <tr>
-        <th class="text-center">Material</th>
+        <td class="text-center">Material</td>
         <td>data</td>
       </tr>
       <tr>
-        <th class="text-center">Labor</th>
+        <td class="text-center">Labor</td>
         <td>data</td>
       </tr>
       <tr>
-        <th class="text-center">Other Costs</th>
+        <td class="text-center">Other Costs</td>
         <td>data</td>
       </tr>
       <tr>
-        <th class="text-center">Total Cost</th>
+        <td class="text-center">Total Cost</td>
         <td>data</td>
       </tr>
       <tr>
-        <th class="text-center">Profit</th>
+        <td class="text-center">Profit</td>
         <td>data</td>
       </tr>
     </tbody>
-</table>
+  </table>
 
 </div>
