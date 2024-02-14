@@ -1,0 +1,9 @@
+td {
+    text-align: center;
+    width: 10%;
+}
+
+.description-column {
+    text-align: left;
+    width: 70%;
+}

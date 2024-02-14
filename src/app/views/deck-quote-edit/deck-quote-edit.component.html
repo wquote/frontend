@@ -1,55 +1,52 @@
 <div class="d-flex justify-content-between">
   <div class="flex-fill  border-bottom">
-      <h2 >Deck {{ this.quoteId != 'new' ? 'Edit' : 'Create'}} </h2>
-    
+    <h2>Deck {{ this.quoteId != 'new' ? 'Edit' : 'Create'}} </h2>
+
   </div>
 
   <!-- Main Menu -->
   <nav class="nav nav-tabs" id="deck-tab">
-    <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#customer-info">Job Info</a>
-    <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#deck-take-off">Deck Take-off</a>
-    <a class="nav-link active" type="button" data-bs-toggle="tab" data-bs-target="#estimate">Estimate</a>
-    <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#material-order">Material Order</a>
+    <a class="nav-link active" type="button" data-bs-toggle="tab" data-bs-target="#customer-info" (click)="setActiveTab('customer-info')">Job Info</a>
+    <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#deck-take-off" (click)="setActiveTab('deck-take-off')">Deck Take-off</a>
+    <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#estimate" (click)="setActiveTab('estimate')" >Estimate</a>
+    <a class="nav-link " type="button" data-bs-toggle="tab" data-bs-target="#material-order" (click)="setActiveTab('material-order')">Material Order</a>
   </nav>
 </div>
 
-<div class="d-flex  flex-fill mb-3">
-  <p class="text-secondary fs-6 ">{{customer?.lastName}}, {{customer?.firstName}} - {{ deckQuote?.jobAddress }}</p>
+<div class="d-flex mb-3">
+  <p class=" flex-fill  fs-6 ">{{customer.lastName}}, {{customer.firstName}} - {{ deckingQuote?.jobAddress }}</p>
+  <button *ngIf="activeTab === 'deck-take-off'" class="btn btn-outline-primary m-2">Estimate</button>
+  <button class="btn btn-primary m-2" (click)="save()">
+    <i class="bi bi-save"></i>
+    Save
+  </button>
 </div>
 
 <!-- Main Panel -->
 <div class="tab-content" id="deck-panel">
 
   <!-- Customer Info -->
-  <div class="tab-pane " id="customer-info">
-    <app-dqe-customer [customer]="customer" [deckQuote]="deckQuote" *ngIf="customer && deckQuote"></app-dqe-customer>
+  <div class="tab-pane show active" id="customer-info">
+    <app-dqe-customer [customer]="customer" [deckQuote]="deckingQuote"
+      *ngIf="customer && deckingQuote"></app-dqe-customer>
     <!-- <pre>{{ deckQuote | json }}</pre> -->
   </div>
 
   <!-- Deck Take-off -->
   <div class="tab-pane " id="deck-take-off">
-    <app-dqe-takeoff [deckQuote]="deckQuote" *ngIf="deckQuote"></app-dqe-takeoff>
+    <app-dqe-takeoff [deckingQuote]="deckingQuote" *ngIf="deckingQuote"></app-dqe-takeoff>
   </div>
 
   <!-- Estimate -->
-  <div class="tab-pane show active" id="estimate">
-    <app-dqe-estimate [customer]="customer" [deckQuote]="deckQuote" *ngIf="deckQuote"></app-dqe-estimate>
+  <div class="tab-pane " id="estimate">
+    <app-dqe-estimate [customer]="customer" [deckingQuote]="deckingQuote" *ngIf="deckingQuote"></app-dqe-estimate>
   </div>
 
   <!-- Material Order -->
-  <div class="tab-pane" id="material-order">
-    <app-dqe-order [deckQuote]="deckQuote" *ngIf="deckQuote"></app-dqe-order>
+  <div class="tab-pane " id="material-order">
+    <app-dqe-order [deckingQuote]="deckingQuote" *ngIf="deckingQuote"></app-dqe-order>
   </div>
 </div>
-
-<div class="d-flex justify-content-center">
-  <button class="btn btn-primary my-4" (click)="save()">
-    <i class="bi bi-save me-1"></i>
-    Save
-  </button>
-</div>
-
-
 
 
 

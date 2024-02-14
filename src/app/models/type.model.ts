@@ -3,3 +3,8 @@ export enum JobType {
   ROOFING = 'ROOFING',
   SIDING = 'SIDING'
 }
+
+export enum QuoteState {
+  OPENED = 'OPENED',
+  CLOSED = 'CLOSED'
+}

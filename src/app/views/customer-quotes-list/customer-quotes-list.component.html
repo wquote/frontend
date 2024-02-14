@@ -51,6 +51,7 @@
       <th>Updated At</th>
       <th>Profit</th>
       <th>Value</th>
+      <th>Notes</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -62,6 +63,7 @@
       <td> {{ quote.updatedAt | date }} </td>
       <td> {{ quote.profit }} </td>
       <td> {{ quote.value }} </td>
+      <td> <i class="bi bi-info-circle-fill " title="{{quote.notes}}"></i> </td>
       <td class="d-flex">
         <button class="btn btn-outline-primary btn-sm me-2"
           [routerLink]="[ '/customers', customerId, 'quotes', quote.id ]" title="Edit">

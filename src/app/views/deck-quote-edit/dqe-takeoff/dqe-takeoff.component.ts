@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Area, DeckModel, DeckQuoteModel, ExtraMaterialsModel, Stair } from 'src/app/models/deck-quote.model';
+import { Area, DeckTakeOff, DeckingQuote, DescQtyCost, Layout, Stair } from 'src/app/models/decking-quote.model';
 
 @Component({
   selector: 'app-dqe-takeoff',
@@ -8,101 +8,100 @@ import { Area, DeckModel, DeckQuoteModel, ExtraMaterialsModel, Stair } from 'src
 })
 export class DqeTakeoffComponent implements OnInit {
   
-  menu: string = 'extra-materials'
+  menu: string = 'footing'
 
   @Input()
-  deckQuote: DeckQuoteModel | undefined
+  deckingQuote: DeckingQuote = {} as DeckingQuote
 
   ngOnInit(): void {
-    if (!this.deckQuote) {
+    if (!this.deckingQuote) {
       return
     }
-    if (!this.deckQuote.deckingInfo) {
-      this.deckQuote.deckingInfo = {} as DeckModel
+    if (!this.deckingQuote.deckTakeOff) {
+      this.deckingQuote.deckTakeOff = {} as DeckTakeOff
     }
-    if (!this.deckQuote.deckingInfo.mainAreas) {
-      this.deckQuote.deckingInfo.mainAreas = [{
+    if (!this.deckingQuote.deckTakeOff.layout) {
+      this.deckingQuote.deckTakeOff.layout = {} as Layout
+    }
+    if (!this.deckingQuote.deckTakeOff.layout.mainAreas) {
+      this.deckingQuote.deckTakeOff.layout.mainAreas = [{
         width: undefined,
         depth: undefined,
         height: undefined
       } as Area]
     }
-    if (!this.deckQuote.deckingInfo.ladingAreas) {
-      this.deckQuote.deckingInfo.ladingAreas = [{
+    if (!this.deckingQuote.deckTakeOff.layout?.ladingAreas) {
+      this.deckingQuote.deckTakeOff.layout.ladingAreas = [{
         width: undefined,
         depth: undefined,
         height: undefined
       } as Area]
     }
-    if (!this.deckQuote.deckingInfo.stairs) {
-      this.deckQuote.deckingInfo.stairs = [{
+    if (!this.deckingQuote.deckTakeOff.layout.stairs) {
+      this.deckingQuote.deckTakeOff.layout.stairs = [{
         width: undefined,
         riser: undefined,
       } as Stair]
     }
-    if (!this.deckQuote.extraMaterials) {
-      this.deckQuote.extraMaterials = [{
-        desc: undefined,
-        price: undefined,
-        qty: undefined
-      } as ExtraMaterialsModel]
+    if (!this.deckingQuote.materialOrder.extraMaterials) {
+      this.deckingQuote.materialOrder.extraMaterials = [{} as DescQtyCost]
     }
   }
 
   addArea() {
-    if(!this.deckQuote || !this.deckQuote.deckingInfo) {
+    if(!this.deckingQuote || !this.deckingQuote.deckTakeOff) {
       return
     }
-    this.deckQuote.deckingInfo.mainAreas?.push({} as Area)
+    this.deckingQuote.deckTakeOff.layout.mainAreas?.push({} as Area)
   }
 
   addLandingArea() {
-    if(!this.deckQuote || !this.deckQuote.deckingInfo) {
+    if(!this.deckingQuote || !this.deckingQuote.deckTakeOff) {
       return
     }
-    this.deckQuote.deckingInfo.ladingAreas?.push({} as Area)
+    this.deckingQuote.deckTakeOff.layout.ladingAreas?.push({} as Area)
   }
 
   addStair() {
-    if(!this.deckQuote || !this.deckQuote.deckingInfo) {
+    if(!this.deckingQuote || !this.deckingQuote.deckTakeOff) {
       return
     }
-    this.deckQuote.deckingInfo.stairs?.push({} as Stair)
+    this.deckingQuote.deckTakeOff.layout.stairs?.push({} as Stair)
   }
 
   addExtraMaterial() {
-    if(!this.deckQuote || !this.deckQuote.extraMaterials) {
+    if(!this.deckingQuote || !this.deckingQuote.materialOrder.extraMaterials) {
       return
     }
-    this.deckQuote.extraMaterials?.push({} as ExtraMaterialsModel)
+    this.deckingQuote.materialOrder.extraMaterials?.push({} as DescQtyCost)
   }
 
   removeArea(mainArea: Area){
-    if(!this.deckQuote || !this.deckQuote.deckingInfo || !this.deckQuote.deckingInfo.mainAreas){
+    if(!this.deckingQuote || !this.deckingQuote.deckTakeOff || !this.deckingQuote.deckTakeOff.layout.mainAreas){
       return
     }
-    this.deckQuote.deckingInfo.mainAreas = this.deckQuote.deckingInfo.mainAreas.filter(a => a!= mainArea)
+    this.deckingQuote.deckTakeOff.layout.mainAreas = this.deckingQuote.deckTakeOff.layout.mainAreas.filter(a => a!= mainArea)
   }
 
   removeLandingArea(landingArea: Area){
-    if(!this.deckQuote || !this.deckQuote.deckingInfo || !this.deckQuote.deckingInfo.ladingAreas){
+    if(!this.deckingQuote || !this.deckingQuote.deckTakeOff || !this.deckingQuote.deckTakeOff.layout.ladingAreas){
       return
     }
-    this.deckQuote.deckingInfo.ladingAreas = this.deckQuote.deckingInfo.ladingAreas.filter(a => a!= landingArea)
+    this.deckingQuote.deckTakeOff.layout.ladingAreas = this.deckingQuote.deckTakeOff.layout.ladingAreas.filter(a => a!= landingArea)
   }
 
   removeStair(stair: Stair){
-    if(!this.deckQuote || !this.deckQuote.deckingInfo || !this.deckQuote.deckingInfo.stairs){
+    if(!this.deckingQuote || !this.deckingQuote.deckTakeOff || !this.deckingQuote.deckTakeOff.layout.stairs){
       return
     }
-    this.deckQuote.deckingInfo.stairs = this.deckQuote.deckingInfo.stairs.filter(a => a!= stair)
+    this.deckingQuote.deckTakeOff.layout.stairs = this.deckingQuote.deckTakeOff.layout.stairs.filter(a => a!= stair)
   }
 
-  removeExtraMaterial(extraMaterial: ExtraMaterialsModel){
-    if(!this.deckQuote || !this.deckQuote.extraMaterials){
+  removeExtraMaterial(extraMaterial: DescQtyCost){
+    if(!this.deckingQuote || !this.deckingQuote.materialOrder.extraMaterials){
       return
     }
-    this.deckQuote.extraMaterials = this.deckQuote.extraMaterials.filter(a => a!= extraMaterial)
+    this.deckingQuote.materialOrder.extraMaterials = this.deckingQuote.materialOrder.extraMaterials.filter(a => a!= extraMaterial)
   }
 
 }

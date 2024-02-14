@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CustomerModel } from 'src/app/models/customer.model';
-import { DeckQuoteModel } from 'src/app/models/deck-quote.model';
+import { DeckingQuote } from 'src/app/models/decking-quote.model';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 export class DqeCustomerComponent implements OnInit {
 
   @Input()
-  deckQuote: DeckQuoteModel | undefined
+  deckQuote: DeckingQuote = { notes: ''} as DeckingQuote
 
   @Input()
   customer: CustomerModel | undefined
@@ -24,6 +24,7 @@ export class DqeCustomerComponent implements OnInit {
     if (this.deckQuote && !this.deckQuote.jobAddress && this.customer && this.customer.homeAddress) {
       this.deckQuote.jobAddress = this.customer.homeAddress
     }
+    this.deckQuote = this.deckQuote ?? { notes: ''} as DeckingQuote
   }
 
   changeJobAddress(address: string | undefined) {

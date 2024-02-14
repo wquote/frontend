@@ -4,7 +4,7 @@
 
 import { Component } from '@angular/core';
 import { CustomerModel } from 'src/app/models/customer.model';
-import { QuoteModel } from 'src/app/models/quote.models';
+import { Quote } from 'src/app/models/quote.models';
 import { CustomerService } from 'src/app/services/customer.service';
 import { QuoteService } from 'src/app/services/quote.service';
 
@@ -14,8 +14,8 @@ import { QuoteService } from 'src/app/services/quote.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  quotes: QuoteModel[] | undefined
-  quoteToDelete: QuoteModel | undefined
+  quotes: Quote[] | undefined
+  quoteToDelete: Quote | undefined
 
   customers: CustomerModel[] = []
 
@@ -58,7 +58,7 @@ export class HomeComponent {
     return name ? name : ''
   }
 
-  updateQuoteToDelete(item: QuoteModel) {
+  updateQuoteToDelete(item: Quote) {
     this.quoteToDelete = item
   }
 

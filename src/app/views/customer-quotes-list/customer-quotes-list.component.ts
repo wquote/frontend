@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerModel } from 'src/app/models/customer.model';
-import { QuoteModel } from 'src/app/models/quote.models';
+import { Quote } from 'src/app/models/quote.models';
 import { CustomerService } from 'src/app/services/customer.service';
 import { QuoteService } from 'src/app/services/quote.service';
 
@@ -13,7 +13,7 @@ import { QuoteService } from 'src/app/services/quote.service';
 export class CustomerQuotesListComponent implements OnInit {
   customerId: string | undefined
   customer: CustomerModel | undefined
-  customerQuotes: QuoteModel[] = []
+  customerQuotes: Quote[] = []
 
   constructor(
     private activatedRoute: ActivatedRoute,

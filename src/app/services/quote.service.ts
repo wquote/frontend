@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { QuoteModel } from '../models/quote.models';
+import { Quote } from '../models/quote.models';
 import { Observable } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 
@@ -13,20 +13,20 @@ export class QuoteService {
 
   constructor(private apiService: ApiService) { }
 
-  create(item: QuoteModel): Observable<QuoteModel> {
+  create(item: Quote): Observable<Quote> {
     let url: string = this.endpoint
     const body: Object = item
 
     return this.apiService.post(url, body)
   }
   
-    read(itemId: string): Observable<QuoteModel> {
+    read(itemId: string): Observable<Quote> {
       let url: string = this.endpoint + itemId
   
       return this.apiService.get(url)
     }
 
-  readAll(customerId?: string): Observable<QuoteModel[]> {
+  readAll(customerId?: string): Observable<Quote[]> {
     let url: string = this.endpoint
     let queryParams: HttpParams | undefined
 
@@ -37,14 +37,14 @@ export class QuoteService {
     return this.apiService.get(url, queryParams)
   }
 
-  update(itemId: string, customer: QuoteModel): Observable<QuoteModel> {
+  update(itemId: string, customer: Quote): Observable<Quote> {
     let url: string = this.endpoint + itemId
     const body: Object = customer
 
     return this.apiService.put(url, body)
   }
 
-  delete(itemId: string): Observable<QuoteModel> {
+  delete(itemId: string): Observable<Quote> {
     let url: string = this.endpoint + itemId
 
     return this.apiService.delete(url)

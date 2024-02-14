@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +21,10 @@ import { CustomerQuotesListComponent } from './views/customer-quotes-list/custom
 import { LandingPageComponent } from './views/landing-page/landing-page.component';
 import { PhoneNumberPipe } from './pipes/phone-number.pipe';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { registerLocaleData } from '@angular/common';
+import localeEn from '@angular/common/locales/en';
 
+registerLocaleData(localeEn, 'en-US');
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
     HttpClientModule,
     NgxMaskDirective
   ],
-  providers: [provideNgxMask()],
+  providers: [
+    provideNgxMask(),
+    { provide: LOCALE_ID, useValue: 'en-US' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

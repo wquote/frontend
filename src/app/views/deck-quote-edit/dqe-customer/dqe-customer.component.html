@@ -1,71 +1,66 @@
 <div class="row">
-  <div class="col">
 
-    <h4 class="mb-3">Customer Info</h4>
+  <h4 class="mb-3">Customer Info</h4>
 
-    <div class="row">
-
-      <div class="col-sm-12 col-md-6">
-        <div class="mb-3">
-          <label>First Name</label>
-          <div>{{customer?.firstName}}</div>
-        </div>
-      </div>
-
-      <div class="col-sm-12 col-md-6">
-        <div class="mb-3">
-          <label>Last Name</label>
-          <div>{{customer?.lastName}}</div>
-        </div>
-      </div>
-
-      <div class="col-sm-12 col-md-6">
-        <div class="mb-3">
-          <label>Cell Phone</label>
-          <div>{{customer?.phones}}</div>
-        </div>
-      </div>
-
-      <div class="col-sm-12 col-md-6">
-        <div class="mb-3">
-          <label>E-mail</label>
-          <div>{{customer?.emails}}</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="row">
-      <h4 class="mb-3">Job Address</h4>
-      <div class="col d-flex flex-column">
-        <div class="btn btn-outline-dark mt-2 d-flex align-items-center"
-          (click)="changeJobAddress(customer?.homeAddress)">
-          <i class="bi bi-check-circle-fill me-2" *ngIf="deckQuote?.jobAddress == customer?.homeAddress"></i>
-          <i class="bi bi-circle me-2" *ngIf="deckQuote?.jobAddress != customer?.homeAddress"></i>
-          {{customer?.homeAddress}} <i class="ms-2">(Home Address)</i>
-        </div>
-        <div *ngFor="let a of customer?.jobAddress" class="d-flex">
-          <div class="btn btn-outline-dark mt-2 d-flex align-items-center flex-fill" (click)="changeJobAddress(a)">
-            <i class="bi bi-check-circle-fill me-2" *ngIf="deckQuote?.jobAddress == a"></i>
-            <i class="bi bi-circle me-2" *ngIf="deckQuote?.jobAddress != a"></i>
-            {{a}}
-          </div>
-          <button class="btn btn-outline-danger mt-2 mx-2" (click)="removeJobAddress(a)">
-            <i class="bi bi-trash"></i>
-          </button>
-        </div>
-        <div class="btn btn-outline-dark mt-2 d-flex align-items-center" data-bs-toggle="modal"
-          data-bs-target="#addNewAddressModal">
-          <i class="bi bi-plus me-2"></i>
-          New Job Address
-        </div>
-      </div>
-    </div>
+  <div class="mb-4">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Last Name</th>
+          <th>First Name</th>
+          <th>Cell Phone</th>
+          <th>E-mail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ customer?.lastName }}</td>
+          <td>{{ customer?.firstName }}</td>
+          <td>{{ customer?.phones }}</td>
+          <td>{{ customer?.emails }}</td>
+        </tr>
+    </table>
   </div>
 </div>
 
+<div class="row">
+  <div class="col">
+    <!-- <div class="row"> -->
+    <h4 class="mb-3">Job Address</h4>
+
+    <div class="col d-flex flex-column">
+      <div class="btn mt-2 d-flex align-items-center" (click)="changeJobAddress(customer?.homeAddress)">
+        <i class="bi bi-check-circle-fill me-2" *ngIf="deckQuote?.jobAddress == customer?.homeAddress"></i>
+        <i class="bi bi-circle me-2" *ngIf="deckQuote?.jobAddress != customer?.homeAddress"></i>
+        {{customer?.homeAddress}} <i class="ms-2">(Home Address)</i>
+      </div>
+      <div *ngFor="let a of customer?.jobAddress" class="d-flex">
+        <div class="btn mt-2 d-flex align-items-center flex-fill" (click)="changeJobAddress(a)">
+          <i class="bi bi-check-circle-fill me-2" *ngIf="deckQuote?.jobAddress == a"></i>
+          <i class="bi bi-circle me-2" *ngIf="deckQuote?.jobAddress != a"></i>
+          {{a}}
+        </div>
+        <button class="btn btn-sm btn-outline-danger mt-2 mx-2" (click)="removeJobAddress(a)">
+          <i class="bi bi-trash"></i>
+        </button>
+      </div>
+
+      <div class="d-flex mt-3">
+        <div class="btn btn-outline-primary " data-bs-toggle="modal"
+          data-bs-target="#addNewAddressModal">
+          + New Job Addres
+        </div>
+        <div class="flex-fill "></div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
+
+  <div class="col">
+    <h4 class="mb-3">Notes</h4>
+    <textarea class="form-control " name="jobNotes" id="jobNotes" rows="5" [(ngModel)]="deckQuote.notes"></textarea>
+  </div>
+</div>
 
 
 <div class="modal fade" id="addNewAddressModal" tabindex="-1">

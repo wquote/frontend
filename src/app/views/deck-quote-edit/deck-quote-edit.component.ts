@@ -5,7 +5,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerModel } from 'src/app/models/customer.model';
-import { DeckQuoteModel } from 'src/app/models/deck-quote.model';
+import { DeckingQuote } from 'src/app/models/decking-quote.model';
 import { JobType } from 'src/app/models/type.model';
 import { CustomerService } from 'src/app/services/customer.service';
 import { DeckQuoteService } from 'src/app/services/deck-quote.service';
@@ -17,9 +17,10 @@ import { DeckQuoteService } from 'src/app/services/deck-quote.service';
 })
 export class DeckQuoteEditComponent {
   customerId: string | undefined
-  customer: CustomerModel | undefined
+  customer: CustomerModel = {} as CustomerModel
   quoteId: string | undefined
-  deckQuote: DeckQuoteModel | undefined
+  deckingQuote: DeckingQuote | undefined
+  activeTab: string = 'customer-info'
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -45,9 +46,9 @@ export class DeckQuoteEditComponent {
     this.quoteId = this.activatedRoute.snapshot.paramMap.get('quoteId') as string
 
     if (this.quoteId && this.quoteId != 'new') {
-      this.deckQuoteService.read(this.quoteId).subscribe(dq => this.deckQuote = dq)
+      this.deckQuoteService.read(this.quoteId).subscribe(dq => this.deckingQuote = dq)
     } else {
-      this.deckQuote = {
+      this.deckingQuote = {
         jobAddress: undefined,
         type: JobType.DECKING,
         deck: {
@@ -65,14 +66,18 @@ export class DeckQuoteEditComponent {
     }
   }
 
-  save() {
-    if(this.deckQuote){
-      this.deckQuote.customerId = this.customerId
+  setActiveTab(tab: string) {
+    this.activeTab = tab
+  }
 
-      if(!this.deckQuote.id){
-        this.deckQuoteService.create(this.deckQuote).subscribe(r => this.router.navigate(['customers', this.customerId, 'quotes']))
+  save() {
+    if(this.deckingQuote){
+      this.deckingQuote.customerId = this.customerId
+
+      if(!this.deckingQuote.id){
+        this.deckQuoteService.create(this.deckingQuote).subscribe(r => this.router.navigate(['customers', this.customerId, 'quotes']))
       } else {
-        this.deckQuoteService.update(this.deckQuote.id, this.deckQuote).subscribe(r => this.router.navigate(['customers', this.customerId, 'quotes']))
+        this.deckQuoteService.update(this.deckingQuote.id, this.deckingQuote).subscribe(r => this.router.navigate(['customers', this.customerId, 'quotes']))
       }
     }
   }

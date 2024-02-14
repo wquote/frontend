@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DeckQuoteModel } from 'src/app/models/deck-quote.model';
+import { DeckingQuote } from 'src/app/models/decking-quote.model';
 
 @Component({
   selector: 'app-dqe-order',
@@ -8,9 +8,9 @@ import { DeckQuoteModel } from 'src/app/models/deck-quote.model';
 })
 export class DqeOrderComponent {
 
-  menu: string = 'board'
+  menu: string = 'footings'
 
   @Input()
-  deckQuote: DeckQuoteModel | undefined
+  deckingQuote: DeckingQuote | undefined
 
 }

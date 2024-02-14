@@ -10,8 +10,8 @@
     [class.btn-primary]="menu == 'finishing'" [class.btn-light]="menu != 'finishing'"
     (click)="menu = 'finishing'">Finishing</button>
   <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
-    [class.btn-primary]="menu == 'rainscape'" [class.btn-light]="menu != 'rainscape'"
-    (click)="menu = 'rainscape'">RainScape</button>
+    [class.btn-primary]="menu == 'rainScape'" [class.btn-light]="menu != 'rainScape'"
+    (click)="menu = 'rainScape'">RainScape</button>
   <button type="button" class="btn m-2 d-flex flex-fill justify-content-center"
     [class.btn-primary]="menu == 'extra-materials'" [class.btn-light]="menu != 'extra-materials'"
     (click)="menu = 'extra-materials'">Extra Materials</button>
@@ -82,7 +82,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <div class="card mb-3" *ngFor="let mainArea of deckQuote?.deckingInfo?.mainAreas; let i = index">
+      <div class="card mb-3" *ngFor="let mainArea of deckingQuote?.deckTakeOff?.layout?.mainAreas; let i = index">
         <div class="card-header d-flex justify-content-between align-items-center">
           <b>Area {{i+1}}</b>
           <button class="btn btn-outline-danger" (click)="removeArea(mainArea)">
@@ -172,7 +172,7 @@
       </div>
     </div>
     <div class="col">
-      <div class="card mb-3" *ngFor="let ladingArea of deckQuote?.deckingInfo?.ladingAreas; let i = index">
+      <div class="card mb-3" *ngFor="let ladingArea of deckingQuote?.deckTakeOff?.layout?.ladingAreas; let i = index">
         <div class="card-header d-flex justify-content-between align-items-center">
           <b>Landing Area {{i+1}}</b>
           <button class="btn btn-outline-danger" (click)="removeLandingArea(ladingArea)">
@@ -261,7 +261,7 @@
       </div>
     </div>
     <div class="col">
-      <div class="card mb-3" *ngFor="let stair of deckQuote?.deckingInfo?.stairs; let i = index">
+      <div class="card mb-3" *ngFor="let stair of deckingQuote?.deckTakeOff?.layout?.stairs; let i = index">
         <div class="card-header d-flex justify-content-between align-items-center">
           <b>Stair {{i+1}}</b>
           <button class="btn btn-outline-danger" (click)="removeStair(stair)">
@@ -497,7 +497,7 @@
 
 
 <!-- RainScape -->
-<div *ngIf="menu == 'rainscape'" class="mb-3">
+<div *ngIf="menu == 'rainScape'" class="mb-3">
   <div class="row">
     <div class="col">
       <div class="mb-3">
@@ -568,11 +568,11 @@
 
 <!-- Extra Materials -->
 <div *ngIf="menu == 'extra-materials'" class="mb-3">
-  <div class="d-flex justify-content-end mb-3">
+  <!-- <div class="d-flex justify-content-end mb-3">
     <button class="btn btn-outline-primary " (click)="addExtraMaterial()">+ New</button>
-  </div>
+  </div> -->
 
-  <table class="table table-hover mb-3">
+  <table class="table table-hover">
     <thead>
       <tr class="table-light">
         <th class="text-center">#</th>
@@ -584,26 +584,33 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let material of deckQuote?.extraMaterials; let i = index">
+      <tr *ngFor="let material of deckingQuote?.materialOrder?.extraMaterials; let i = index">
         <td>{{ i + 1 }}</td>
         <td>
           <input type="text" class="form-control form-control-sm" [(ngModel)]="material.desc">
         </td>
         <td class="text-center">
-          <input type="text" class="form-control form-control-sm" [(ngModel)]="material.price">
+          <input type="number" class="form-control form-control-sm" [(ngModel)]="material.cost">
         </td>
         <td class="text-center">
-          <input type="text" class="form-control form-control-sm" [(ngModel)]="material.qty">
+          <input type="number" class="form-control form-control-sm" [(ngModel)]="material.qty">
         </td>
         <td class="text-center">
-          <input type="text" class="form-control form-control-sm">
+          <!-- <input type="text" class="form-control form-control-sm" value="{{ material.cost * material.qty | currency:'USD':true:'1.2-2' }}">  -->
+          <input disabled type="number" class="form-control form-control-sm"
+            value="{{ ((material.cost || 0) * (material.qty || 0)).toFixed(2) }}">
         </td>
         <td class="text-center">
           <button class="btn btn-outline-danger btn-sm" (click)="removeExtraMaterial(material)">
             <i class="bi bi-trash"></i>
           </button>
+        </td>
       </tr>
     </tbody>
   </table>
+
+  <div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-outline-primary" (click)="addExtraMaterial()">+</button>
+  </div>
 
 </div>
