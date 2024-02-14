@@ -15,7 +15,7 @@ export class DqeEstimateComponent {
   @Input()
   customer: CustomerModel = {} as CustomerModel
 
-  menu: string = 'material'
+  menu: string = 'general'
 
   sumMaterialsCost(): number {
     let totalCost: number = 0;
