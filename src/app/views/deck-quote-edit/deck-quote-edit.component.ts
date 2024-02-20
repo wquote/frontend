@@ -71,13 +71,20 @@ export class DeckQuoteEditComponent {
   }
 
   save() {
-    if(this.deckingQuote){
+    if (this.deckingQuote) {
       this.deckingQuote.customerId = this.customerId
 
-      if(!this.deckingQuote.id){
-        this.deckQuoteService.create(this.deckingQuote).subscribe(r => this.router.navigate(['customers', this.customerId, 'quotes']))
-      } else {
-        this.deckQuoteService.update(this.deckingQuote.id, this.deckingQuote).subscribe(r => this.router.navigate(['customers', this.customerId, 'quotes']))
+      // new deck quote
+      if (!this.deckingQuote.id) {
+        this.deckQuoteService.create(this.deckingQuote).subscribe(
+          r => window.alert('Deck quote created successfully')
+        )
+      }
+      // edit deck quote
+      else {
+        this.deckQuoteService.update(this.deckingQuote.id, this.deckingQuote).subscribe(
+          r => window.alert('Deck quote updated successfully')
+        )
       }
     }
   }
