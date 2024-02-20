@@ -34,7 +34,11 @@
   <tbody>
     <tr *ngFor="let quote of quotes; index as index">
       <!-- <td> {{ index + 1 }} </td> -->
-      <td> {{ getCustomerName(quote.customerId) }} </td>
+      <td>
+        <a [routerLink]="['/customers', quote.customerId, 'quotes']">
+          {{ getCustomerName(quote.customerId) }}
+        </a>
+      </td>
       <td> {{ quote.type }} </td>
       <td> {{ quote.createdAt | date }} </td>
       <td> {{ quote.updatedAt | date }} </td>
