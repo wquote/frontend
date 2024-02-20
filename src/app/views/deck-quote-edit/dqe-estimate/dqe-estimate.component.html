@@ -349,7 +349,7 @@
           <td></td>
           <td></td>
           <td></td>
-          <td><strong>{{ calculateTotal().toFixed(2) }}</strong></td>
+          <td><strong>{{ calculateProjectValue().toFixed(2) }}</strong></td>
           <td></td>
           <td></td>
           <td></td>
@@ -378,8 +378,7 @@
         [class.text-success]="minorCost(deckingIndex, railingIndex)"
         [class.text-danger]="majorCost(deckingIndex, railingIndex)"
         [class.fw-bold]="minorCost(deckingIndex, railingIndex) || majorCost(deckingIndex, railingIndex)">
-        Cost: {{(board.cost + railing.cost).toFixed(2)}}<br>
-        Tax: {{(board.tax + railing.tax).toFixed(2)}}
+        {{ calculateXYViewCost(board, railing).toFixed(2) }}
       </td>
     </tr>
   </tbody>

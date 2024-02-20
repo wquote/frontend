@@ -17,10 +17,10 @@ export class DqeEstimateComponent {
 
   menu: string = 'general'
 
-  sumMaterialsCost(): number {
+  sumMaterialsCost(boardXY: MaterialOrderSpec | undefined = undefined, railingXY: MaterialOrderSpec | undefined = undefined): number {
     let totalCost: number = 0;
 
-    const addMaterialOrderCost = (item: any) => {
+    const addMaterialOrderCost = (item: MaterialOrderSpecs) => {
       if (item) {
         const index = item.selectedSpecIndex;
         totalCost += item.materialOrderSpecs[index].cost;
@@ -37,8 +37,8 @@ export class DqeEstimateComponent {
       addMaterialOrderCost(footings);
       addMaterialOrderCost(frame);
       addMaterialOrderCost(galvanized);
-      addMaterialOrderCost(board);
-      addMaterialOrderCost(railing);
+      boardXY == undefined ? addMaterialOrderCost(board) : totalCost += boardXY.cost;
+      railingXY == undefined ? addMaterialOrderCost(railing) : totalCost += railingXY.cost;
       addMaterialOrderCost(finishing);
       addMaterialOrderCost(rainScape);
       addExtraMaterialsCost(extraMaterials);
@@ -67,8 +67,12 @@ export class DqeEstimateComponent {
     return this.sumTotalCost() * ((this.deckingQuote.profitPercent || 0) / 100);
   }
 
-  calculateTotal(): number {
+  calculateProjectValue(): number {
     return this.deckingQuote.value = this.sumTotalCost() + this.calculateProfit()
+  }
+
+  calculateXYViewCost(board: MaterialOrderSpec, railing: MaterialOrderSpec): number {
+    return this.sumMaterialsCost(board, railing) + this.sumLaborCost() + this.sumOtherCost() + this.calculateProfit()
   }
 
   addLaborCost() {
