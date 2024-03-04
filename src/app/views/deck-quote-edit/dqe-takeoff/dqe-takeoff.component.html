@@ -26,10 +26,10 @@
   <div class="row justify-content-center mb-4">
     <div class="col-4">
       <label class="form-label" for="big-foot-quantity">Quantity</label>
-      <input type="number" class="form-control" id="big-foot-quantity" name="big-foot-quantity">
+      <input type="number" class="form-control no-spinner" id="big-foot-quantity">
     </div>
     <div class="col-4">
-      <label for="big-foot-size" class="form-label" >Size</label>
+      <label for="big-foot-size" class="form-label">Size</label>
       <select id="big-foot-size" class="form-select">
         <option>22" x 16.5" x 22"</option>
         <option>28" x 20" x 28"</option>
@@ -44,7 +44,7 @@
   <div class="row justify-content-center mb-4">
     <div class="col-4">
       <label class="form-label" for="helical-post-quantity">Quantity</label>
-      <input type="number" class="form-control" id="helical-post-quantity" name="helical-post-quantity">
+      <input type="number" class="form-control no-spinner" id="helical-post-quantity">
     </div>
     <div class="col-4">
       <label for="helical-post-size" class="form-label">Size</label>
@@ -62,7 +62,7 @@
   <div class="row justify-content-center mb-4">
     <div class="col-4">
       <label class="form-label" for="sonotubes-quantity">Quantity</label>
-      <input type="number" class="form-control" id="sonotubes-quantity" name="sonotubes-quantity">
+      <input type="number" class="form-control no-spinner" id="sonotubes-quantity">
     </div>
     <div class="col-4">
       <label class="form-label" for="sonotubes-size">Size</label>
@@ -99,80 +99,127 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-12">
-              <div class="mb-3">
-                <label class="form-label" for="deck-grade">Deck Grade</label>
-                <select class="form-select" name="deck-grade" id="deck-grade">
-                  <option>Select frame grade</option>
+            <div class="d-flex align-items-center mb-3">
+              <div class="col-6">
+                <label class="form-label no-margin" for="area-deck-grade">Deck Grade</label>
+              </div>
+              <div class="col">
+                <select class="form-select" id="area-deck-grade">
+                  <option>2x6 Frame</option>
+                  <option>2x8 Frame</option>
+                  <option>2x10 Frame</option>
+                  <option>2x12 Frame</option>
                 </select>
               </div>
             </div>
-            <div class="col-12">
-              <div class="mb-3">
-                <label class="form-label" for="ledger-board">Ledger Board</label>
-                <input type="text" class="form-control" id="ledger-board" name="ledger-board">
+
+            <div class="d-flex align-items-center mb-3">
+              <div class="col-6">
+                <label class="form-label no-margin" for="area-ledger-board">Ledger Board (LFT)</label>
               </div>
-            </div>
-            <div class="col-12">
-              <div class="mb-3">
-                <label class="form-label" for="ledger-attaches-to">Ledger Attaches to</label>
-                <select class="form-select" name="ledger-attaches-to" id="ledger-attaches-to">
-                  <option>Wood</option>
+              <div class="col">
+                <select class="form-select" id="area-ledger-board">
+                  <option>2x8 Frame</option>
+                  <option>2x10 Frame</option>
+                  <option>2x12 Frame</option>
                 </select>
               </div>
             </div>
-            <div class="col-12">
-              <div class="mb-3">
-                <label class="form-label" for="support-post-grade">Support Post Grade</label>
-                <div class="input-group mb-3">
-                  <select class="form-select" name="support-post-grade-size" id="support-post-grade-size">
+
+            <div class="d-flex align-items-center mb-3">
+              <div class="col-6">
+                <label class="form-label no-margin" for="area-ledger-attaches-to">Ledger Attaches to</label>
+              </div>
+              <div class="col">
+                <select class="form-select" id="area-ledger-attaches-to">
+                  <option>Rim Joist</option>
+                  <option>Concrete</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center mb-3">
+              <div class="col-6">
+                <label class="form-label no-margin" for="area-support-post-grade">Support Post Grade (LFT)</label>
+              </div>
+              <div class="input-group">
+                <div class="col-6">
+                  <select class="form-select" id="area-support-post-grade">
+                    <option>4x4</option>
                     <option>6x6</option>
                   </select>
-                  <input type="text" class="form-control" id="support-post-grade-quantity"
-                    name="support-post-grade-quantity">
+                </div>
+                <div class="col-6">
+                  <input type="number" class="form-control no-spinner" id="area-support-post-grade" placeholder="Ct">
                 </div>
               </div>
             </div>
-            <div class="col-12">
-              <div class="mb-3">
-                <label class="form-label" for="deck-width">Deck Width</label>
-                <input type="text" class="form-control" id="deck-width" name="deck-width" [(ngModel)]="mainArea.width">
+
+            <div class="d-flex align-items-center mb-3">
+              <div class="col-6">
+                <label class="form-label no-margin" for="area-width">Deck Width (FT)</label>
+              </div>
+              <div class="col">
+                <input type="number" class="form-control no-spinner" id="area-width" [(ngModel)]="mainArea.width">
               </div>
             </div>
-            <div class="col-12">
-              <div class="mb-3">
-                <label class="form-label" for="deck-depth">Deck Depth</label>
-                <input type="text" class="form-control" id="deck-depth" name="deck-depth" [(ngModel)]="mainArea.depth">
+
+            <div class="d-flex align-items-center mb-3">
+              <div class="col-6">
+                <label class="form-label no-margin" for="area-depth">Deck Depth (FT)</label>
+              </div>
+              <div class="col">
+                <input type="number" class="form-control no-spinner" id="area-depth" [(ngModel)]="mainArea.depth">
               </div>
             </div>
-            <div class="col-12">
-              <div class="mb-3">
-                <label class="form-label" for="deck-height">Deck Height</label>
-                <input type="text" class="form-control" id="deck-height" name="deck-height"
-                  [(ngModel)]="mainArea.height">
+
+            <div class="d-flex align-items-center mb-3">
+              <div class="col-6">
+                <label class="form-label no-margin" for="area-height">Deck Height (FT)</label>
+              </div>
+              <div class="col">
+                <input type="number" class="form-control no-spinner" id="area-height" [(ngModel)]="mainArea.height">
               </div>
             </div>
-            <div class="col-12">
-              <div class="mb-3">
-                <label class="form-label" for="picture-frame">Picture Frame</label>
-                <input type="text" class="form-control" id="picture-frame" name="picture-frame">
+
+            <div class="d-flex align-items-center mb-3">
+              <div class="col-6">
+                <label class="form-label no-margin" for="area-picture-frame">Picture Frame (LFT)</label>
+              </div>
+              <div class="col">
+                <input type="number" class="form-control no-spinner" id="area-picture-frame">
               </div>
             </div>
-            <div class="col-12">
-              <div class="mb-3">
-                <label class="form-label" for="beam-grade">Beam Grade</label>
-                <div class="input-group mb-3">
-                  <select class="form-select" name="beam-grade" id="beam-grade">
-                    <option>Select the Beam</option>
+
+            <div class="d-flex align-items-center mb-3">
+              <div class="col-4">
+                <label class="form-label no-margin" for="area-beam-grade">Beam Grade (LFT)</label>
+              </div>
+              <div class="input-group">
+                <div class="col-8">
+                  <select class="form-select" id="area-beam-grade">
+                    <option>Double by 6</option>
+                    <option>Triple by 6</option>
+                    <option>Double by 8</option>
+                    <option>Triple by 8</option>
+                    <option>Double by 10</option>
+                    <option>Triple by 10</option>
+                    <option>Double by 12</option>
+                    <option>Triple by 12</option>
                   </select>
-                  <input type="text" class="form-control" id="beam-grade-quantity" name="beam-grade-quantity">
+                </div>
+                <div class="col-4">
+                  <input type="number" class="form-control no-spinner" id="area-beam-grade-quantity" placeholder="LFT">
                 </div>
               </div>
             </div>
-            <div class="col-12">
-              <div class="mb-3">
-                <label class="form-label" for="decking-area">Decking Area</label>
-                <input type="text" class="form-control" id="decking-area" name="decking-area" disabled>
+            
+            <div class="d-flex align-items-center mb-3">
+              <div class="col-6">
+                <label class="form-label no-margin" for="area-decking-area">Decking Area (LFT)</label>
+              </div>
+              <div class="col">
+                <input type="number" class="form-control no-spinner" id="area-decking-area" disabled>
               </div>
             </div>
           </div>
@@ -191,77 +238,87 @@
           <div class="row">
             <div class="col-12">
               <div class="mb-3">
-                <label class="form-label" for="deck-grade">Deck Grade</label>
-                <select class="form-select" name="deck-grade" id="deck-grade">
-                  <option>Select frame grade</option>
+                <label class="form-label" for="land-deck-grade">Deck Grade</label>
+                <select class="form-select" id="land-deck-grade">
+                  <option>2x6 Frame</option>
+                  <option>2x8 Frame</option>
+                  <option>2x10 Frame</option>
+                  <option>2x12 Frame</option>
                 </select>
               </div>
             </div>
             <div class="col-12">
               <div class="mb-3">
-                <label class="form-label" for="ledger-board">Ledger Board</label>
-                <input type="text" class="form-control" id="ledger-board" name="ledger-board">
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="mb-3">
-                <label class="form-label" for="ledger-attaches-to">Ledger Attaches to</label>
-                <select class="form-select" name="ledger-attaches-to" id="ledger-attaches-to">
-                  <option>Wood</option>
+                <label class="form-label" for="land-ledger-board">Ledger Board (LFT)</label>
+                <select class="form-select" id="land-ledger-board">
+                  <option>2x6 Frame</option>
+                  <option>2x8 Frame</option>
+                  <option>2x10 Frame</option>
+                  <option>2x12 Frame</option>
                 </select>
               </div>
             </div>
             <div class="col-12">
               <div class="mb-3">
-                <label class="form-label" for="support-post-grade">Support Post Grade</label>
+                <label class="form-label" for="land-ledger-attaches-to">Ledger Attaches to</label>
+                <select class="form-select" id="land-ledger-attaches-to">
+                  <option>Rim Joist</option>
+                  <option>Concrete</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="mb-3">
+                <label class="form-label" for="land-support-post-grade-size">Support Post Grade (LFT)</label>
                 <div class="input-group mb-3">
-                  <select class="form-select" name="support-post-grade-size" id="support-post-grade-size">
+                  <select class="form-select" id="land-support-post-grade-size">
+                    <option>4x4</option>
                     <option>6x6</option>
                   </select>
-                  <input type="text" class="form-control" id="support-post-grade-quantity"
-                    name="support-post-grade-quantity">
+                  <input type="number" class="form-control no-spinner" id="land-support-post-grade-quantity"
+                    placeholder="Qty">
                 </div>
               </div>
             </div>
             <div class="col-12">
               <div class="mb-3">
-                <label class="form-label" for="width">Width</label>
-                <input type="text" class="form-control" id="width" name="width" [(ngModel)]="ladingArea.width">
+                <label class="form-label" for="land-width">Width</label>
+                <input type="number" class="form-control no-spinner" id="land-width" [(ngModel)]="ladingArea.width">
               </div>
             </div>
             <div class="col-12">
               <div class="mb-3">
-                <label class="form-label" for="depth">Depth</label>
-                <input type="text" class="form-control" id="depth" name="depth" [(ngModel)]="ladingArea.depth">
+                <label class="form-label" for="land-depth">Depth</label>
+                <input type="number" class="form-control no-spinner" id="land-depth" [(ngModel)]="ladingArea.depth">
               </div>
             </div>
             <div class="col-12">
               <div class="mb-3">
-                <label class="form-label" for="height">Height</label>
-                <input type="text" class="form-control" id="height" name="height" [(ngModel)]="ladingArea.height">
+                <label class="form-label" for="land-height">Height</label>
+                <input type="number" class="form-control no-spinner" id="land-height" [(ngModel)]="ladingArea.height">
               </div>
             </div>
             <div class="col-12">
               <div class="mb-3">
-                <label class="form-label" for="picture-frame">Picture Frame</label>
-                <input type="text" class="form-control" id="picture-frame" name="picture-frame">
+                <label class="form-label" for="land-picture-frame">Picture Frame</label>
+                <input type="number" class="form-control no-spinner" id="land-picture-frame">
               </div>
             </div>
             <div class="col-12">
               <div class="mb-3">
-                <label class="form-label" for="beam-grade">Beam Grade</label>
+                <label class="form-label" for="land-beam-grade">Beam Grade</label>
                 <div class="input-group mb-3">
-                  <select class="form-select" name="beam-grade" id="beam-grade">
+                  <select class="form-select" id="land-beam-grade">
                     <option>Select the Beam</option>
                   </select>
-                  <input type="text" class="form-control" id="beam-grade-quantity" name="beam-grade-quantity">
+                  <input type="number" class="form-control no-spinner" id="land-beam-grade-quantity">
                 </div>
               </div>
             </div>
             <div class="col-12">
               <div class="mb-3">
-                <label class="form-label" for="decking-area">Decking Area</label>
-                <input type="text" class="form-control" id="decking-area" name="decking-area" disabled>
+                <label class="form-label" for="land-decking-area">Decking Area</label>
+                <input type="number" class="form-control no-spinner" id="land-decking-area" disabled>
               </div>
             </div>
           </div>
@@ -281,24 +338,23 @@
             <div class="col-12">
               <div class="mb-3">
                 <label class="form-label" for="width">Width</label>
-                <input type="text" class="form-control" id="width" name="width" [(ngModel)]="stair.width">
+                <input type="number" class="form-control no-spinner" id="width" [(ngModel)]="stair.width">
               </div>
             </div>
             <div class="col-12">
               <div class="mb-3">
                 <label class="form-label" for="riser">Riser</label>
-                <input type="text" class="form-control" id="riser" name="riser" [(ngModel)]="stair.riser">
+                <input type="number" class="form-control no-spinner" id="riser" [(ngModel)]="stair.riser">
               </div>
             </div>
             <div class="col-12">
               <div class="mb-3">
                 <label class="form-label" for="support-post-grade">Support Post Grade</label>
                 <div class="input-group mb-3">
-                  <select class="form-select" name="support-post-grade-size" id="support-post-grade-size">
+                  <select class="form-select" id="support-post-grade-size">
                     <option>6x6</option>
                   </select>
-                  <input type="text" class="form-control" id="support-post-grade-quantity"
-                    name="support-post-grade-quantity">
+                  <input type="number" class="form-control no-spinner" id="support-post-grade-quantity">
                 </div>
               </div>
             </div>
@@ -306,17 +362,17 @@
               <div class="mb-3">
                 <label class="form-label" for="beam-grade">Beam Grade</label>
                 <div class="input-group mb-3">
-                  <select class="form-select" name="beam-grade" id="beam-grade">
+                  <select class="form-select" id="beam-grade">
                     <option>Select the Beam</option>
                   </select>
-                  <input type="text" class="form-control" id="beam-grade-quantity" name="beam-grade-quantity">
+                  <input type="number" class="form-control no-spinner" id="beam-grade-quantity">
                 </div>
               </div>
             </div>
             <div class="col-12">
               <div class="mb-3">
                 <label class="form-label" for="railing-both-sides">Railings on Both Sides?</label>
-                <select class="form-select" name="railing-both-sides" id="railing-both-sides">
+                <select class="form-select" id="railing-both-sides">
                   <option>Select...</option>
                 </select>
               </div>
@@ -325,9 +381,9 @@
               <div class="mb-3">
                 <label class="form-label" for="beam-grade">Hand Rail</label>
                 <div class="input-group mb-3">
-                  <input type="text" class="form-control" id="hand-rail" name="hand-rail">
-                  <input type="text" class="form-control" id="hand-rail" name="hand-rail">
-                  <input type="text" class="form-control" id="hand-rail" name="hand-rail">
+                  <input type="number" class="form-control no-spinner" id="hand-rail">
+                  <input type="number" class="form-control no-spinner" id="hand-rail">
+                  <input type="number" class="form-control no-spinner" id="hand-rail">
                 </div>
               </div>
             </div>
@@ -342,93 +398,155 @@
 <!-- Railing -->
 <div *ngIf="menu == 'railing'" class="mb-3">
   <div class="row">
+
     <div class="col">
-      <b class="d-flex justify-content-center mb-3">&nbsp;</b>
-      <div class="mb-3">
-        <label class="form-label" for="36-height">36'' Height Deck Gate (No Wider than 48''')</label>
-        <input type="text" class="form-control" id="36-height" name="36-height">
+      <b class="d-flex mb-3 text-secondary ">&nbsp;</b>
+
+      <div class="row mb-3">
+        <div class="col-8 d-flex flex-column ">
+          <label class="form-label" style="margin-bottom: 0;" for="36-height">36'' Height Deck Gate</label>
+          <p class="text-secondary" style="margin-bottom: 0;">No wider than 48''</p>
+        </div>
+        <div class="col d-flex align-items-center ">
+          <input type="number" class="form-control no-spinner" id="36-height" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="42-height">42'' Height Deck Gate (No Wider than 48''')</label>
-        <input type="text" class="form-control" id="42-height" name="42-height">
+
+      <div class="row mb-3">
+        <div class="col-8 d-flex flex-column ">
+          <label class="form-label" style="margin-bottom: 0;" for="42-height">42'' Height Deck Gate</label>
+          <p class="text-secondary" style="margin-bottom: 0;">No wider than 48''</p>
+        </div>
+        <div class="col d-flex align-items-center ">
+          <input type="number" class="form-control no-spinner" id="42-height" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="6x32-level-rail">6'x 36''Level Rail</label>
-        <input type="text" class="form-control" id="6x32-level-rail" name="6x32-level-rail">
+
+      <div class="row mb-3">
+        <label class="col-8 col-form-label " for="6x32-level-rail">6'x 36''Level Rail</label>
+        <div class="col d-flex align-items-center ">
+          <input type="number" class="form-control no-spinner" id="6x32-level-rail" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="8x36-level-rail">8'x 36''Level Rail</label>
-        <input type="text" class="form-control" id="8x36-level-rail" name="8x36-level-rail">
+
+      <div class="row mb-3">
+        <label class="col-8 col-form-label " for="8x36-level-rail">8'x 36''Level Rail</label>
+        <div class="col d-flex align-items-center ">
+          <input type="number" class="form-control no-spinner" id="8x36-level-rail" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="6x42-level-rail">6'x 42''Level Rail</label>
-        <input type="text" class="form-control" id="6x42-level-rail" name="6x42-level-rail">
+
+      <div class="row mb-3">
+        <label class="col-8 col-form-label " for="6x42-level-rail">6'x 42''Level Rail</label>
+        <div class="col d-flex align-items-center ">
+          <input type="number" class="form-control no-spinner" id="6x42-level-rail" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="splitted-rails">Splitted Rails</label>
-        <input type="text" class="form-control" id="splitted-rails" name="splitted-rails">
+
+      <div class="row mb-3">
+        <label class="col-8 col-form-label " for="splitted-rails">Splitted Rails</label>
+        <div class="col d-flex align-items-center ">
+          <input type="number" class="form-control no-spinner" id="splitted-rails" placeholder="Qty">
+        </div>
       </div>
     </div>
+
     <div class="col">
-      <b class="d-flex mb-3 text-secondary ">Cablerail Info</b>
-      <div class="mb-3">
-        <label class="form-label" for="total-36-rail-length">Total 36'' Rail Length</label>
-        <input type="text" class="form-control" id="total-36-rail-length" name="total-36-rail-length">
+      <b class="d-flex mb-3 text-secondary ">Info for cable rail only</b>
+
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="total-36-rail-length">Total 36'' Rail Length</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="total-36-rail-length" placeholder="LFT">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="total-42-rail-length">Total 42'' Rail Length</label>
-        <input type="text" class="form-control" id="total-42-rail-length" name="total-42-rail-length">
+
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="total-42-rail-length">Total 42'' Rail Length</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="total-42-rail-length" placeholder="LFT">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="stair-straght-secionts-36">Stair Straght Sections of 36 Height</label>
-        <input type="text" class="form-control" id="stair-straght-secionts-36" name="stair-straght-secionts-36">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="stair-straght-secionts-36">Stair Straght Sections of 36 Height</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="stair-straght-secionts-36" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="stair-straght-secionts-42">Stair Straght Sections of 42 Height</label>
-        <input type="text" class="form-control" id="stair-straght-secionts-42" name="stair-straght-secionts-42">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="stair-straght-secionts-42">Stair Straght Sections of 42 Height</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="stair-straght-secionts-42" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="level-straght-sections-36">Level Straght Sections 36'' Height</label>
-        <input type="text" class="form-control" id="level-straght-sections-36" name="level-straght-sections-36">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="level-straght-sections-36">Level Straght Sections 36'' Height</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="level-straght-sections-36" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="level-straght-sections-42">Level Straght Sections 42'' Height</label>
-        <input type="text" class="form-control" id="level-straght-sections-42" name="level-straght-sections-42">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="level-straght-sections-42">Level Straght Sections 42'' Height</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="level-straght-sections-42" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="level-pickets">Level Pickets</label>
-        <input type="text" class="form-control" id="level-pickets" name="level-pickets">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="level-pickets">Level Pickets</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="level-pickets">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="stair-pickets">Stair Pickets</label>
-        <input type="text" class="form-control" id="stair-pickets" name="stair-pickets">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="stair-pickets">Stair Pickets</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="stair-pickets">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="pass-through-posts">Pass Through Posts (level only)</label>
-        <input type="text" class="form-control" id="pass-through-posts" name="pass-through-posts">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="pass-through-posts">Pass Through Posts (level only)</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="pass-through-posts" placeholder="Qty">
+        </div>
       </div>
     </div>
+
     <div class="col">
       <b class="d-flex mb-3 text-secondary ">*DO NOT use Structural Posts for Cablerail</b>
-      <div class="mb-3">
-        <label class="form-label" for="flush-36">Flush Mount Structural Post 36''Rail Height</label>
-        <input type="text" class="form-control" id="flush-36" name="flush-36">
+
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="flush-36">Flush Mount Structural Post 36''Rail Height</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="flush-36" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="flush-42">Flush Mount Structural Post 42''Rail Height</label>
-        <input type="text" class="form-control" id="flush-42" name="flush-42">
+
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="flush-42">Flush Mount Structural Post 42''Rail Height</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="flush-42" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="4x4-pt-posts">4x4 PT Posts (level only)</label>
-        <input type="text" class="form-control" id="4x4-pt-posts" name="4x4-pt-posts">
+
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="4x4-pt-posts">4x4 PT Posts (level only)</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="4x4-pt-posts" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="36-composite">36'' Composite Sleeves (level only)</label>
-        <input type="text" class="form-control" id="36-composite" name="36-composite">
+
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="36-composite">36'' Composite Sleeves (level only)</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="36-composite" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="42-composite">42'' Composite Sleeves (level only)</label>
-        <input type="text" class="form-control" id="42-composite" name="42-composite">
+
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="42-composite">42'' Composite Sleeves (level only)</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="42-composite" placeholder="Qty">
+        </div>
       </div>
     </div>
   </div>
@@ -437,67 +555,94 @@
 
 <!-- Finishing -->
 <div *ngIf="menu == 'finishing'" class="mb-3">
-  <div class="row">
-    <div class="col">
+  <div class="row d-flex justify-content-evenly ">
+
+    <div class="col-4">
       <b class="d-flex mb-3 text-secondary ">&nbsp;</b>
-      <div class="mb-3">
-        <label class="form-label" for="gate-to-access">Gate to access under the deck</label>
-        <input type="text" class="form-control" id="gate-to-access" name="gate-to-access">
+
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="gate-to-access">Gate to access under the deck</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="gate-to-access" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="4x8-lattice-panel">4x8 Lattice Panel</label>
-        <input type="text" class="form-control" id="4x8-lattice-panel" name="4x8-lattice-panel">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="4x8-lattice-panel">4x8 Lattice Panel</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="4x8-lattice-panel" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="1x6-lattice-panel">1x6 Lattice Panel</label>
-        <input type="text" class="form-control" id="1x6-lattice-panel" name="1x6-lattice-panel">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="1x6-lattice-panel">1x6 Lattice Panel</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="1x6-lattice-panel" placeholder="LFT">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="dekc-fascia-board">Deck Fascia Board</label>
-        <input type="text" class="form-control" id="dekc-fascia-board" name="dekc-fascia-board">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="dekc-fascia-board">Deck Fascia Board</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="dekc-fascia-board" placeholder="LFT">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="water-table">Water Table</label>
-        <input type="text" class="form-control" id="water-table" name="water-table">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="water-table">Water Table</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="water-table" placeholder="LFT">
+        </div>
       </div>
     </div>
-    <div class="col">
-      <b class="d-flex mb-3 text-secondary ">Farmer's Porch</b>
-      <div class="mb-3">
-        <label class="form-label" for="ceiling-beam">Ceiling Beam (PVC)</label>
-        <input type="text" class="form-control" id="ceiling-beam" name="ceiling-beam">
+
+    <div class="col-4">
+      <b class="d-flex mb-3 text-secondary ">Farmer's Porch info only</b>
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="ceiling-beam">Ceiling Beam (PVC)</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="ceiling-beam" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="6x6x85-pvc-square-columns">6'' x 6'' x 8.5' PVC Square Columns Wrap</label>
-        <input type="text" class="form-control" id="6x6x85-pvc-square-columns" name="6x6x85-pvc-square-columns">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="6x6x85-pvc-square-columns">6'' x 6'' x 8.5' PVC Square Columns
+          Wrap</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="6x6x85-pvc-square-columns" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="8x8x8-fiberglass">8'' x 8'' x 8' Fiberglass Round Tapered Column</label>
-        <input type="text" class="form-control" id="8x8x8-fiberglass" name="8x8x8-fiberglass">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="8x8x8-fiberglass">8'' x 8'' x 8' Fiberglass Round Tapered
+          Column</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="8x8x8-fiberglass" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="pvc-beaded-planks">PVC Beaded Planks on Ceiling</label>
-        <input type="text" class="form-control" id="pvc-beaded-planks" name="pvc-beaded-planks">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="pvc-beaded-planks">PVC Beaded Planks on Ceiling</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="pvc-beaded-planks" placeholder="sq.f">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="tg-fir-on-ceiling">T&G Fir on Ceiling (no stain)</label>
-        <input type="text" class="form-control" id="tg-fir-on-ceiling" name="tg-fir-on-ceiling">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="tg-fir-on-ceiling">T&G Fir on Ceiling (no stain)</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="tg-fir-on-ceiling" placeholder="sq.f">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="base-cap-molding">Base Cap Molding (transition beam-ceiling)</label>
-        <input type="text" class="form-control" id="base-cap-molding" name="base-cap-molding">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="base-cap-molding">Base Cap Molding (transition beam-ceiling)</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="base-cap-molding" placeholder="LFT">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="soffit-trim">Soffit trim (PVC)</label>
-        <input type="text" class="form-control" id="soffit-trim" name="soffit-trim">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="soffit-trim">Soffit trim (PVC)</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="soffit-trim" placeholder="LFT">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="roof-fascia">Roof Fascia (PVC)</label>
-        <input type="text" class="form-control" id="roof-fascia" name="roof-fascia">
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="pass-through-posts">Pass Through Posts (level only)</label>
-        <input type="text" class="form-control" id="pass-through-posts" name="pass-through-posts">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="roof-fascia">Roof Fascia (PVC)</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="roof-fascia" placeholder="LFT">
+        </div>
       </div>
     </div>
   </div>
@@ -506,68 +651,96 @@
 
 <!-- RainScape -->
 <div *ngIf="menu == 'rainScape'" class="mb-3">
-  <div class="row">
-    <div class="col">
-      <div class="mb-3">
-        <label class="form-label" for="rainescape-deck-drainage-downpout">RainEscape Deck Drainage System
+  <div class="row d-flex justify-content-evenly ">
+    <div class="col-4">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="rainescape-deck-drainage-downpout">RainEscape Deck Drainage System
           Downspout</label>
-        <input type="text" class="form-control" id="rainescape-deck-drainage-downpout"
-          name="rainescape-deck-drainage-downpout">
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="rainescape-deck-drainage-downpout" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="rainescape-deck-drainage-16">RainEscape Deck Drainage System Trough - 16'
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="rainescape-deck-drainage-16">RainEscape Deck Drainage System Trough -
+          16'
           Length</label>
-        <input type="text" class="form-control" id="rainescape-deck-drainage-16" name="rainescape-deck-drainage-16">
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="rainescape-deck-drainage-16" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="rainescape-deck-drainage-12">RainEscape Deck Drainage System Trough - 12'
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="rainescape-deck-drainage-12">RainEscape Deck Drainage System Trough -
+          12'
           Length</label>
-        <input type="text" class="form-control" id="rainescape-deck-drainage-12" name="rainescape-deck-drainage-12">
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="rainescape-deck-drainage-12" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="rainescape-deck-drainage-butyl">RainEscape Deck Drainage System Butyl Caulk
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="rainescape-deck-drainage-butyl">RainEscape Deck Drainage System Butyl
+          Caulk
           Tube</label>
-        <input type="text" class="form-control" id="rainescape-deck-drainage-butyl"
-          name="rainescape-deck-drainage-butyl">
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="rainescape-deck-drainage-butyl" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="rainescape-post">RainEscape Post Flashing - 4'' x 4''</label>
-        <input type="text" class="form-control" id="rainescape-post" name="rainescape-post">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="rainescape-post">RainEscape Post Flashing - 4'' x 4''</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="rainescape-post" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="rainescape-wall">RainEscape Wall Flashing - 1 Roll</label>
-        <input type="text" class="form-control" id="rainescape-wall" name="rainescape-wall">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="rainescape-wall">RainEscape Wall Flashing - 1 Roll</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="rainescape-wall" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="rainescape-deck-drainage">RainEscape Deck Drainage System Butyl Tape - 4'' x
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="rainescape-deck-drainage">RainEscape Deck Drainage System Butyl Tape -
+          4'' x
           50'</label>
-        <input type="text" class="form-control" id="rainescape-deck-drainage" name="rainescape-deck-drainage">
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="rainescape-deck-drainage" placeholder="Qty">
+        </div>
       </div>
     </div>
-    <div class="col">
-      <div class="mb-3">
-        <label class="form-label" for="gutters">Gutters (LF)</label>
-        <input type="text" class="form-control" id="gutters" name="gutters">
+    <div class="col-4">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="gutters">Gutters (LF)</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="gutters" placeholder="LFT">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="downpouts">Downpouts</label>
-        <input type="text" class="form-control" id="downpouts" name="downpouts">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="downpouts">Downpouts</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="downpouts" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="elbows">Elbows</label>
-        <input type="text" class="form-control" id="elbows" name="elbows">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="elbows">Elbows</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="elbows" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="left-end-cap">Left end Cap</label>
-        <input type="text" class="form-control" id="left-end-cap" name="left-end-cap">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="left-end-cap">Left end Cap</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="left-end-cap" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="right-end-cap">Right end Cap</label>
-        <input type="text" class="form-control" id="right-end-cap" name="right-end-cap">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="right-end-cap">Right end Cap</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="right-end-cap" placeholder="Qty">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label" for="hangers">Hangers</label>
-        <input type="text" class="form-control" id="hangers" name="hangers">
+      <div class="row mb-3">
+        <label class="col-8 col-form-label" for="hangers">Hangers</label>
+        <div class="col d-flex align-items-center">
+          <input type="number" class="form-control no-spinner" id="hangers" placeholder="Qty">
+        </div>
       </div>
     </div>
   </div>
@@ -595,7 +768,7 @@
       <tr *ngFor="let material of deckingQuote?.materialOrder?.extraMaterials; let i = index">
         <td>{{ i + 1 }}</td>
         <td>
-          <input type="text" class="form-control form-control-sm" [(ngModel)]="material.desc">
+          <input type="number" class="form-control form-control-sm" [(ngModel)]="material.desc">
         </td>
         <td class="text-center">
           <input type="number" class="form-control form-control-sm" [(ngModel)]="material.cost">
@@ -604,7 +777,7 @@
           <input type="number" class="form-control form-control-sm" [(ngModel)]="material.qty">
         </td>
         <td class="text-center">
-          <!-- <input type="text" class="form-control form-control-sm" value="{{ material.cost * material.qty | currency:'USD':true:'1.2-2' }}">  -->
+          <!-- <input type="number" class="form-control form-control-sm" value="{{ material.cost * material.qty | currency:'USD':true:'1.2-2' }}">  -->
           <input disabled type="number" class="form-control form-control-sm"
             value="{{ ((material.cost || 0) * (material.qty || 0)).toFixed(2) }}">
         </td>
