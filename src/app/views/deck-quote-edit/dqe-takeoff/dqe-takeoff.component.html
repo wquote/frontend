@@ -19,64 +19,75 @@
 
 <!-- Footing -->
 <div *ngIf="menu == 'footing'" class="mb-3">
-  <div class="row justify-content-center">
-    <b class="col-4 text-secondary ">Big Foot</b>
-    <b class="col-4"></b>
-  </div>
-  <div class="row justify-content-center mb-4">
-    <div class="col-4">
-      <label class="form-label" for="big-foot-quantity">Quantity</label>
-      <input type="number" class="form-control no-spinner" id="big-foot-quantity">
-    </div>
-    <div class="col-4">
-      <label for="big-foot-size" class="form-label">Size</label>
-      <select id="big-foot-size" class="form-select">
-        <option>22" x 16.5" x 22"</option>
-        <option>28" x 20" x 28"</option>
-      </select>
-    </div>
-  </div>
+  <div class="row justify-content-evenly  ">
 
-  <div class="row justify-content-center">
-    <b class="col-4 text-secondary">Helical Post</b>
-    <b class="col-4"></b>
-  </div>
-  <div class="row justify-content-center mb-4">
-    <div class="col-4">
-      <label class="form-label" for="helical-post-quantity">Quantity</label>
-      <input type="number" class="form-control no-spinner" id="helical-post-quantity">
-    </div>
-    <div class="col-4">
-      <label for="helical-post-size" class="form-label">Size</label>
-      <select id="helical-post-size" class="form-select">
-        <option>3" x 5"</option>
-      </select>
-    </div>
-  </div>
+    <!-- Big Foot -->
+    <div class="col-3">
+      <b class="d-flex mb-3 text-secondary justify-content-center">Big Foot</b>
+      <div class="row mb-3">
+        <label class="col-4 form-label col-form-label " for="footing-quantity">Quantity</label>
+        <div class="col d-flex align-items-center ">
+          <input type="number" class="form-control no-spinner" id="footing-quantity">
+        </div>
+      </div>
 
-
-  <div class="row justify-content-center">
-    <b class="col-4 text-secondary ">Sonotubes</b>
-    <b class="col-4 "></b>
-  </div>
-  <div class="row justify-content-center mb-4">
-    <div class="col-4">
-      <label class="form-label" for="sonotubes-quantity">Quantity</label>
-      <input type="number" class="form-control no-spinner" id="sonotubes-quantity">
+      <div class="row mb-3">
+        <label class="col-4 col-form-label " for="footing-size">Size</label>
+        <div class="col d-flex align-items-center ">
+          <select id="footing-size" class="form-select">
+            <option>22" x 16.5" x 22"</option>
+            <option>28" x 20" x 28"</option>
+          </select>
+        </div>
+      </div>
     </div>
-    <div class="col-4">
-      <label class="form-label" for="sonotubes-size">Size</label>
-      <select id="helical-post-size" class="form-select">
-        <option>8" x 48"</option>
-        <option>12" x 48"</option>
-      </select>
+
+    <!-- Helical Post -->
+    <div class="col-3">
+      <b class="d-flex mb-3 text-secondary justify-content-center ">Helical Post</b>
+      <div class="row mb-3">
+        <label class="col-4 col-form-label " for="helical-post-quantity">Quantity</label>
+        <div class="col d-flex align-items-center ">
+          <input type="number" class="form-control no-spinner" id="helical-post-quantity">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-4 col-form-label " for="helical-post-size">Size</label>
+        <div class="col d-flex align-items-center ">
+          <select id="helical-post-size" class="form-select">
+            <option>3" x 5"</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sonotubes -->
+    <div class="col-3">
+      <b class="d-flex mb-3 text-secondary justify-content-center ">Sonotubes</b>
+      <div class="row mb-3">
+        <label class="col-4 form-check-label  col-form-label " for="sonotubes-quantity">Quantity</label>
+        <div class="col d-flex align-items-center ">
+          <input type="number" class="form-control no-spinner" id="sonotubes-quantity">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label class="col-4 form-check-label col-form-label " for="sonotubes-size">Size</label>
+        <div class="col d-flex align-items-center ">
+          <select id="sonotubes-size" class="form-select">
+            <option>8" x 48"</option>
+            <option>12" x 48"</option>
+          </select>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 
 <!-- Layout -->
-<div *ngIf="menu == 'layout'">
+<div *ngIf="menu == 'layout'" class="mb-3">
   <div class="d-flex justify-content-end mb-3">
     <button class="btn btn-outline-primary" id="dropdownMenuButton" data-bs-toggle="dropdown">
       <i class="bi bi-plus"></i>
@@ -281,7 +292,7 @@
                 </select>
               </div>
             </div>
-            
+
             <div class="d-flex align-items-center mb-3">
               <div class="col-6">
                 <label class="form-label no-margin" for="land-support-post-grade">Support Post Grade (LFT)</label>
@@ -298,7 +309,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="d-flex align-items-center mb-3">
               <div class="col-6">
                 <label class="form-label no-margin" for="land-width">Width (FT)</label>
@@ -325,7 +336,7 @@
                 <input type="number" class="form-control no-spinner" id="land-height" [(ngModel)]="ladingArea.height">
               </div>
             </div>
-            
+
             <div class="d-flex align-items-center mb-3">
               <div class="col-6">
                 <label class="form-label no-margin" for="land-picture-frame">Picture Frame (LFT)</label>
@@ -334,7 +345,7 @@
                 <input type="number" class="form-control no-spinner" id="land-picture-frame">
               </div>
             </div>
-            
+
             <div class="d-flex align-items-center mb-3">
               <div class="col-4">
                 <label class="form-label no-margin" for="land-beam-grade">Beam Grade (LFT)</label>
@@ -357,7 +368,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="d-flex align-items-center mb-3">
               <div class="col-6">
                 <label class="form-label no-margin" for="land-decking-area">Decking Area (SF)</label>
@@ -391,7 +402,7 @@
                 <input type="number" class="form-control no-spinner" id="stair-width" [(ngModel)]="stair.width">
               </div>
             </div>
-            
+
             <div class="d-flex align-items-center mb-3">
               <div class="col-6">
                 <label class="form-label no-margin" for="stair-total-riser">Total Riser (FT)</label>
@@ -400,7 +411,7 @@
                 <input type="number" class="form-control no-spinner" id="stair-total-riser" [(ngModel)]="stair.riser">
               </div>
             </div>
-            
+
             <div class="d-flex align-items-center mb-3">
               <div class="col-6">
                 <label class="form-label no-margin" for="stair-post-grade-size">Support Post Grade (LFT)</label>
@@ -440,7 +451,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="d-flex align-items-center mb-3">
               <div class="col-6">
                 <label class="form-label no-margin" for="stair-railing-both-sides">Railings on:</label>
@@ -827,10 +838,6 @@
 
 <!-- Extra Materials -->
 <div *ngIf="menu == 'extra-materials'" class="mb-3">
-  <!-- <div class="d-flex justify-content-end mb-3">
-    <button class="btn btn-outline-primary " (click)="addExtraMaterial()">+ New</button>
-  </div> -->
-
   <table class="table table-hover">
     <thead>
       <tr class="table-light">
@@ -846,7 +853,7 @@
       <tr *ngFor="let material of deckingQuote?.materialOrder?.extraMaterials; let i = index">
         <td>{{ i + 1 }}</td>
         <td>
-          <input type="number" class="form-control form-control-sm" [(ngModel)]="material.desc">
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="material.desc">
         </td>
         <td class="text-center">
           <input type="number" class="form-control form-control-sm" [(ngModel)]="material.cost">

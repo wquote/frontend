@@ -66,8 +66,8 @@ export class DeckQuoteEditComponent {
     }
   }
 
-  setActiveTab(tab: string) {
-    this.activeTab = tab
+  runEstimate() {
+    console.log('runEstimate')
   }
 
   save() {
