@@ -1,0 +1,441 @@
+<div class="d-flex justify-content-around  ">
+  <button type="button"
+          class="btn m-2 "
+          [class.btn-primary]="menu == 'general'"
+          [class.btn-light]="menu != 'general'"
+          (click)="menu = 'general'">General</button>
+  <button type="button"
+          class="btn m-2 "
+          [class.btn-primary]="menu == 'x-y view'"
+          [class.btn-light]="menu != 'x-y view'"
+          (click)="menu = 'x-y view'">(X - Y) View</button>
+</div>
+
+
+<div class="d-flex flex-column mb-3"
+     *ngIf="menu == 'general'">
+
+  <form [formGroup]="formGroupEstimate">
+
+    <!-- Material -->
+    <div class="mb-3">
+      <h4 class="text-center ">Material</h4>
+
+      <table class="table table-hover mb-3">
+        <thead>
+          <tr class="table-light">
+            <th colspan="2"
+                class="text-center ">Category</th>
+            <th class="text-center">Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Footings</td>
+            <td> </td>
+            <td class="text-center">
+              <div *ngIf="mo_footings.selectedSpecIndex != null">
+                {{mo_footings.materialOrderSpecs[mo_footings.selectedSpecIndex].cost?.toFixed(2)}}
+              </div>
+              <div *ngIf="mo_footings.selectedSpecIndex == null">-</div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Frame</td>
+            <td> </td>
+            <td class="text-center">
+              <div *ngIf="mo_frame && mo_frame.selectedSpecIndex != null">
+                {{mo_frame.materialOrderSpecs[mo_frame.selectedSpecIndex].cost?.toFixed(2)}}
+              </div>
+              <div *ngIf="!mo_frame || mo_frame.selectedSpecIndex == null">-</div>
+            </td>
+          </tr>
+
+          <!-- <tr>
+          <td>Galvanized Strap</td>
+          <td> </td>
+          <td class="text-center">
+            <div *ngIf="deckingQuote && deckingQuote.materialOrder && deckingQuote.materialOrder.galvanized ">
+              {{deckingQuote.materialOrder.galvanized.materialOrderSpecs[deckingQuote.materialOrder.galvanized.selectedSpecIndex
+                || 0].cost.toFixed(2)}}
+              </div>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>Decking Board</td>
+            <td>
+              <div *ngIf="deckingQuote.materialOrder && deckingQuote.materialOrder.board">
+                <select class="form-select form-select-sm"
+                name="board"
+                id="board"
+                [(ngModel)]="deckingQuote.materialOrder.board.selectedSpecIndex">
+                <option *ngFor="let spec of deckingQuote.materialOrder.board.materialOrderSpecs; let i = index"
+                [ngValue]="i">
+                {{spec.name}}</option>
+              </select>
+            </div>
+          </td>
+          <td class="text-center">
+            <div *ngIf="deckingQuote && deckingQuote.materialOrder && deckingQuote.materialOrder.board">
+              {{deckingQuote.materialOrder.board.materialOrderSpecs[deckingQuote.materialOrder.board.selectedSpecIndex
+                ||
+                0].cost.toFixed(2)}}
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Railing System</td>
+            <td>
+              <div *ngIf="deckingQuote && deckingQuote.materialOrder && deckingQuote.materialOrder.railing">
+                <select class="form-select form-select-sm"
+                name="railing"
+                id="railing"
+                [(ngModel)]="deckingQuote.materialOrder.railing.selectedSpecIndex">
+                <option *ngFor="let spec of deckingQuote.materialOrder.railing.materialOrderSpecs; let i = index"
+                [ngValue]="i"> {{spec.name}}</option>
+              </select>
+            </div>
+          </td>
+          <td class="text-center">
+            <div *ngIf="deckingQuote && deckingQuote.materialOrder && deckingQuote.materialOrder.railing">
+              {{deckingQuote.materialOrder.railing.materialOrderSpecs[deckingQuote.materialOrder.railing.selectedSpecIndex
+                ||
+                0].cost.toFixed(2)}}
+              </div>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>Finishing</td>
+            <td>
+              <div *ngIf="deckingQuote && deckingQuote.materialOrder && deckingQuote.materialOrder.finishing">
+                <select class="form-select form-select-sm"
+                name="finishing"
+                id="finishing"
+                [(ngModel)]="deckingQuote.materialOrder.finishing.selectedSpecIndex">
+                <option *ngFor="let spec of deckingQuote.materialOrder.finishing.materialOrderSpecs; let i = index"
+                [ngValue]="i">
+                {{spec.name}}</option>
+              </select>
+            </div>
+          </td>
+          <td class="text-center">
+            <div *ngIf="deckingQuote && deckingQuote.materialOrder && deckingQuote.materialOrder.finishing">
+              {{deckingQuote.materialOrder.finishing.materialOrderSpecs[deckingQuote.materialOrder.finishing.selectedSpecIndex
+                ||
+                0].cost.toFixed(2)}}
+              </div>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>Rain Scape</td>
+            <td>
+              <div *ngIf="deckingQuote && deckingQuote.materialOrder && deckingQuote.materialOrder.rainScape">
+                <select class="form-select form-select-sm"
+                name="rainScape"
+                id="rainScape"
+                [(ngModel)]="deckingQuote.materialOrder.rainScape.selectedSpecIndex">
+                <option *ngFor="let spec of deckingQuote.materialOrder.rainScape.materialOrderSpecs; let i = index"
+                [ngValue]="i">
+                {{spec.name}}</option>
+              </select>
+            </div>
+          </td>
+          <td class="text-center">
+            <div *ngIf="deckingQuote && deckingQuote.materialOrder && deckingQuote.materialOrder.rainScape">
+              {{deckingQuote.materialOrder.rainScape.materialOrderSpecs[deckingQuote.materialOrder.rainScape.selectedSpecIndex
+                || 0].cost.toFixed(2)}}
+              </div>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>Extra Materials</td>
+            <td></td>
+            <td class="text-center">
+              <div *ngIf="deckingQuote && deckingQuote.materialOrder && deckingQuote.materialOrder.extraMaterials">
+                {{ calculateExtraMaterialsCost().toFixed(2) }}
+              </div>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- Labor Costs -->
+    <div class="mb-3"
+         formArrayName="formLaborCosts">
+      <h4 class="text-center ">Labor Costs</h4>
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-light">
+            <th class="text-center ">#</th>
+            <th class="text-center description-column">Description</th>
+            <th class="text-center">Cost</th>
+            <th class="text-center"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let control of formLaborCosts.controls; index as i"
+              [formGroupName]="i">
+
+            <td> {{ i+1 }}</td>
+            <td>
+              <input type="text"
+                     class="form-control form-control-sm"
+                     formControlName="desc">
+            </td>
+            <td class="text-center">
+              <input type="number"
+                     class="form-control form-control-sm"
+                     formControlName="cost">
+            </td>
+            <td class="text-center">
+              <button class="btn btn-outline-danger btn-sm"
+                      (click)="removeLaborCost(i)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="text-center text-secondary"
+         *ngIf="!deckingQuote?.laborCosts">No data
+      </p>
+
+      <div class="d-flex justify-content-end ">
+        <button class="btn btn-outline-primary"
+                (click)="addLaborCost()">+</button>
+      </div>
+
+    </div>
+
+    <!-- Notes -->
+    <div class="mb-4">
+      <h4 class="text-center ">Description of Work</h4>
+
+      <textarea id="descriptionOfWork"
+                class="form-control"
+                rows="3"
+                formControlName="formNotes"></textarea>
+    </div>
+
+    <!-- Others Costs -->
+    <div class="mb-4"
+         formArrayName="formOtherCosts">
+      <h4 class="text-center ">Others Costs</h4>
+      <table class="table table-hover mb-3">
+        <thead>
+          <tr class="table-light">
+            <th class="text-center ">#</th>
+            <th class="text-center description-column">Description</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center">Unit Cost</th>
+            <th class="text-center">Total</th>
+            <th class="text-center "></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let control of formOtherCosts.controls; index as i"
+              [formGroupName]="i">
+            <td>{{ i+1 }}</td>
+            <td>
+              <input type="text"
+                     class="form-control form-control-sm"
+                     formControlName="desc">
+            </td>
+            <td>
+              <input #qty
+                     type="number"
+                     class="form-control form-control-sm"
+                     formControlName="qty">
+            </td>
+            <td>
+              <input #cost
+                     type="number"
+                     class="form-control form-control-sm"
+                     formControlName="cost">
+            </td>
+            <td>
+              <input type="number"
+                     class="form-control form-control-sm"
+                     disabled
+                     [value]="control.get('qty')?.value * control.get('cost')?.value">
+            </td>
+            <td class="text-center">
+              <button class="btn btn-outline-danger btn-sm"
+                      (click)="removeOtherCost(i)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="text-center text-secondary"
+         *ngIf="!deckingQuote?.otherCosts">No data
+      </p>
+
+      <div class="d-flex justify-content-end ">
+        <button class="btn btn-outline-primary"
+                (click)="addOtherCost()">+</button>
+      </div>
+
+    </div>
+
+
+    <!-- Job Profitability -->
+    <div class="mb-4">
+
+      <h4 class="text-center ">Job Profitability</h4>
+
+      <table class="table table-hover mb-3">
+        <thead>
+          <tr>
+            <th class="text-end ">Item</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Cost</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-end">Material</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ materialTotalCost.toFixed(2) }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="text-end">Labor</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ laborTotalCost.toFixed(2) }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="text-end">Other Cost</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ otherTotalCost.toFixed(2) }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="text-end">Total Cost</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ totalCost.toFixed(2) }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="text-end ">Profit</td>
+            <td class="align-items-center "
+                style="width: 10%;">
+              <div class="input-group input-group-sm ">
+                <input type="number"
+                       class="form-control "
+                       id="profitPercent"
+                       formControlName="formProfitPercent">
+                <span class="input-group-text"
+                      id="profitPercent">%</span>
+              </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ deckingQuote.profit?.toFixed(2) }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="text-end "><strong>Price for Customer</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><strong>{{ deckingQuote.value?.toFixed(2) }}</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tbody>
+      </table>
+
+    </div>
+
+  </form>
+</div>
+
+
+<!-- X-Y View-->
+<div *ngIf="menu == 'x-y view' && deckingQuote?.materialOrder?.board && deckingQuote?.materialOrder?.railing">
+
+  <table class="table table-hover mb-3">
+    <tbody>
+      <tr>
+        <th></th>
+        <th *ngFor="let railing of deckingQuote?.materialOrder?.railing?.materialOrderSpecs">{{railing.name}}</th>
+      </tr>
+      <tr *ngFor="let board of deckingQuote?.materialOrder?.board?.materialOrderSpecs; let deckingIndex = index">
+        <th>{{board.name}}</th>
+        <td *ngFor="let railing of deckingQuote?.materialOrder?.railing?.materialOrderSpecs; let railingIndex = index"
+            [class.text-success]="minorCost(deckingIndex, railingIndex)"
+            [class.text-danger]="majorCost(deckingIndex, railingIndex)"
+            [class.fw-bold]="minorCost(deckingIndex, railingIndex) || majorCost(deckingIndex, railingIndex)">
+          {{ calculateXYViewCost(board, railing).toFixed(2) }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<p class="text-center text-secondary"
+   *ngIf="menu == 'x-y view' && (!deckingQuote?.materialOrder?.board || !deckingQuote?.materialOrder?.railing)">No data
+</p>

@@ -4,7 +4,7 @@
 
 import { Component } from '@angular/core';
 import { CustomerModel } from 'src/app/models/customer.model';
-import { Quote } from 'src/app/models/quote.models';
+import { Quote } from 'src/app/models/quote.model';
 import { CustomerService } from 'src/app/services/customer.service';
 import { QuoteService } from 'src/app/services/quote.service';
 

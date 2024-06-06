@@ -17,5 +17,14 @@
         "titleBar.activeForeground": "#e7e7e7",
         "titleBar.inactiveBackground": "#266c4d99",
         "titleBar.inactiveForeground": "#e7e7e799"
-    }
+    },
+    
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "html.format.wrapAttributes": "force-aligned",
+    "editor.defaultFormatter": "vscode.html-language-features",
+    "prettier.printWidth": 80,
+    "prettier.htmlWhitespaceSensitivity": "ignore",
+    "prettier.semi": false,
 }

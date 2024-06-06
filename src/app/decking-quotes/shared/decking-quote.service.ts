@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiService } from './api.service';
-import { DeckingQuote as DeckingQuote } from '../models/decking-quote.model';
+import { ApiService } from 'src/app/services/api.service';
+import { DeckTakeOff, DeckingQuote } from './decking-quote.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DeckQuoteService {
+export class DeckingQuoteService {
   
   endpoint: string = '/quotes/decking/'
 
   constructor(private apiService: ApiService) { }
 
-  create(item: DeckingQuote): Observable<DeckingQuote> {
+  create(item: DeckingQuote): Observable<any> {
     let url: string = this.endpoint
     const body: Object = item
 
@@ -31,9 +31,9 @@ export class DeckQuoteService {
     return this.apiService.get(url)
   }
 
-  update(itemId: string, customer: DeckingQuote): Observable<DeckingQuote> {
+  update(itemId: string, item: DeckingQuote): Observable<DeckingQuote> {
     let url: string = this.endpoint + itemId
-    const body: Object = customer
+    const body: Object = item
 
     return this.apiService.put(url, body)
   }
@@ -42,5 +42,12 @@ export class DeckQuoteService {
     let url: string = this.endpoint + itemId
 
     return this.apiService.delete(url)
+  }
+
+  estimateMaterialOrder(itemId: string, deckingQuote: DeckingQuote): Observable<any> {
+    let url: string = this.endpoint + itemId + '/estimate'
+    const body: Object = deckingQuote
+
+    return this.apiService.put(url, body)
   }
 }

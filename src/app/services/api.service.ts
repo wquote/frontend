@@ -13,24 +13,24 @@ export class ApiService {
   constructor(private httpClient: HttpClient) {
     const currentUrl = window.location.href
 
-    if (currentUrl.startsWith('http://localhost')){
+    if (currentUrl.startsWith('http://localhost')) {
       this.url = 'http://localhost:8001'
       return
     }
 
-    if (currentUrl.startsWith('https://h-wquote.onrender.com')){
+    if (currentUrl.startsWith('https://h-wquote.onrender.com')) {
       this.url = 'https://h-wquote-api.onrender.com'
       return
     }
 
-    if (currentUrl.startsWith('https://wquote.onrender.com')){
+    if (currentUrl.startsWith('https://wquote.onrender.com')) {
       this.url = 'https://wquote-api.onrender.com'
       return
     }
   }
 
   get(endpoint: string, queryParams?: HttpParams): Observable<any> {
-    return this.httpClient.get(this.url + endpoint, {params: queryParams})
+    return this.httpClient.get(this.url + endpoint, { params: queryParams })
     // .pipe(retryWhen((errors) => this.handleRetry(errors)));
   }
 
@@ -38,7 +38,7 @@ export class ApiService {
     return this.httpClient.post(this.url + endpoint, body)
   }
 
-  put(endpoint: string, body: Object): Observable<any>{
+  put(endpoint: string, body: Object): Observable<any> {
     return this.httpClient.put(this.url + endpoint, body)
   }
 

@@ -1,0 +1,81 @@
+<div class="d-flex justify-content-between">
+   <div class="flex-fill  border-bottom">
+      <h2>Deck {{ this.quoteId == null ? 'Create' : 'Edit' }} </h2>
+
+   </div>
+
+   <!-- Main Menu -->
+   <nav class="nav nav-tabs"
+        id="deck-tab">
+      <a class="nav-link "
+         type="button"
+         data-bs-toggle="tab"
+         data-bs-target="#customer-info">Job Info</a>
+      <a class="nav-link active"
+         type="button"
+         data-bs-toggle="tab"
+         data-bs-target="#deck-take-off">Deck Take-off</a>
+      <a class="nav-link "
+         type="button"
+         data-bs-toggle="tab"
+         data-bs-target="#estimate"
+         (click)="estimateMaterialOrder()">Estimate</a>
+      <a class="nav-link "
+         type="button"
+         data-bs-toggle="tab"
+         data-bs-target="#material-order">Material Order</a>
+   </nav>
+</div>
+
+<div class="d-flex mb-3">
+   <p class="flex-fill fs-6 ">{{customer.lastName}}, {{customer.firstName}} - {{ deckingQuote.jobAddress }}</p>
+   <button class="btn btn-primary m-2"
+           (click)="save()">
+      <i class="bi bi-save"></i>
+      Save
+   </button>
+</div>
+
+<!-- Main Panel -->
+<div class="tab-content"
+     id="deck-panel">
+
+   <!-- Customer Info -->
+   <div class="tab-pane "
+        id="customer-info">
+      <app-dqe-customer *ngIf="customer && deckingQuote"
+                        [customer]="customer"
+                        [(notes)]="deckingQuote.notes"
+                        [(jobAddress)]="deckingQuote.jobAddress">
+      </app-dqe-customer>
+   </div>
+
+   <!-- Deck Take-off -->
+   <div class="tab-pane active"
+        id="deck-take-off">
+      <app-dqe-takeoff *ngIf="deckingQuote"
+                       [deckTakeOff]="deckingQuote.deckTakeOff">
+      </app-dqe-takeoff>
+   </div>
+
+   <!-- Estimate -->
+   <div class="tab-pane "
+        id="estimate">
+      <app-dqe-estimate *ngIf="deckingQuote && quoteId"
+                        [customer]="customer"
+                        [deckingQuote]="deckingQuote"></app-dqe-estimate>
+      <p *ngIf="!quoteId"
+         class="text-center text-secondary">
+         Please save the quote before estimating the material order.
+      </p>
+   </div>
+
+   <!-- Material Order -->
+   <div class="tab-pane "
+        id="material-order">
+      <app-dqe-material-order *ngIf="deckingQuote"
+                              [materialOrder]="deckingQuote.materialOrder"></app-dqe-material-order>
+   </div>
+</div>
+
+<pre>{{ deckingQuote | json }}</pre>
