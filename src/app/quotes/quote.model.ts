@@ -1,4 +1,11 @@
-import { JobType, QuoteState } from "./type.model"
+import { JobType } from "../shared/type.model"
+
+
+enum QuoteState {
+  OPENED = 'OPENED',
+  CLOSED = 'CLOSED'
+}
+
 
 export class Quote {
   id: string | undefined

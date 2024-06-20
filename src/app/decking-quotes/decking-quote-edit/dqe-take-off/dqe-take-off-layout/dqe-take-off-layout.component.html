@@ -1,0 +1,531 @@
+<!-- Layout -->
+
+<!-- New button -->
+<div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-outline-primary"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown">
+        <i class="bi bi-plus"></i>
+        New
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item"
+               href="javascript:;"
+               (click)="addArea()">Area</a></li>
+        <li><a class="dropdown-item"
+               href="javascript:;"
+               (click)="addLandingArea()">Landing Area</a></li>
+        <li><a class="dropdown-item"
+               href="javascript:;"
+               (click)="addStair()">Stair</a></li>
+    </ul>
+</div>
+
+<div class="row">
+    <!-- Area -->
+    <div class="col">
+
+        <div class="card mb-3"
+             *ngFor="let mainArea of layout.mainAreas; index as i">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <b>Area {{i+1}}</b>
+                <button class="btn btn-outline-danger"
+                        (click)="removeArea(mainArea)">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="area-deck-grade">Deck Grade</label>
+                        </div>
+                        <div class="col">
+                            <select id="area-deck-grade"
+                                    class="form-select"
+                                    [(ngModel)]="mainArea.deckGrade">
+                                <option value=""></option>
+                                <option value="2x6">2x6 Frame</option>
+                                <option value="2x8">2x8 Frame</option>
+                                <option value="2x10">2x10 Frame</option>
+                                <option value="2x12">2x12 Frame</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="area-ledger-board">Ledger Board (LFT)</label>
+                        </div>
+                        <div class="input-group">
+                            <div class="col-6">
+                                <select class="form-select"
+                                        id="area-support-post-grade"
+                                        [(ngModel)]="mainArea.ledgerBoard.size">
+                                    <option value=""></option>
+                                    <option value="2x8">2x8</option>
+                                    <option value="2x10">2x10</option>
+                                    <option value="2x12">2x12</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <input type="number"
+                                       class="form-control no-spinner"
+                                       id="area-support-post-grade"
+                                       placeholder="Ct"
+                                       [(ngModel)]="mainArea.ledgerBoard.qty">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="area-ledger-attaches-to">Ledger Attaches to</label>
+                        </div>
+                        <div class="col">
+                            <select class="form-select"
+                                    id="area-ledger-attaches-to"
+                                    [(ngModel)]="mainArea.ledgerAttachesTo">
+                                <option value=""></option>
+                                <option value="rim joist">Rim Joist</option>
+                                <option value="concrete">Concrete</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="area-support-post-grade">Support Post Grade (LFT)</label>
+                        </div>
+                        <div class="input-group">
+                            <div class="col-6">
+                                <select class="form-select"
+                                        id="area-support-post-grade"
+                                        [(ngModel)]="mainArea.supportPostGrade.size">
+                                    <option value=""></option>
+                                    <option value="4x4">4x4</option>
+                                    <option value="6x6">6x6</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <input type="number"
+                                       class="form-control no-spinner"
+                                       id="area-support-post-grade"
+                                       placeholder="Ct"
+                                       [(ngModel)]="mainArea.supportPostGrade.qty">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="area-width">Width (FT)</label>
+                        </div>
+                        <div class="col">
+                            <input type="number"
+                                   class="form-control no-spinner"
+                                   id="area-width"
+                                   [(ngModel)]="mainArea.width">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="area-depth">Depth (FT)</label>
+                        </div>
+                        <div class="col">
+                            <input type="number"
+                                   class="form-control no-spinner"
+                                   id="area-depth"
+                                   [(ngModel)]="mainArea.depth">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="area-height">Height (FT)</label>
+                        </div>
+                        <div class="col">
+                            <input type="number"
+                                   class="form-control no-spinner"
+                                   id="area-height"
+                                   [(ngModel)]="mainArea.height">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="area-picture-frame">Picture Frame (LFT)</label>
+                        </div>
+                        <div class="col">
+                            <input type="number"
+                                   class="form-control no-spinner"
+                                   id="area-picture-frame"
+                                   [(ngModel)]="mainArea.pictureFrame">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-4">
+                            <label class="form-label no-margin"
+                                   for="area-beam-grade">Beam Grade (LFT)</label>
+                        </div>
+                        <div class="input-group">
+                            <div class="col-8">
+                                <select class="form-select"
+                                        id="area-beam-grade"
+                                        [(ngModel)]="mainArea.beamGrade.size">
+                                    <option value=""></option>
+                                    <option value="double by 6 (2x6)">Double by 6</option>
+                                    <option value="triple by 6 (2x6)">Triple by 6</option>
+                                    <option value="double by 8 (2x8)">Double by 8</option>
+                                    <option value="triple by 8 (2x8)">Triple by 8</option>
+                                    <option value="double by 10 (2x10)">Double by 10</option>
+                                    <option value="triple by 10 (2x10)">Triple by 10</option>
+                                    <option value="double by 12 (2x12)">Double by 12</option>
+                                    <option value="triple by 12 (2x12)">Triple by 12</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <input type="number"
+                                       class="form-control no-spinner"
+                                       id="area-beam-grade-quantity"
+                                       placeholder="Qty"
+                                       [(ngModel)]="mainArea.beamGrade.qty">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="area-decking-area">Decking Area (SF)</label>
+                        </div>
+                        <div class="col">
+                            <input type="text"
+                                   class="form-control no-spinner"
+                                   id="area-decking-area"
+                                   disabled
+                                   [value]="(mainArea.width || 0) * (mainArea.depth || 0)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Landing Area -->
+    <div class="col">
+        <div class="card mb-3"
+             *ngFor="let ladingArea of layout.ladingAreas; let i = index">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <b>Landing Area {{i+1}}</b>
+                <button class="btn btn-outline-danger"
+                        (click)="removeLandingArea(ladingArea)">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label col-form-label"
+                                   for="land-deck-grade">Deck Grade</label>
+                        </div>
+                        <div class="col">
+                            <select class="form-select"
+                                    id="land-deck-grade"
+                                    [(ngModel)]="ladingArea.deckGrade">
+                                <option value=""></option>
+                                <option value="2x6">2x6 Frame</option>
+                                <option value="2x8">2x8 Frame</option>
+                                <option value="2x10">2x10 Frame</option>
+                                <option value="2x12">2x12 Frame</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label col-form-label"
+                                   for="land-ledger-board">Ledger Board (LFT)</label>
+                        </div>
+                        <div class="col">
+                            <select class="form-select"
+                                    id="land-ledger-board"
+                                    [(ngModel)]="ladingArea.ledgerBoard">
+                                <option value=""></option>
+                                <option value="2x6">2x6 Frame</option>
+                                <option value="2x8">2x8 Frame</option>
+                                <option value="2x10">2x10 Frame</option>
+                                <option value="2x12">2x12 Frame</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="land-ledger-attaches-to">Ledger Attaches to</label>
+                        </div>
+                        <div class="col">
+                            <select class="form-select"
+                                    id="land-ledger-attaches-to"
+                                    [(ngModel)]="ladingArea.ledgerAttachesTo">
+                                <option value=""></option>
+                                <option value="rim joist">Rim Joist</option>
+                                <option value="concrete">Concrete</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="land-support-post-grade">Support Post Grade (LFT)</label>
+                        </div>
+                        <div class="input-group">
+                            <div class="col-6">
+                                <select class="form-select"
+                                        id="land-support-post-grade"
+                                        [(ngModel)]="ladingArea.supportPostGrade.size">
+                                    <option value=""></option>
+                                    <option value="4x4">4x4</option>
+                                    <option value="6x6">6x6</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input type="number"
+                                       class="form-control no-spinner"
+                                       id="land-support-post-grade"
+                                       placeholder="Ct"
+                                       [(ngModel)]="ladingArea.supportPostGrade.qty">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="land-width">Width (FT)</label>
+                        </div>
+                        <div class="col">
+                            <input type="number"
+                                   class="form-control no-spinner"
+                                   id="land-width"
+                                   [(ngModel)]="ladingArea.width">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="land-depth">Depth (FT)</label>
+                        </div>
+                        <div class="col">
+                            <input type="number"
+                                   class="form-control no-spinner"
+                                   id="land-depth"
+                                   [(ngModel)]="ladingArea.depth">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="land-height">Height (FT)</label>
+                        </div>
+                        <div class="col">
+                            <input type="number"
+                                   class="form-control no-spinner"
+                                   id="land-height"
+                                   [(ngModel)]="ladingArea.height">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="land-picture-frame">Picture Frame (LFT)</label>
+                        </div>
+                        <div class="col">
+                            <input type="number"
+                                   class="form-control no-spinner"
+                                   id="land-picture-frame"
+                                   [(ngModel)]="ladingArea.pictureFrame">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-4">
+                            <label class="form-label no-margin"
+                                   for="land-beam-grade">Beam Grade (LFT)</label>
+                        </div>
+                        <div class="input-group">
+                            <div class="col-8">
+                                <select class="form-select"
+                                        id="land-beam-grade"
+                                        [(ngModel)]="ladingArea.beamGrade.size">
+                                    <option value=""></option>
+                                    <option value="double by 6 (2x6)">Double by 6</option>
+                                    <option value="triple by 6 (2x6)">Triple by 6</option>
+                                    <option value="double by 8 (2x8)">Double by 8</option>
+                                    <option value="triple by 8 (2x8)">Triple by 8</option>
+                                    <option value="double by 10 (2x10)">Double by 10</option>
+                                    <option value="triple by 10 (2x10)">Triple by 10</option>
+                                    <option value="double by 12 (2x12)">Double by 12</option>
+                                    <option value="triple by 12 (2x12)">Triple by 12</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <input type="number"
+                                       class="form-control no-spinner"
+                                       id="land-beam-grade"
+                                       placeholder="Qty"
+                                       [(ngModel)]="ladingArea.beamGrade.qty">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="land-decking-area">Decking Area (SF)</label>
+                        </div>
+                        <div class="col">
+                            <input type="text"
+                                   class="form-control no-spinner"
+                                   id="land-decking-area"
+                                   disabled
+                                   [value]="(ladingArea.width || 0) * (ladingArea.depth || 0)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stair -->
+    <div class="col">
+        <div class="card mb-3"
+             *ngFor="let stair of layout.stairs; index as i">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <b>Stair {{i+1}}</b>
+                <button class="btn btn-outline-danger"
+                        (click)="removeStair(stair)">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="stair-width">Width (FT)</label>
+                        </div>
+                        <div class="col">
+                            <input type="number"
+                                   class="form-control no-spinner"
+                                   id="stair-width"
+                                   [(ngModel)]="stair.width"
+                                   (ngModelChange)="calculateStairBeamGrade(i)">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="stair-total-riser">Total Riser (FT)</label>
+                        </div>
+                        <div class="col">
+                            <input type="number"
+                                   class="form-control no-spinner"
+                                   id="stair-total-riser"
+                                   [(ngModel)]="stair.riser"
+                                   (ngModelChange)="calculateStairBeamGrade(i)">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="stair-beam-grade">Beam Grade (LFT)</label>
+                        </div>
+                        <div class="col">
+                            <input type="checkbox"
+                                   class="form-check-input"
+                                   id="stair-beam-grade-quantity"
+                                   [checked]="beamGradeSelected"
+                                   (click)="toggleStairBeamGrade(i)">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="stair-railing-both-sides">Railings on:</label>
+                        </div>
+                        <div class="col">
+                            <select class="form-select"
+                                    id="stair-railing-both-sides"
+                                    [(ngModel)]="stair.railingsOn">
+                                <option value=""></option>
+                                <option value="one side">One side</option>
+                                <option value="both side">Both sides</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-2">
+                            <label class="form-label no-margin"
+                                   for="stair-hand-rail">Hand Rail</label>
+                        </div>
+                        <div class="col">
+                            <input type="number"
+                                   class="form-control no-spinner"
+                                   placeholder="LF sqrt( (tread*10/12)^2 + totalRiser^2 )"
+                                   disabled>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="stair-hand-rail">Risers</label>
+                        </div>
+                        <div class="col">
+                            <input type="number"
+                                   class="form-control no-spinner"
+                                   placeholder="round(totalRiser/7.75)"
+                                   disabled>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="col-6">
+                            <label class="form-label no-margin"
+                                   for="stair-hand-rail">Treads</label>
+                        </div>
+                        <div class="col">
+                            <input type="number"
+                                   class="form-control no-spinner"
+                                   placeholder="riser-1"
+                                   disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

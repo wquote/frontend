@@ -1,6 +1,7 @@
-import { MaterialOrderSpecs } from "src/app/models/material-order.model"
-import { Quote } from "src/app/models/quote.model"
-import { JobType } from "src/app/models/type.model"
+import { MaterialOrderSpecs } from "src/app/shared/material-order.model"
+import { JobType } from "src/app/shared/type.model"
+import { Quote } from "src/app/quotes/quote.model"
+
 
 export class DeckingQuote extends Quote {
   override type: JobType = JobType.DECKING
@@ -26,7 +27,7 @@ export class DeckingMaterialOrder {
   railing: MaterialOrderSpecs = new MaterialOrderSpecs()
   finishing: MaterialOrderSpecs = new MaterialOrderSpecs()
   rainScape: MaterialOrderSpecs = new MaterialOrderSpecs()
-  extraMaterials: DescQtyCost[] = new Array<DescQtyCost>()
+  extraMaterials: DescQtyCost[] = []
 }
 
 export class Footings {
@@ -42,14 +43,14 @@ export class Layout {
 }
 
 export class Area {
-  deckGrade: string = ''
-  ledgerBoard: string = ''
-  ledgerAttachesTo: string = ''
+  deckGrade?: string
+  ledgerBoard: QtySize = new QtySize()
+  ledgerAttachesTo?: string
   supportPostGrade: QtySize = new QtySize()
   width?: number
   depth?: number
   height?: number
-  pictureFrame?: boolean
+  pictureFrame?: number
   beamGrade: QtySize = new QtySize()
 }
 

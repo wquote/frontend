@@ -41,10 +41,12 @@
           (click)="menu = 'extra materials'">Extra Materials</button>
 </div>
 
+<!-- Footings -->
 <div class="d-flex flex-fill flex-column"
      *ngIf="menu == 'footings'">
   <!-- <div class="p-2 text-center h4">Structural</div> -->
-  <table class="table table-hover mb-3">
+  <table class="table table-hover mb-3"
+         *ngIf="materialOrder.footings && materialOrder.footings.selectedSpecIndex != undefined; noFootingsData">
     <thead>
       <tr class="table-light text-center">
         <th>Material</th>
@@ -54,7 +56,7 @@
         <th>Total</th>
       </tr>
     </thead>
-    <tbody *ngIf="materialOrder.footings.selectedSpecIndex != undefined">
+    <tbody>
       <tr
           *ngFor="let material of materialOrder.footings.materialOrderSpecs[materialOrder.footings.selectedSpecIndex].materials">
         <td class="description-column">{{material.descSnapshot}}</td>
@@ -65,12 +67,257 @@
                  name="qty"
                  [(ngModel)]="material.qty"></td>
         <td>{{material.priceSnapshot}}</td>
-        <td>{{((material.qty || 0) * (material.priceSnapshot || 0)).toFixed(2)}}</td>
+        <td>{{ ( (material.qty || 0) * (material.priceSnapshot || 0) ).toFixed(2) }}</td>
       </tr>
     </tbody>
   </table>
 
-  <p class="text-center text-secondary"
-     *ngIf="materialOrder.footings.selectedSpecIndex == undefined">There is no data.</p>
+  <ng-template #noFootingsData>
+    <p class="text-center text-secondary">There is no data.</p>
+  </ng-template>
 
 </div>
+
+
+<!-- Frame -->
+<div class="d-flex flex-fill flex-column"
+     *ngIf="menu == 'frame'">
+  <!-- <div class="p-2 text-center h4">Pressure Treated</div> -->
+  <table class="table table-hover mb-3"
+         *ngIf="materialOrder.frame && materialOrder.frame.selectedSpecIndex != undefined; else noFrameData">
+    <thead>
+      <tr class="table-light text-center">
+        <th>Material</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+          *ngFor="let material of materialOrder.frame.materialOrderSpecs[materialOrder.frame.selectedSpecIndex].materials">
+        <td class="description-column">{{material.descSnapshot}}</td>
+        <td><input type="number"
+                 class="form-control"
+                 id="qty"
+                 name="qty"
+                 [(ngModel)]="material.qty"></td>
+        <td>{{material.priceSnapshot}}</td>
+        <td>{{ ( (material.qty || 0) * (material.priceSnapshot || 0) ).toFixed(2) }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noFrameData>
+    <p class="text-center text-secondary">There is no data.</p>
+  </ng-template>
+</div>
+
+
+<!-- Galvanized -->
+<!-- <div class="d-flex flex-fill flex-column"
+     *ngIf="menu == 'galvanized'">
+  <!-- <div class="p-2 text-center h4">Structural</div>
+  <table class="table table-hover mb-3">
+    <thead>
+      <tr class="table-light text-center">
+        <th>Material</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody
+           *ngIf="deckingQuote 
+      && deckingQuote.materialOrder
+      && deckingQuote.materialOrder.galvanized 
+      && deckingQuote.materialOrder.galvanized.materialOrderSpecs 
+      && deckingQuote.materialOrder.galvanized.selectedSpecIndex != undefined
+      && deckingQuote.materialOrder.galvanized.materialOrderSpecs[deckingQuote.materialOrder.galvanized.selectedSpecIndex]">
+      <tr
+          *ngFor="let material of deckingQuote.materialOrder.galvanized.materialOrderSpecs[deckingQuote.materialOrder.footings.selectedSpecIndex].materials">
+        <td class="description-column">{{material.descSnapshot}}</td>
+        <td><input type="number"
+                 class="form-control"
+                 id="qty"
+                 name="qty"
+                 [(ngModel)]="material.qty"></td>
+        <td>{{material.priceSnapshot}}</td>
+        <td>{{((material.qty || 0) * (material.priceSnapshot || 0)).toFixed(2)}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+<!-- Decking Board -->
+<!-- <div class="d-flex flex-fill flex-column"
+     *ngIf="menu == 'board'">
+  <!-- <div class="p-2 text-center h4">Board</div> 
+  <table class="table table-hover mb-3">
+    <thead>
+      <tr class="table-light text-center">
+        <th>Material</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="deckingQuote 
+      && deckingQuote.materialOrder
+      && deckingQuote.materialOrder.board 
+      && deckingQuote.materialOrder.board.materialOrderSpecs 
+      && deckingQuote.materialOrder.board.selectedSpecIndex != undefined
+      && deckingQuote.materialOrder.board.materialOrderSpecs[deckingQuote.materialOrder.board.selectedSpecIndex]">
+      <tr
+          *ngFor="let material of deckingQuote.materialOrder.board.materialOrderSpecs[deckingQuote.materialOrder.board.selectedSpecIndex].materials">
+        <td class="description-column">{{material.descSnapshot}}</td>
+        <td><input type="number"
+                 class="form-control"
+                 id="qty"
+                 name="qty"
+                 [(ngModel)]="material.qty"></td>
+        <td>{{material.priceSnapshot}}</td>
+        <td>{{((material.qty || 0) * (material.priceSnapshot || 0)).toFixed(2)}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+<!-- Railling System -->
+<!-- <div class="d-flex flex-fill flex-column"
+     *ngIf="menu == 'railing'">
+  <!-- <div class="p-2 text-center h4">Railing</div> 
+  <table class="table table-hover mb-3">
+    <thead>
+      <tr class="table-light text-center">
+        <th>Material</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="deckingQuote 
+      && deckingQuote.materialOrder
+      && deckingQuote.materialOrder.railing 
+      && deckingQuote.materialOrder.railing.materialOrderSpecs 
+      && deckingQuote.materialOrder.railing.selectedSpecIndex != undefined
+      && deckingQuote.materialOrder.railing.materialOrderSpecs[deckingQuote.materialOrder.railing.selectedSpecIndex]">
+      <tr
+          *ngFor="let material of deckingQuote.materialOrder.railing.materialOrderSpecs[deckingQuote.materialOrder.railing.selectedSpecIndex].materials">
+        <td class="description-column">{{material.descSnapshot}}</td>
+        <td><input type="number"
+                 class="form-control"
+                 id="qty"
+                 name="qty"
+                 [(ngModel)]="material.qty"></td>
+        <td>{{material.priceSnapshot}}</td>
+        <td>{{((material.qty || 0) * (material.priceSnapshot || 0)).toFixed(2)}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+<!-- Finishing -->
+<!-- <div class="d-flex flex-fill flex-column"
+     *ngIf="menu == 'finishing'">
+  <!-- <div class="p-2 text-center h4">Finishing</div> 
+  <table class="table table-hover mb-3">
+    <thead>
+      <tr class="table-light text-center">
+        <th>Material</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody
+           *ngIf="deckingQuote 
+      && deckingQuote.materialOrder
+      && deckingQuote.materialOrder.finishing 
+      && deckingQuote.materialOrder.finishing.materialOrderSpecs 
+      && deckingQuote.materialOrder.finishing.selectedSpecIndex != undefined
+      && deckingQuote.materialOrder.finishing.materialOrderSpecs[deckingQuote.materialOrder.finishing.selectedSpecIndex]">
+      <tr
+          *ngFor="let material of deckingQuote.materialOrder.finishing.materialOrderSpecs[deckingQuote.materialOrder.finishing.selectedSpecIndex].materials">
+        <td class="description-column">{{material.descSnapshot}}</td>
+        <td><input type="number"
+                 class="form-control"
+                 id="qty"
+                 name="qty"
+                 [(ngModel)]="material.qty"></td>
+        <td>{{material.priceSnapshot}}</td>
+        <td>{{((material.qty || 0) * (material.priceSnapshot || 0)).toFixed(2)}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+<!-- Rain Scape -->
+<!-- <div class="d-flex flex-fill flex-column"
+     *ngIf="menu == 'rain scape'">
+  <!-- <div class="p-2 text-center h4">Rain Scape</div> 
+  <table class="table table-hover mb-3">
+    <thead>
+      <tr class="table-light text-center">
+        <th>Material</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody
+           *ngIf="deckingQuote 
+      && deckingQuote.materialOrder
+      && deckingQuote.materialOrder.rainScape
+      && deckingQuote.materialOrder.rainScape.materialOrderSpecs 
+      && deckingQuote.materialOrder.rainScape.selectedSpecIndex != undefined
+      && deckingQuote.materialOrder.rainScape.materialOrderSpecs[deckingQuote.materialOrder.rainScape.selectedSpecIndex]">
+      <tr
+          *ngFor="let material of deckingQuote.materialOrder.rainScape.materialOrderSpecs[deckingQuote.materialOrder.rainScape.selectedSpecIndex].materials">
+        <td class="description-column">{{material.descSnapshot}}</td>
+        <td><input type="number"
+                 class="form-control"
+                 id="qty"
+                 name="qty"
+                 [(ngModel)]="material.qty"></td>
+        <td>{{material.priceSnapshot}}</td>
+        <td>{{((material.qty || 0) * (material.priceSnapshot || 0)).toFixed(2)}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+<!-- Extra Materials -->
+<!-- <div class="d-flex flex-fill flex-column"
+     *ngIf="menu == 'extra materials'">
+  <!-- <div class="p-2 text-center h4">Extra Materials</div> 
+  <table class="table table-hover mb-3">
+    <thead>
+      <tr class="table-light text-center">
+        <th>Material</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="deckingQuote 
+      && deckingQuote.materialOrder
+      && deckingQuote.materialOrder.extraMaterials">
+      <tr *ngFor="let material of deckingQuote.materialOrder.extraMaterials">
+        <td class="description-column">{{material.desc}}</td>
+        <td><input type="number"
+                 class="form-control"
+                 id="qty"
+                 name="qty"
+                 [(ngModel)]="material.qty"></td>
+        <td>{{material.cost}}</td>
+        <td>{{((material.qty || 0) * (material.cost || 0)).toFixed(2)}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->

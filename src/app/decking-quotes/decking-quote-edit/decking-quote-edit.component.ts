@@ -5,11 +5,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { DeckTakeOff, DeckingMaterialOrder, DeckingQuote, DescCost } from 'src/app/decking-quotes/shared/decking-quote.model';
+import { CustomerModel } from 'src/app/customer/shared/customer.model';
+import { CustomerService } from 'src/app/customer/shared/customer.service';
+import { DeckingQuote } from 'src/app/decking-quotes/shared/decking-quote.model';
 import { DeckingQuoteService } from 'src/app/decking-quotes/shared/decking-quote.service';
-import { CustomerModel } from 'src/app/models/customer.model';
-import { JobType } from 'src/app/models/type.model';
-import { CustomerService } from 'src/app/services/customer.service';
+
 
 @Component({
   selector: 'app-decking-quote-edit',
@@ -36,7 +36,7 @@ export class DeckingQuoteEditComponent {
   }
 
   readCustomer() {
-    this.customerId = this.activatedRoute.snapshot.paramMap.get('customerId') as string
+    this.customerId = this.activatedRoute.snapshot.queryParamMap.get('customerId') as string
     if (this.customerId) {
       this.customerService.read(this.customerId).subscribe((c: CustomerModel) => {
         this.customer = c
@@ -49,7 +49,6 @@ export class DeckingQuoteEditComponent {
     this.quoteId = this.activatedRoute.snapshot.paramMap.get('quoteId') as string
 
     if (!this.quoteId) {
-      this.deckingQuote = new DeckingQuote()
       this.homeAddress$.subscribe((homeAddress: string) => {
         this.deckingQuote && (this.deckingQuote.jobAddress = homeAddress)
       })
@@ -57,26 +56,25 @@ export class DeckingQuoteEditComponent {
     }
 
     if (this.quoteId) {
-      this.deckingQuoteService.read(this.quoteId).subscribe(
-        (dq: DeckingQuote) => {
-          this.deckingQuote = dq
-        })
+      this.deckingQuoteService.read(this.quoteId).subscribe((dq: DeckingQuote) => {
+        console.log('readDeckingQuote()', dq)
+        this.deckingQuote = dq
+      })
     }
   }
 
   estimateMaterialOrder() {
     if (!this.deckingQuote || !this.quoteId) { return }
 
-    this.deckingQuoteService.estimateMaterialOrder(this.quoteId, this.deckingQuote).subscribe(
-      (respOk) => {
+    this.deckingQuoteService.estimateMaterialOrder(this.quoteId, this.deckingQuote)
+      .subscribe((respOk) => {
         if (!respOk) {
           window.alert('Failed to estimate decking quote material order.')
           return
         }
         window.alert('Decking quote estimated successfully.')
         this.readDeckingQuote()
-      }
-    )
+      })
   }
 
   updateProjectValue(projectValue: number) {
@@ -103,7 +101,7 @@ export class DeckingQuoteEditComponent {
         )
       }
       // edit deck quote
-      else {
+      if (this.deckingQuote.id) {
         this.deckingQuoteService.update(this.deckingQuote.id, this.deckingQuote).subscribe(
           () => {
             window.alert('Decking quote updated successfully.')

@@ -5,15 +5,22 @@
 
   <div class="border-bottom">
 
-    <button class="btn btn-outline-primary" id="dropdownMenuButton" data-bs-toggle="dropdown">
+    <button class="btn btn-outline-primary"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown">
       <i class="bi bi-plus"></i>
       New
     </button>
 
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" [routerLink]="['/customers',customerId, 'quotes', 'new']">Decking </a></li>
-      <li><a class="dropdown-item" href="#">Roofing</a></li>
-      <li><a class="dropdown-item" href="#">Siding</a></li>
+      <!-- <li><a class="dropdown-item" [routerLink]="['/customers', customerId, 'quotes', 'new']">Decking </a></li> -->
+      <li><a class="dropdown-item"
+           [routerLink]="['/quotes', 'decking', 'new']"
+           [queryParams]="{ customerId: customerId }">Decking </a></li>
+      <li><a class="dropdown-item"
+           href="#">Roofing</a></li>
+      <li><a class="dropdown-item"
+           href="#">Siding</a></li>
     </ul>
   </div>
 </div>
@@ -25,14 +32,16 @@
 
       <div class="col-md-6 col-sm-12">
         <div class="mb-3">
-          <label class="form-label" for="name">Name</label>
+          <label class="form-label"
+                 for="name">Name</label>
           <div>{{customer?.firstName}} {{customer?.lastName}}</div>
         </div>
       </div>
 
       <div class="col-md-6 col-sm-12">
         <div class="col mb-3">
-          <label class="form-label" for="phone">Phone</label>
+          <label class="form-label"
+                 for="phone">Phone</label>
           <div>{{customer?.phones || '-'}}</div>
         </div>
       </div>
@@ -63,14 +72,21 @@
       <td> {{ quote.updatedAt | date }} </td>
       <td> {{ quote.profit }} </td>
       <td> {{ quote.value }} </td>
-      <td> <i class="bi bi-info-circle-fill " title="{{quote.notes}}"></i> </td>
+      <td> <i class="bi bi-info-circle-fill "
+           title="{{quote.notes}}"></i> </td>
       <td class="d-flex">
         <button class="btn btn-outline-primary btn-sm me-2"
-          [routerLink]="[ '/customers', customerId, 'quotes', quote.id ]" title="Edit">
+                title="Edit"
+                [routerLink]="[ '/quotes', quote.type?.toLowerCase(), quote.id ]"
+                [queryParams]="{ customerId: customerId }">
+          <!-- [routerLink]="[ '/customers', customerId, 'quotes', quote.id ]" title="Edit"> -->
           <i class="bi bi-pencil-fill"></i>
         </button>
         <button class="btn btn-outline-secondary btn-sm me-2"
-          [routerLink]="[ '/quotes/'+quote.type+'s/edit/', quote.id ]" title="Duplicate">
+                title="Duplicate"
+                disabled
+                [routerLink]="[ '/quotes/' + quote.type?.toLowerCase() + '/edit/', quote.id ]"
+                [queryParams]="{ customerId: customerId }">
           <i class="bi bi-files"></i>
         </button>
       </td>
@@ -78,4 +94,5 @@
   </tbody>
 </table>
 
-<p class="text-center text-secondary" *ngIf="customerQuotes.length == 0">There is no quotes registered for this customer.</p>
+<p class="text-center text-secondary"
+   *ngIf="customerQuotes.length == 0">There is no quotes registered for this customer.</p>

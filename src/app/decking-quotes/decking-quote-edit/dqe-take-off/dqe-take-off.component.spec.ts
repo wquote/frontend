@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DqeTakeoffComponent } from './dqe-takeoff.component';
+import { DqeTakeOffComponent } from './dqe-take-off.component';
 
 describe('DqeTakeoffComponent', () => {
-  let component: DqeTakeoffComponent;
-  let fixture: ComponentFixture<DqeTakeoffComponent>;
+  let component: DqeTakeOffComponent;
+  let fixture: ComponentFixture<DqeTakeOffComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DqeTakeoffComponent ]
+      declarations: [ DqeTakeOffComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DqeTakeoffComponent);
+    fixture = TestBed.createComponent(DqeTakeOffComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

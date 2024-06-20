@@ -9,8 +9,10 @@
           [class.btn-primary]="menu == 'x-y view'"
           [class.btn-light]="menu != 'x-y view'"
           (click)="menu = 'x-y view'">(X - Y) View</button>
-</div>
 
+  <button class="btn btn-primary m-2"
+  (click)="calculateMaterialCosts()">Calculate</button>
+</div>
 
 <div class="d-flex flex-column mb-3"
      *ngIf="menu == 'general'">

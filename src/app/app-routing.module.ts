@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './views/home/home.component';
-import { CustomerEditComponent } from './views/customer-edit/customer-edit.component';
-import { CustomerListComponent } from './views/customer-list/customer-list.component';
-import { CustomerQuotesListComponent } from './views/customer-quotes-list/customer-quotes-list.component';
+import { HomeComponent } from './home/home.component';
+import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
+import { CustomerListComponent } from './customer/customer-list/customer-list.component';
+import { CustomerQuotesListComponent } from './customer/customer-quotes-list/customer-quotes-list.component';
 import { DeckingQuoteEditComponent } from './decking-quotes/decking-quote-edit/decking-quote-edit.component';
 
 const routes: Routes = [
@@ -14,8 +14,10 @@ const routes: Routes = [
   { path: 'customers/new', component: CustomerEditComponent },
   { path: 'customers/:id', component: CustomerEditComponent },
   { path: 'customers/:id/quotes', component: CustomerQuotesListComponent },
-  { path: 'customers/:customerId/quotes/new', component: DeckingQuoteEditComponent },
-  { path: 'customers/:customerId/quotes/:quoteId', component: DeckingQuoteEditComponent },
+
+  // { path: 'customers/:customerId/quotes/new', component: DeckingQuoteEditComponent },
+  { path: 'quotes/decking/new', component: DeckingQuoteEditComponent },
+  { path: 'quotes/decking/:quoteId', component: DeckingQuoteEditComponent },
 ];
 
 @NgModule({

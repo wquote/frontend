@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService } from 'src/app/core/api.service';
 import { DeckTakeOff, DeckingQuote } from './decking-quote.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeckingQuoteService {
-  
+
   endpoint: string = '/quotes/decking/'
 
   constructor(private apiService: ApiService) { }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CustomerModel } from 'src/app/models/customer.model';
-import { Quote } from 'src/app/models/quote.model';
-import { CustomerService } from 'src/app/services/customer.service';
-import { QuoteService } from 'src/app/services/quote.service';
+import { CustomerModel } from 'src/app/customer/shared/customer.model';
+import { Quote } from "src/app/quotes/quote.model";
+import { QuoteService } from 'src/app/quotes/quote.service';
+import { CustomerService } from '../shared/customer.service';
 
 @Component({
   selector: 'app-customer-quotes-list',
@@ -37,8 +37,7 @@ export class CustomerQuotesListComponent implements OnInit {
 
   readCustomerQuotes() {
     this.customerId && this.quoteService.readByCustomer(this.customerId).subscribe( q => {
-      // Sort by date
-      // q.sort( (a,b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime() )
+      q.sort( (a,b) => new Date(b.updatedAt || 0 ).getTime() - new Date(a.updatedAt || 0 ).getTime() )
       this.customerQuotes = q
     })
   }

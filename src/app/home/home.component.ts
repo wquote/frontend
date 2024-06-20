@@ -3,10 +3,10 @@
 // - implementar a paginação 
 
 import { Component } from '@angular/core';
-import { CustomerModel } from 'src/app/models/customer.model';
-import { Quote } from 'src/app/models/quote.model';
-import { CustomerService } from 'src/app/services/customer.service';
-import { QuoteService } from 'src/app/services/quote.service';
+import { CustomerModel } from 'src/app/customer/shared/customer.model';
+import { Quote } from "src/app/quotes/quote.model";
+import { CustomerService } from 'src/app/customer/shared/customer.service';
+import { QuoteService } from 'src/app/quotes/quote.service';
 
 @Component({
   selector: 'app-home',
@@ -37,8 +37,7 @@ export class HomeComponent {
 
   readAllQuotes() {
     this.quoteService.readAll().subscribe( q => {
-      // Sort by date - desc
-      // q.sort( (a,b) => new Date(b.date).getTime() - new Date(a.date).getTime() )
+      q.sort( (a,b) => new Date(b.updatedAt || 0).getTime() - new Date(a.updatedAt || 0).getTime() )
       this.quotes = q
     })
   }

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CustomerModel } from 'src/app/models/customer.model';
-import { CustomerService } from 'src/app/services/customer.service';
+import { CustomerModel } from 'src/app/customer/shared/customer.model';
+import { CustomerService } from 'src/app/customer/shared/customer.service';
 
 @Component({
   selector: 'app-dqe-customer',

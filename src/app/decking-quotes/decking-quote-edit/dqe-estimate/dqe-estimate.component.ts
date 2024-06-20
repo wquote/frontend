@@ -1,16 +1,16 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { BehaviorSubject, Subscription, combineLatest } from 'rxjs';
-import { CustomerModel } from 'src/app/models/customer.model';
+import { Subscription } from 'rxjs';
+import { CustomerModel } from 'src/app/customer/shared/customer.model';
 import { DeckingQuote, DescCost, DescQtyCost } from 'src/app/decking-quotes/shared/decking-quote.model';
-import { MaterialOrderSpec, MaterialOrderSpecs } from 'src/app/models/material-order.model';
+import { MaterialOrderSpec, MaterialOrderSpecs } from 'src/app/shared/material-order.model';
 
 @Component({
   selector: 'app-dqe-estimate',
   templateUrl: './dqe-estimate.component.html',
   styleUrls: ['./dqe-estimate.component.css']
 })
-export class DqeEstimateComponent implements OnInit, OnDestroy {
+export class DqeEstimateComponent implements OnDestroy, OnChanges {
 
   @Input() customer: CustomerModel = new CustomerModel()
   @Input() deckingQuote: DeckingQuote = new DeckingQuote()
@@ -40,11 +40,13 @@ export class DqeEstimateComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder) { }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     (window as any).deckingQuote = this.deckingQuote
 
-    this.mo_footings = this.deckingQuote.materialOrder.footings
-    this.mo_frame = this.deckingQuote.materialOrder.frame
+    console.log('ngOnChanges()', changes)
+
+    this.mo_footings = this.deckingQuote!.materialOrder.footings
+    this.mo_frame = this.deckingQuote!.materialOrder.frame
 
     this.onFormLaborCostsChange()
     this.onFormNotesChange()
@@ -66,20 +68,20 @@ export class DqeEstimateComponent implements OnInit, OnDestroy {
     console.log('initializeFormGroupEstimate()', this.deckingQuote)
 
     // Initialize formLaborCosts
-    this.deckingQuote?.laborCosts?.forEach(labor => {
+    this.deckingQuote.laborCosts.forEach(labor => {
       this.formLaborCosts.push(this.fb.group(labor))
     })
 
     // Initialize formNotes
-    this.formNotes.setValue(this.deckingQuote?.notes)
+    this.formNotes.setValue(this.deckingQuote.notes)
 
     // Initialize formOtherCosts
-    this.deckingQuote?.otherCosts?.forEach(other => {
+    this.deckingQuote.otherCosts.forEach(other => {
       this.formOtherCosts.push(this.fb.group(other))
     })
 
     // Initialize formProfitPercent
-    this.formProfitPercent.setValue(this.deckingQuote?.profitPercent)
+    this.formProfitPercent.setValue(this.deckingQuote.profitPercent)
 
   }
 
@@ -168,15 +170,14 @@ export class DqeEstimateComponent implements OnInit, OnDestroy {
     let totalMaterialCosts: number = 0
 
     const addMaterialOrderCost = (item: MaterialOrderSpecs) => {
-      if (item.selectedSpecIndex === undefined) { return }
+      if (!item || item.selectedSpecIndex === undefined) { return }
 
       let index: number = item.selectedSpecIndex
-      totalMaterialCosts += item.materialOrderSpecs[index].cost || 0 
-
+      totalMaterialCosts += item.materialOrderSpecs[index].cost || 0
     }
 
     const addExtraMaterialsCost = (extraMaterials: DescQtyCost[]) => {
-      if (extraMaterials === null) return
+      if (!extraMaterials) return
 
       extraMaterials.forEach(em => totalMaterialCosts += em.cost!)
     }
@@ -184,6 +185,7 @@ export class DqeEstimateComponent implements OnInit, OnDestroy {
     if (this.deckingQuote && this.deckingQuote.materialOrder) {
       const { footings, frame, galvanized, board, railing, finishing, rainScape, extraMaterials } = this.deckingQuote.materialOrder;
 
+      console.log('calculateMaterialCosts()', footings, frame, galvanized, board, railing, finishing, rainScape, extraMaterials)
       addMaterialOrderCost(footings);
       addMaterialOrderCost(frame);
       addMaterialOrderCost(galvanized);
@@ -195,15 +197,16 @@ export class DqeEstimateComponent implements OnInit, OnDestroy {
     }
 
     this.materialTotalCost = totalMaterialCosts
+    console.log('calculateMaterialCosts()', totalMaterialCosts)
     return totalMaterialCosts
   }
 
   calculateExtraMaterialsCost(): number {
-    return this.deckingQuote?.materialOrder.extraMaterials?.reduce((acc, cur) => acc + (cur.qty || 0) * (cur.cost || 0), 0) || 0
+    return this.deckingQuote.materialOrder.extraMaterials.reduce((acc, cur) => acc + (cur.qty || 0) * (cur.cost || 0), 0) || 0
   }
 
   calculateXYViewCost(board: MaterialOrderSpec, railing: MaterialOrderSpec): number {
-    return this.calculateMaterialCosts(board, railing) + this.laborTotalCost + this.otherTotalCost + (this.deckingQuote?.profit || 0)
+    return this.calculateMaterialCosts(board, railing) + this.laborTotalCost + this.otherTotalCost + (this.deckingQuote.profit || 0)
     // return 0
   }
 

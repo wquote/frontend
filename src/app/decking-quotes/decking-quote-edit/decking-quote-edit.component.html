@@ -61,7 +61,7 @@
    <!-- Estimate -->
    <div class="tab-pane "
         id="estimate">
-      <app-dqe-estimate *ngIf="deckingQuote && quoteId"
+      <app-dqe-estimate *ngIf="quoteId && deckingQuote"
                         [customer]="customer"
                         [deckingQuote]="deckingQuote"></app-dqe-estimate>
       <p *ngIf="!quoteId"
