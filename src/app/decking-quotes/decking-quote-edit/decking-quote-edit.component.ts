@@ -17,9 +17,9 @@ import { DeckingQuoteService } from 'src/app/decking-quotes/shared/decking-quote
   styleUrls: ['./decking-quote-edit.component.css']
 })
 export class DeckingQuoteEditComponent {
-  customerId: string = ''
+  customerId?: string
   customer: CustomerModel = new CustomerModel()
-  quoteId: string = ''
+  quoteId?: string 
   deckingQuote: DeckingQuote = new DeckingQuote()
   homeAddress$: BehaviorSubject<string> = new BehaviorSubject<string>('')
 

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Area, Layout, Stair } from 'src/app/decking-quotes/shared/decking-quote.model';
 
 @Component({
@@ -6,10 +6,20 @@ import { Area, Layout, Stair } from 'src/app/decking-quotes/shared/decking-quote
   templateUrl: './dqe-take-off-layout.component.html',
   styleUrls: ['./dqe-take-off-layout.component.css']
 })
-export class DqeTakeOffLayoutComponent {
+export class DqeTakeOffLayoutComponent implements OnChanges {
   @Input() layout: Layout = new Layout()
 
   beamGradeSelected: boolean = false
+
+  stairRisers: number[] = []
+  stairTreads: number[] = []
+  stairHandRails: number[] = []
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.layout.stairs.forEach( (_, index) => {
+      this.calculateStairRiserTreadHandRail(index)
+    })
+  }
 
   addArea() {
     this.layout.mainAreas.push(new Area())
@@ -39,7 +49,7 @@ export class DqeTakeOffLayoutComponent {
     if (this.beamGradeSelected) {
       this.layout.stairs[index].beamGrade.size = 'double by 6 (2x6)'
       this.layout.stairs[index].beamGrade.qty = this.layout.stairs[index].width
-      
+
       this.layout.stairs[index].supportPostGrade.size = '4x4'
       this.layout.stairs[index].supportPostGrade.qty = this.layout.stairs[index].riser
     }
@@ -60,4 +70,15 @@ export class DqeTakeOffLayoutComponent {
     }
   }
 
+  calculateStairRiserTreadHandRail(index: number) {
+    const totalRiser: number = this.layout.stairs[index].riser as number
+    const riser: number = Math.ceil(totalRiser / 7.75)
+    this.stairRisers[index] = riser
+    
+    const treads: number = riser - 1
+    this.stairTreads[index] = treads
+
+    this.stairHandRails[index] = Math.sqrt((treads * 10 / 12) ** 2 + (totalRiser) ** 2)
+    return riser
+  }
 }

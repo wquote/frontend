@@ -452,7 +452,7 @@
                                    class="form-control no-spinner"
                                    id="stair-total-riser"
                                    [(ngModel)]="stair.riser"
-                                   (ngModelChange)="calculateStairBeamGrade(i)">
+                                   (ngModelChange)="calculateStairBeamGrade(i); calculateStairRiserTreadHandRail(i)">
                         </div>
                     </div>
 
@@ -487,14 +487,14 @@
                     </div>
 
                     <div class="d-flex align-items-center mb-3">
-                        <div class="col-2">
+                        <div class="col-6">
                             <label class="form-label no-margin"
                                    for="stair-hand-rail">Hand Rail</label>
                         </div>
                         <div class="col">
                             <input type="number"
                                    class="form-control no-spinner"
-                                   placeholder="LF sqrt( (tread*10/12)^2 + totalRiser^2 )"
+                                   [placeholder]="stairHandRails[i].toFixed(2)"
                                    disabled>
                         </div>
                     </div>
@@ -507,7 +507,7 @@
                         <div class="col">
                             <input type="number"
                                    class="form-control no-spinner"
-                                   placeholder="round(totalRiser/7.75)"
+                                   [placeholder]="stairRisers[i]"
                                    disabled>
                         </div>
                     </div>
@@ -520,7 +520,7 @@
                         <div class="col">
                             <input type="number"
                                    class="form-control no-spinner"
-                                   placeholder="riser-1"
+                                   [placeholder]="stairTreads[i]"
                                    disabled>
                         </div>
                     </div>
