@@ -7,11 +7,11 @@
    <!-- Main Menu -->
    <nav class="nav nav-tabs"
         id="deck-tab">
-      <a class="nav-link "
+      <a class="nav-link active"
          type="button"
          data-bs-toggle="tab"
          data-bs-target="#customer-info">Job Info</a>
-      <a class="nav-link active"
+      <a class="nav-link "
          type="button"
          data-bs-toggle="tab"
          data-bs-target="#deck-take-off">Deck Take-off</a>
@@ -41,7 +41,7 @@
      id="deck-panel">
 
    <!-- Customer Info -->
-   <div class="tab-pane "
+   <div class="tab-pane active "
         id="customer-info">
       <app-dqe-customer *ngIf="customer && deckingQuote"
                         [customer]="customer"
@@ -51,7 +51,7 @@
    </div>
 
    <!-- Deck Take-off -->
-   <div class="tab-pane active"
+   <div class="tab-pane "
         id="deck-take-off">
       <app-dqe-takeoff *ngIf="deckingQuote"
                        [deckTakeOff]="deckingQuote.deckTakeOff">
@@ -78,4 +78,4 @@
    </div>
 </div>
 
-<pre>{{ deckingQuote | json }}</pre>
+<!-- <pre>{{ deckingQuote | json }}</pre> -->

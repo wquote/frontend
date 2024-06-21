@@ -11,7 +11,7 @@ export class DqeTakeOffComponent {
   @Input() deckTakeOff: DeckTakeOff = new DeckTakeOff() // This input is overrided by the parent's input
   @Input() extraMaterials: DescQtyCost[] = []
 
-  menu: string = 'layout'
+  menu: string = 'footing'
 
 
 
