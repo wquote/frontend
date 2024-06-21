@@ -127,7 +127,7 @@ export class DqeEstimateComponent implements OnDestroy, OnChanges {
     console.log('onFormGroupChange()')
     this.subsctiptions.add(
       this.formGroupEstimate.valueChanges.subscribe((values) => {
-        const material: number = 0
+        const material: number = this.calculateMaterialCosts()
         const labor: number = (values.formLaborCosts as DescCost[]).reduce((acc, cur) => acc + (cur.cost || 0), 0)
         const other: number = (values.formOtherCosts as DescQtyCost[]).reduce((acc, cur) => acc + (cur.qty || 0) * (cur.cost || 0), 0)
         this.totalCost = material + labor + other
