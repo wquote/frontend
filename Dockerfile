@@ -4,13 +4,13 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --legacy-peer-deps
+RUN npm install
 
 COPY . .
 
 RUN npm run build --prod
 
-FROM nginx:latest
+FROM nginx:1.27.0
 
 COPY --from=build /app/dist/quote-web/* /usr/share/nginx/html/
 
