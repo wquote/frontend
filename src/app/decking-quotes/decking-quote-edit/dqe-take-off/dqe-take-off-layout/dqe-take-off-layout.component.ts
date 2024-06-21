@@ -16,7 +16,7 @@ export class DqeTakeOffLayoutComponent implements OnChanges {
   stairHandRails: number[] = []
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.layout.stairs.forEach( (_, index) => {
+    this.layout.stairs.forEach((_, index) => {
       this.calculateStairRiserTreadHandRail(index)
     })
   }
@@ -72,13 +72,12 @@ export class DqeTakeOffLayoutComponent implements OnChanges {
 
   calculateStairRiserTreadHandRail(index: number) {
     const totalRiser: number = this.layout.stairs[index].riser as number
-    const riser: number = Math.ceil(totalRiser / 7.75)
+    const riser: number = Math.ceil(totalRiser * 12 / 7.5)
     this.stairRisers[index] = riser
-    
+
     const treads: number = riser - 1
     this.stairTreads[index] = treads
 
-    this.stairHandRails[index] = Math.sqrt((treads * 10 / 12) ** 2 + (totalRiser) ** 2)
-    return riser
+    this.stairHandRails[index] = Math.ceil(((treads * 10 / 12) ** 2 + (totalRiser) ** 2) ** 0.5)
   }
 }
