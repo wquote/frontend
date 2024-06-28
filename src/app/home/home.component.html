@@ -18,14 +18,13 @@
   </div> -->
 </div>
 
-<table class="table table-hover">
+<table class="table table-hover"
+       *ngIf="quotes && quotes.length > 0; else noQuotesData">
   <thead>
     <tr class="table-light">
-      <!-- <th >#</th> -->
       <th>Customer</th>
       <th>Type</th>
-      <th>Created At</th>
-      <th>Updated At</th>
+      <th>Last update</th>
       <th>Value</th>
       <th>Profit</th>
       <th>Actions</th>
@@ -33,14 +32,12 @@
   </thead>
   <tbody>
     <tr *ngFor="let quote of quotes; index as index">
-      <!-- <td> {{ index + 1 }} </td> -->
       <td>
         <a [routerLink]="['/customers', quote.customerId, 'quotes']">
           {{ getCustomerName(quote.customerId) }}
         </a>
       </td>
       <td> {{ quote.type }} </td>
-      <td> {{ quote.createdAt | date }} </td>
       <td> {{ quote.updatedAt | date }} </td>
       <td> {{ quote.value?.toFixed(2) }} </td>
       <td> {{ quote.profit?.toFixed(2) }} </td>
@@ -48,15 +45,17 @@
       <!-- Actions -->
       <td class="d-flex">
         <!-- Button Edit -->
-        <button class="btn btn-outline-primary btn-sm me-2" title="Edit"
-        [routerLink]="[ '/quotes', quote.type?.toLowerCase(), quote.id ]"
-        [queryParams]="{ customerId: quote.customerId }">
+        <button class="btn btn-outline-primary btn-sm me-2"
+                title="Edit"
+                [routerLink]="[ '/quotes', quote.type?.toLowerCase(), quote.id ]"
+                [queryParams]="{ customerId: quote.customerId }">
           <!-- [routerLink]="[ '/customers', quote.customerId ,'quotes', quote.id ]"> -->
           <i class="bi bi-pencil-fill"></i>
         </button>
 
         <!-- Button Duplicate -->
-        <button class="btn btn-outline-secondary btn-sm me-2" title="Duplicate">
+        <button class="btn btn-outline-secondary btn-sm me-2"
+                title="Duplicate">
           <i class="bi bi-files"></i>
         </button>
 
@@ -67,13 +66,16 @@
         </button> -->
 
         <!-- Modal -->
-        <div class="modal fade" id="deleteCustomerModal" tabindex="-1">
+        <div class="modal fade"
+             id="deleteCustomerModal"
+             tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
               <div class="modal-header">
                 <h5 class="modal-title">Delete Quote</h5>
-                <button class="btn-close" data-bs-dismiss="modal"></button>
+                <button class="btn-close"
+                        data-bs-dismiss="modal"></button>
               </div>
 
               <div class="modal-body">
@@ -82,9 +84,13 @@
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
-                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-                  (click)="deleteQuote()">Yes</button>
+                <button type="button"
+                        class="btn btn-primary"
+                        data-bs-dismiss="modal">No</button>
+                <button type="button"
+                        class="btn btn-outline-danger"
+                        data-bs-dismiss="modal"
+                        (click)="deleteQuote()">Yes</button>
               </div>
 
             </div>
@@ -95,4 +101,9 @@
     </tr>
 
   </tbody>
+
 </table>
+
+<ng-template #noQuotesData>
+  <p class="text-center text-secondary">There is no data.</p>
+</ng-template>

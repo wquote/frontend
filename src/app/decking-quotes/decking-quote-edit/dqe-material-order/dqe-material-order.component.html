@@ -46,7 +46,7 @@
      *ngIf="menu == 'footings'">
   <!-- <div class="p-2 text-center h4">Structural</div> -->
   <table class="table table-hover mb-3"
-         *ngIf="materialOrder.footings && materialOrder.footings.selectedSpecIndex != undefined; noFootingsData">
+         *ngIf="materialOrder.footings && materialOrder.footings.selectedSpecIndex != undefined; else noFootingsData">
     <thead>
       <tr class="table-light text-center">
         <th>Material</th>

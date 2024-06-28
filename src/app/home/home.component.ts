@@ -14,7 +14,7 @@ import { QuoteService } from 'src/app/quotes/quote.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  quotes: Quote[] | undefined
+  quotes: Quote[] = []
   quoteToDelete: Quote | undefined
 
   customers: CustomerModel[] = []
