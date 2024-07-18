@@ -26,6 +26,8 @@ import { PhoneNumberPipe } from './shared/pipes/phone-number.pipe';
 import { DmoFootingsComponent } from './decking-material-orders/dmo-footings/dmo-footings.component';
 import { DmoFrameComponent } from './decking-material-orders/dmo-frame/dmo-frame.component';
 import { DmoCrudComponent } from './decking-material-orders/shared/dmo-crud/dmo-crud.component';
+import { LoginComponent } from './login/login.component';
+import { TokenInterceptor } from './core/token.interceptor';
 
 registerLocaleData(localeEn, 'en-US');
 

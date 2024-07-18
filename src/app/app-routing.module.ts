@@ -8,12 +8,15 @@ import { HomeComponent } from './home/home.component';
 import { MaterialComponent } from './materials/material.component';
 import { DmoFootingsComponent } from './decking-material-orders/dmo-footings/dmo-footings.component';
 import { DmoFrameComponent } from './decking-material-orders/dmo-frame/dmo-frame.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuardService } from './core/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
+  { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'landing', component: HomeComponent, pathMatch: 'full' },
 
-  { path: 'customers', component: CustomerListComponent },
+  { path: 'customers', component: CustomerListComponent, canActivate: [AuthGuardService] },
   { path: 'customers/new', component: CustomerEditComponent },
   { path: 'customers/:id', component: CustomerEditComponent },
   { path: 'customers/:id/quotes', component: CustomerQuotesListComponent },
