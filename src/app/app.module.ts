@@ -1,5 +1,5 @@
 import { CommonModule, registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import localeEn from '@angular/common/locales/en';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,6 +21,8 @@ import { CustomerQuotesListComponent } from './customer/customer-quotes-list/cus
 import { HomeComponent } from './home/home.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { DqeTakeOffLayoutComponent } from './decking-quotes/decking-quote-edit/dqe-take-off/dqe-take-off-layout/dqe-take-off-layout.component';
+import { LoginComponent } from './login/login.component';
+import { TokenInterceptor } from './core/token.interceptor';
 
 registerLocaleData(localeEn, 'en-US');
 
@@ -41,6 +43,7 @@ registerLocaleData(localeEn, 'en-US');
     LandingPageComponent,
     PhoneNumberPipe,
     DqeTakeOffLayoutComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ registerLocaleData(localeEn, 'en-US');
   providers: [
     provideNgxMask(),
     { provide: LOCALE_ID, useValue: 'en-US' },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

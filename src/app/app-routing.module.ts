@@ -5,12 +5,15 @@ import { CustomerEditComponent } from './customer/customer-edit/customer-edit.co
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { CustomerQuotesListComponent } from './customer/customer-quotes-list/customer-quotes-list.component';
 import { DeckingQuoteEditComponent } from './decking-quotes/decking-quote-edit/decking-quote-edit.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuardService } from './core/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
+  { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'landing', component: HomeComponent, pathMatch: 'full' },
-  
-  { path: 'customers', component: CustomerListComponent },
+
+  { path: 'customers', component: CustomerListComponent, canActivate: [AuthGuardService] },
   { path: 'customers/new', component: CustomerEditComponent },
   { path: 'customers/:id', component: CustomerEditComponent },
   { path: 'customers/:id/quotes', component: CustomerQuotesListComponent },
