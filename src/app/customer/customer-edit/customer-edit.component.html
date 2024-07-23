@@ -126,24 +126,22 @@ TODO:
               <i class="bi bi-trash"></i>
             </button>
           </div>
-          <form class="mt-1">
-            <div class="input-group">
-              <input type="email"
-                     class="form-control"
-                     placeholder="Add new email address"
-                     id="newEmail"
-                     name="newEmail"
-                     [(ngModel)]="newEmail"
-                     ngModel
-                     email
-                     required>
-              <button type="submit"
-                      class="btn btn-outline-primary"
-                      (click)="addNewEmail()">
-                <i class="bi bi-plus"></i>
-              </button>
-            </div>
-          </form>
+          <div class="input-group">
+            <input type="email"
+                   class="form-control"
+                   placeholder="Add new email address"
+                   id="newEmail"
+                   name="newEmail"
+                   [(ngModel)]="newEmail"
+                   ngModel
+                   email
+                   required>
+            <button type="submit"
+                    class="btn btn-outline-primary"
+                    (click)="addNewEmail()">
+              <i class="bi bi-plus"></i>
+            </button>
+          </div>
         </div>
 
         <div>
