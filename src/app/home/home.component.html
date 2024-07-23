@@ -18,8 +18,7 @@
   </div> -->
 </div>
 
-<table class="table table-hover"
-       *ngIf="quotes && quotes.length > 0; else noQuotesData">
+<table class="table table-hover">
   <thead>
     <tr class="table-light">
       <th>Customer</th>
@@ -104,6 +103,6 @@
 
 </table>
 
-<ng-template #noQuotesData>
-  <p class="text-center text-secondary">There is no data.</p>
-</ng-template>
+<p class="text-center text-secondary"
+   *ngIf="quotes.length == 0">There is no data.
+</p>
