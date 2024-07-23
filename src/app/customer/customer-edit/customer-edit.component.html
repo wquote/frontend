@@ -1,3 +1,9 @@
+<!-- 
+TODO:
+- Add required fields (name, phone)
+- Add phone and email validation 
+-->
+
 <div class="d-flex mb-5">
   <div class="border-bottom flex-fill pb-2">
     <h2>Customer {{ this.customerId != 'new' ? 'Edit' : 'Create'}}</h2>
@@ -5,18 +11,23 @@
 
   <div class="border-bottom">
 
-    <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteCustomerModal"
-      (click)="updateCustomerToDelete(customer)">
+    <button class="btn btn-outline-danger"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteCustomerModal"
+            (click)="updateCustomerToDelete(customer)">
       <i class="bi bi-trash-fill"></i>
     </button>
 
     <!-- Delete modal -->
-    <div class="modal fade" id="deleteCustomerModal" tabindex="-1">
+    <div class="modal fade"
+         id="deleteCustomerModal"
+         tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Delete Customer</h5>
-            <button class="btn-close" data-bs-dismiss="modal"></button>
+            <button class="btn-close"
+                    data-bs-dismiss="modal"></button>
           </div>
 
           <div class="modal-body">
@@ -25,9 +36,13 @@
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
-            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
-              (click)="deleteCustomer()">Yes</button>
+            <button type="button"
+                    class="btn btn-primary"
+                    data-bs-dismiss="modal">No</button>
+            <button type="button"
+                    class="btn btn-outline-danger"
+                    data-bs-dismiss="modal"
+                    (click)="deleteCustomer()">Delete</button>
           </div>
         </div>
       </div>
@@ -35,89 +50,120 @@
   </div>
 </div>
 
-
-<div class="card mb-4">
-  <div class="card-body">
-    <div class="row">
-
-      <div class="col-md-6 col-sm-12">
-        <div class="mb-3">
-          <label class="form-label" for="firstName">First Name</label>
-          <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="customer.firstName">
+<form>
+  <div class="row justify-content-center">
+    <div class="col-10 col-md-8">
+      <div class="d-flex flex-column gap-3">
+        <div>
+          <label class="form-label"
+                 for="firstName">First Name</label>
+          <input type="text"
+                 class="form-control"
+                 id="firstName"
+                 name="firstName"
+                 [(ngModel)]="customer.firstName">
         </div>
-      </div>
 
-      <div class="col-md-6 col-sm-12">
-        <div class="mb-3">
-          <label class="form-label" for="lastName">Last Name</label>
-          <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="customer.lastName">
+        <div>
+          <label class="form-label"
+                 for="lastName">Last Name</label>
+          <input type="text"
+                 class="form-control"
+                 id="lastName"
+                 name="lastName"
+                 [(ngModel)]="customer.lastName">
         </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col">
-        <div class="mb-3">
-          <label class="form-label" for="homeAddress">Home Address</label>
-          <textarea class="form-control" id="homeAddress" name="homeAddress" rows="3" [(ngModel)]="customer.homeAddress"></textarea>
+        <div>
+          <label class="form-label"
+                 for="homeAddress">Home Address</label>
+          <textarea class="form-control"
+                    id="homeAddress"
+                    name="homeAddress"
+                    rows="3"
+                    [(ngModel)]="customer.homeAddress"></textarea>
         </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col mb-3">
-        <label class="form-label" for="phone">Phone</label>
-        <div class="d-flex justify-content-between align-items-center" *ngFor="let phone of customer.phones">
-          <div class="p-2">{{phone}}</div>
-          <button class="btn btn-outline-danger" type="button" (click)="removePhone(phone)">
-            <i class="bi bi-trash"></i>
-          </button>
-        </div>
-        <form class="mt-1">
+        <div>
+          <label class="form-label"
+                 for="phone">Phone</label>
+          <div class="d-flex justify-content-between align-items-center"
+               *ngFor="let phone of customer.phones">
+            <div class="p-2">{{phone}}</div>
+            <button class="btn btn-outline-danger"
+                    type="button"
+                    (click)="removePhone(phone)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Add new phone number" id="newPhone" name="newPhone"
-              [(ngModel)]="newPhone" [dropSpecialCharacters]="false" mask="(000) 000-0000">
-            <button class="btn btn-outline-primary" type="submit" (click)="addNewPhone()">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Add new phone number"
+                   id="newPhone"
+                   name="newPhone"
+                   [(ngModel)]="newPhone"
+                   [dropSpecialCharacters]="false"
+                   mask="(000) 000-0000"
+                   required>
+            <button class="btn btn-outline-primary"
+                    type="submit"
+                    (click)="addNewPhone()">
               <i class="bi bi-plus"></i>
             </button>
           </div>
-        </form>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col mb-3">
-        <label class="form-label" for="email">Email</label>
-        <div class="d-flex justify-content-between align-items-center" *ngFor="let email of customer.emails">
-          <div class="p-2">{{email}}</div>
-          <button class="btn btn-outline-danger" type="button" (click)="removeEmail(email)">
-            <i class="bi bi-trash"></i>
-          </button>
         </div>
-        <form class="mt-1">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Add new email address" id="newEmail" name="newEmail"
-              [(ngModel)]="newEmail">
-            <button type="submit" class="btn btn-outline-primary" (click)="addNewEmail()">
-              <i class="bi bi-plus"></i>
+
+        <div>
+          <label class="form-label"
+                 for="email">Email</label>
+          <div class="d-flex justify-content-between align-items-center"
+               *ngFor="let email of customer.emails">
+            <div class="p-2">{{email}}</div>
+            <button class="btn btn-outline-danger"
+                    type="button"
+                    (click)="removeEmail(email)">
+              <i class="bi bi-trash"></i>
             </button>
           </div>
-        </form>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <div class="mb-3">
-          <label class="form-label" for="notes">Notes</label>
-          <textarea class="form-control" id="notes" name="notes" rows="5" [(ngModel)]="customer.notes"></textarea>
+          <form class="mt-1">
+            <div class="input-group">
+              <input type="email"
+                     class="form-control"
+                     placeholder="Add new email address"
+                     id="newEmail"
+                     name="newEmail"
+                     [(ngModel)]="newEmail"
+                     ngModel
+                     email
+                     required>
+              <button type="submit"
+                      class="btn btn-outline-primary"
+                      (click)="addNewEmail()">
+                <i class="bi bi-plus"></i>
+              </button>
+            </div>
+          </form>
         </div>
+
+        <div>
+          <label class="form-label"
+                 for="notes">Notes</label>
+          <textarea class="form-control"
+                    id="notes"
+                    name="notes"
+                    rows="5"
+                    [(ngModel)]="customer.notes"></textarea>
+        </div>
+
+        <div class="d-flex justify-content-end mb-5">
+          <button class="btn btn-secondary me-3"
+                  (click)="cancel()">Cancel</button>
+          <button class="btn btn-primary"
+                  (click)="submit()">Save</button>
+        </div>
+
       </div>
     </div>
   </div>
-</div>
-
-<div class="d-flex justify-content-end mb-5">
-  <button class="btn btn-secondary me-3" (click)="cancel()">Cancel</button>
-  <button class="btn btn-primary" (click)="submit()">Save</button>
-</div>
+</form>
