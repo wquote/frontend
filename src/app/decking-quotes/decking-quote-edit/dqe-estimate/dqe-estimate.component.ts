@@ -43,7 +43,7 @@ export class DqeEstimateComponent implements OnDestroy, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     (window as any).deckingQuote = this.deckingQuote
 
-    console.log('ngOnChanges()', changes)
+    // console.log('ngOnChanges()', changes)
 
     this.mo_footings = this.deckingQuote!.materialOrder.footings
     this.mo_frame = this.deckingQuote!.materialOrder.frame
@@ -60,12 +60,12 @@ export class DqeEstimateComponent implements OnDestroy, OnChanges {
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy()')
+    // console.log('ngOnDestroy()')
     this.subsctiptions.unsubscribe()
   }
 
   initializeFormGroupEstimate() {
-    console.log('initializeFormGroupEstimate()', this.deckingQuote)
+    // console.log('initializeFormGroupEstimate()', this.deckingQuote)
 
     // Initialize formLaborCosts
     this.deckingQuote.laborCosts.forEach(labor => {
@@ -86,7 +86,7 @@ export class DqeEstimateComponent implements OnDestroy, OnChanges {
   }
 
   onFormLaborCostsChange() {
-    console.log('onFormLaborCostsChange()')
+    // console.log('onFormLaborCostsChange()')
     this.subsctiptions.add(
       this.formLaborCosts.valueChanges.subscribe((values: DescCost[]) => {
         this.deckingQuote && (this.deckingQuote.laborCosts = values)
@@ -96,7 +96,7 @@ export class DqeEstimateComponent implements OnDestroy, OnChanges {
   }
 
   onFormNotesChange() {
-    console.log('onFormNotesChange()')
+    // console.log('onFormNotesChange()')
     this.subsctiptions.add(
       this.formNotes.valueChanges.subscribe((value: string) => {
         this.deckingQuote && (this.deckingQuote.notes = value)
@@ -105,7 +105,7 @@ export class DqeEstimateComponent implements OnDestroy, OnChanges {
   }
 
   onFormOtherCostsChange() {
-    console.log('onFormOtherCostsChange()')
+    // console.log('onFormOtherCostsChange()')
     this.subsctiptions.add(
       this.formOtherCosts.valueChanges.subscribe((values: DescQtyCost[]) => {
         this.deckingQuote && (this.deckingQuote.otherCosts = values)
@@ -115,7 +115,7 @@ export class DqeEstimateComponent implements OnDestroy, OnChanges {
   }
 
   onFormProfitPercentChange() {
-    console.log('onFormProfitPercentChange()')
+    // console.log('onFormProfitPercentChange()')
     this.subsctiptions.add(
       this.formProfitPercent.valueChanges.subscribe((value: number) => {
         this.deckingQuote && (this.deckingQuote.profitPercent = value)
@@ -124,7 +124,7 @@ export class DqeEstimateComponent implements OnDestroy, OnChanges {
   }
 
   onFormGroupChange() {
-    console.log('onFormGroupChange()')
+    // console.log('onFormGroupChange()')
     this.subsctiptions.add(
       this.formGroupEstimate.valueChanges.subscribe((values) => {
         const material: number = this.calculateMaterialCosts()
@@ -185,7 +185,7 @@ export class DqeEstimateComponent implements OnDestroy, OnChanges {
     if (this.deckingQuote && this.deckingQuote.materialOrder) {
       const { footings, frame, galvanized, board, railing, finishing, rainScape, extraMaterials } = this.deckingQuote.materialOrder;
 
-      console.log('calculateMaterialCosts()', footings, frame, galvanized, board, railing, finishing, rainScape, extraMaterials)
+      // console.log('calculateMaterialCosts()', footings, frame, galvanized, board, railing, finishing, rainScape, extraMaterials)
       addMaterialOrderCost(footings);
       addMaterialOrderCost(frame);
       addMaterialOrderCost(galvanized);
@@ -197,7 +197,7 @@ export class DqeEstimateComponent implements OnDestroy, OnChanges {
     }
 
     this.materialTotalCost = totalMaterialCosts
-    console.log('calculateMaterialCosts()', totalMaterialCosts)
+    // console.log('calculateMaterialCosts()', totalMaterialCosts)
     return totalMaterialCosts
   }
 

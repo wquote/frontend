@@ -3,7 +3,7 @@
 // aggregate no mongodb pra trazer o nome do customer 
 
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { CustomerModel } from 'src/app/customer/shared/customer.model';
 import { CustomerService } from 'src/app/customer/shared/customer.service';
@@ -19,12 +19,11 @@ import { DeckingQuoteService } from 'src/app/decking-quotes/shared/decking-quote
 export class DeckingQuoteEditComponent {
   customerId?: string
   customer: CustomerModel = new CustomerModel()
-  quoteId?: string 
+  quoteId?: string
   deckingQuote: DeckingQuote = new DeckingQuote()
   homeAddress$: BehaviorSubject<string> = new BehaviorSubject<string>('')
 
   constructor(
-    private router: Router,
     private activatedRoute: ActivatedRoute,
     private customerService: CustomerService,
     private deckingQuoteService: DeckingQuoteService,
@@ -35,82 +34,81 @@ export class DeckingQuoteEditComponent {
     this.readDeckingQuote()
   }
 
-  readCustomer() {
+  readCustomer(): void {
     this.customerId = this.activatedRoute.snapshot.queryParamMap.get('customerId') as string
+
     if (this.customerId) {
-      this.customerService.read(this.customerId).subscribe((c: CustomerModel) => {
-        this.customer = c
-        c.homeAddress && this.homeAddress$.next(c.homeAddress)
-      })
+      this.customerService.read(this.customerId)
+        .subscribe((c: CustomerModel) => {
+          this.customer = c
+          this.homeAddress$.next(c.homeAddress || '')
+        })
     }
   }
 
-  readDeckingQuote() {
+  readDeckingQuote(): void {
     this.quoteId = this.activatedRoute.snapshot.paramMap.get('quoteId') as string
 
+    // Wait for readCustomer() to set jobAddress as homeAddress - async function problems
     if (!this.quoteId) {
       this.homeAddress$.subscribe((homeAddress: string) => {
-        this.deckingQuote && (this.deckingQuote.jobAddress = homeAddress)
+        this.deckingQuote.jobAddress = homeAddress
       })
       return
     }
 
     if (this.quoteId) {
-      this.deckingQuoteService.read(this.quoteId).subscribe((dq: DeckingQuote) => {
-        console.log('readDeckingQuote()', dq)
-        this.deckingQuote = dq
-      })
+      this.deckingQuoteService.read(this.quoteId)
+        .subscribe((dq: DeckingQuote) => {
+          this.deckingQuote = dq
+        })
     }
   }
 
-  estimateMaterialOrder() {
-    if (!this.deckingQuote || !this.quoteId) { return }
+  estimateMaterialOrder(): void {
+    if (!this.quoteId) { return }
 
     this.deckingQuoteService.estimateMaterialOrder(this.quoteId, this.deckingQuote)
-      .subscribe((respOk) => {
-        if (!respOk) {
-          window.alert('Failed to estimate decking quote material order.')
-          return
-        }
-        window.alert('Decking quote estimated successfully.')
-        this.readDeckingQuote()
+      .subscribe({
+        next: _ => this.readDeckingQuote(),
+        error: _ => window.alert('Failed to estimate material order.')
       })
   }
 
-  updateProjectValue(projectValue: number) {
-    // console.log('updateProjectValue()', projectValue)
+  updateProjectValue(projectValue: number): void {
     this.deckingQuote && (this.deckingQuote.value = projectValue)
   }
 
-  updateProfit(profit: number) {
-    // console.log('updateProfit()', profit)
+  updateProfit(profit: number): void {
     this.deckingQuote && (this.deckingQuote.profit = profit)
   }
 
-  save() {
-    if (this.deckingQuote) {
-      this.deckingQuote.customerId = this.customerId
+  save(): void {
+    this.deckingQuote.customerId = this.customerId
 
-      // new deck quote
-      if (!this.deckingQuote.id) {
-        this.deckingQuoteService.create(this.deckingQuote).subscribe(
-          (resp) => {
-            window.alert('Decking quote created successfully.')
-            this.router.navigate(['/customers', this.customerId, 'quotes', resp.id])
-          }
-        )
-      }
-      // edit deck quote
-      if (this.deckingQuote.id) {
-        this.deckingQuoteService.update(this.deckingQuote.id, this.deckingQuote).subscribe(
-          () => {
-            window.alert('Decking quote updated successfully.')
-            this.readDeckingQuote()
-            window.location.reload()
-            // this.router.navigate(['/customers', this.customerId, 'quotes', this.quoteId])
-          }
-        )
-      }
+    // new deck quote
+    // if (!this.deckingQuote.id) {
+    //   this.deckingQuoteService.create(this.deckingQuote)
+    //     .subscribe((resp: CreateResponse) => {
+    //       if (!resp.id) {
+    //         window.alert('Failed to create decking quote.')
+    //         return
+    //       }
+
+    //       this.readDeckingQuote()
+    //       this.router.navigate(['quotes', 'decking', resp.id], { queryParams: { customerId: this.customerId } });
+    //     }
+    //     )
+    // }
+
+    // edit deck quote
+    if (this.deckingQuote.id) {
+      this.deckingQuoteService.update(this.deckingQuote.id, this.deckingQuote)
+        .subscribe({
+          next: _ => this.readDeckingQuote(),
+          error: _ => window.alert('Failed to update decking quote.')
+        })
     }
   }
+
 }

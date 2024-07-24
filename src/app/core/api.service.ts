@@ -1,6 +1,10 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { Observable } from 'rxjs';
+
+export interface CreateResponse {
+  id: string
+}
 
 @Injectable({
   providedIn: 'root'
@@ -29,13 +33,14 @@ export class ApiService {
     }
   }
 
+  post(endpoint: string, body: Object): Observable<CreateResponse> {
+    const id = this.httpClient.post(this.url + endpoint, body)
+    return id as Observable<CreateResponse>
+  }
+
   get(endpoint: string, queryParams?: HttpParams): Observable<any> {
     return this.httpClient.get(this.url + endpoint, { params: queryParams })
     // .pipe(retryWhen((errors) => this.handleRetry(errors)));
-  }
-
-  post(endpoint: string, body: Object): Observable<any> {
-    return this.httpClient.post(this.url + endpoint, body)
   }
 
   put(endpoint: string, body: Object): Observable<any> {

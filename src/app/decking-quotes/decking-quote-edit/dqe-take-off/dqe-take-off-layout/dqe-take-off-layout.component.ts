@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Area, Layout, Stair } from 'src/app/decking-quotes/shared/decking-quote.model';
 
 @Component({
@@ -15,10 +15,14 @@ export class DqeTakeOffLayoutComponent implements OnChanges {
   stairTreads: number[] = []
   stairHandRails: number[] = []
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.layout.stairs.forEach((_, index) => {
       this.calculateStairRiserTreadHandRail(index)
     })
+
+    if (this.layout.stairs[0]?.beamGrade) {
+      this.beamGradeSelected = true
+    }
   }
 
   addArea() {

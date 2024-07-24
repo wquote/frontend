@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiService } from 'src/app/core/api.service';
+import { ApiService, CreateResponse } from 'src/app/core/api.service';
 import { DeckTakeOff, DeckingQuote } from './decking-quote.model';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class DeckingQuoteService {
 
   constructor(private apiService: ApiService) { }
 
-  create(item: DeckingQuote): Observable<any> {
+  create(item: DeckingQuote): Observable<CreateResponse> {
     let url: string = this.endpoint
     const body: Object = item
 
@@ -31,14 +33,14 @@ export class DeckingQuoteService {
     return this.apiService.get(url)
   }
 
-  update(itemId: string, item: DeckingQuote): Observable<DeckingQuote> {
+  update(itemId: string, item: DeckingQuote): Observable<null> {
     let url: string = this.endpoint + itemId
     const body: Object = item
 
     return this.apiService.put(url, body)
   }
 
-  delete(itemId: string): Observable<DeckingQuote> {
+  delete(itemId: string): Observable<null> {
     let url: string = this.endpoint + itemId
 
     return this.apiService.delete(url)

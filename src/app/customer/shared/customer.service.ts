@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CustomerModel } from 'src/app/customer/shared/customer.model';
-import { ApiService } from 'src/app/core/api.service';
+import { ApiService, CreateResponse } from 'src/app/core/api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class CustomerService {
 
   constructor(private apiService: ApiService) { }
 
-  create(item: CustomerModel): Observable<CustomerModel> {
+  create(item: CustomerModel): Observable<CreateResponse> {
     let url: string = this.endpoint
     const body: Object = item
 

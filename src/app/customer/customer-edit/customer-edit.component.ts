@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CustomerModel } from 'src/app/customer/shared/customer.model';
 import { CustomerService } from '../shared/customer.service';
+import { CreateResponse } from 'src/app/core/api.service';
 
 
 
@@ -46,7 +47,7 @@ export class CustomerEditComponent implements OnInit {
       })
   }
 
-  save(): Observable<CustomerModel> {
+  save(): Observable<CreateResponse | any> {
 
     this.newPhone && this.addNewPhone()
 

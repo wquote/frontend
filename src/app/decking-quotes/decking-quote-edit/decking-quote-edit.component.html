@@ -9,19 +9,22 @@
         id="deck-tab">
       <a class="nav-link active"
          type="button"
+         (click)="save()"
          data-bs-toggle="tab"
          data-bs-target="#customer-info">Job Info</a>
       <a class="nav-link "
          type="button"
+         (click)="save()"
          data-bs-toggle="tab"
          data-bs-target="#deck-take-off">Deck Take-off</a>
       <a class="nav-link "
          type="button"
+         (click)="save(); estimateMaterialOrder()"
          data-bs-toggle="tab"
-         data-bs-target="#estimate"
-         (click)="estimateMaterialOrder()">Estimate</a>
+         data-bs-target="#estimate">Estimate</a>
       <a class="nav-link "
          type="button"
+         (click)="save()"
          data-bs-toggle="tab"
          data-bs-target="#material-order">Material Order</a>
    </nav>
@@ -29,11 +32,11 @@
 
 <div class="d-flex mb-3">
    <p class="flex-fill fs-6 ">{{customer.lastName}}, {{customer.firstName}} - {{ deckingQuote.jobAddress }}</p>
-   <button class="btn btn-primary m-2"
+   <!-- <button class="btn btn-primary m-2"
            (click)="save()">
       <i class="bi bi-save"></i>
       Save
-   </button>
+   </button> -->
 </div>
 
 <!-- Main Panel -->
