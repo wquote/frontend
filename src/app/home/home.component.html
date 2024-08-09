@@ -1,21 +1,23 @@
-<div class="d-flex mb-5">
-  <div class="border-bottom flex-fill">
+<div class="d-flex mb-3 border-bottom">
+  <div class="flex-fill">
     <h2 class="pb-2">Latest Quotes</h2>
   </div>
+</div>
 
-  <!-- <div class="border-bottom">
-
-    <button class="btn btn-outline-primary" id="dropdownMenuButton" data-bs-toggle="dropdown">
-      <i class="bi bi-plus"></i>
-      New
-    </button>
-    
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" routerLink="/quotes/decks/new">Decking </a></li>
-      <li><a class="dropdown-item" href="#">Roofing</a></li>
-      <li><a class="dropdown-item" href="#">Siding</a></li>
-    </ul>
-  </div> -->
+<div class="d-flex justify-content-end">
+  <div class="col-lg-4 col-md-6 col-sm-10 col-12 mb-3">
+    <div class="input-group">
+      <span class="input-group-text"
+            id="search-icon">
+        <i class="bi bi-search"></i>
+      </span>
+      <input type="text"
+             class="form-control"
+             placeholder="Search"
+             [(ngModel)]="searchTerm"
+             (ngModelChange)="filterQuotes()">
+    </div>
+  </div>
 </div>
 
 <table class="table table-hover">
@@ -30,10 +32,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let quote of quotes; index as index">
+    <tr *ngFor="let quote of filteredQuotes; index as index">
       <td>
         <a [routerLink]="['/customers', quote.customerId, 'quotes']">
-          {{ getCustomerName(quote.customerId) }}
+          {{ quote.customerName }}
         </a>
       </td>
       <td> {{ quote.type }} </td>
