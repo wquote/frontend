@@ -81,7 +81,6 @@ export class HomeComponent {
   }
 
   getCustomerName(id?: string): string {
-    console.log('id', id)
     if (!id) { return 'Unkown' }
 
     let customer: CustomerModel = this.customers.filter(c => c.id == id)[0]
