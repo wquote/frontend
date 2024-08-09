@@ -1,5 +1,5 @@
 import { CommonModule, registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import localeEn from '@angular/common/locales/en';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,36 +25,36 @@ import { DqeTakeOffLayoutComponent } from './decking-quotes/decking-quote-edit/d
 registerLocaleData(localeEn, 'en-US');
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    CustomerListComponent,
-    CustomerEditComponent,
-    DeckingQuoteEditComponent,
-    DqeCustomerComponent,
-    DqeEstimateComponent,
-    DqeMaterialOrderComponent,
-    DqeTakeOffComponent,
-    CustomerQuotesListComponent,
-    LandingPageComponent,
-    PhoneNumberPipe,
-    DqeTakeOffLayoutComponent,
-  ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    NgxMaskDirective
-  ],
-  providers: [
-    provideNgxMask(),
-    { provide: LOCALE_ID, useValue: 'en-US' },
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        HomeComponent,
+        CustomerListComponent,
+        CustomerEditComponent,
+        DeckingQuoteEditComponent,
+        DqeCustomerComponent,
+        DqeEstimateComponent,
+        DqeMaterialOrderComponent,
+        DqeTakeOffComponent,
+        CustomerQuotesListComponent,
+        LandingPageComponent,
+        PhoneNumberPipe,
+        DqeTakeOffLayoutComponent,
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        NgxMaskDirective
+    ],
+    providers: [
+        provideNgxMask(),
+        { provide: LOCALE_ID, useValue: 'en-US' },
+        provideHttpClient(withInterceptorsFromDi()),
+    ]
 })
 export class AppModule { }
