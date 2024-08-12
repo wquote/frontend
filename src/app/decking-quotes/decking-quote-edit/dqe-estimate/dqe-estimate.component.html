@@ -207,7 +207,7 @@
       </table>
 
       <p class="text-center text-secondary"
-         *ngIf="!deckingQuote?.laborCosts">No data
+         *ngIf="deckingQuote.laborCosts.length == 0">No data
       </p>
 
       <div class="d-flex justify-content-end ">
@@ -280,7 +280,7 @@
       </table>
 
       <p class="text-center text-secondary"
-         *ngIf="!deckingQuote?.otherCosts">No data
+         *ngIf="deckingQuote.otherCosts.length == 0">No data
       </p>
 
       <div class="d-flex justify-content-end ">
