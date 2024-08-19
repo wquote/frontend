@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService, CreateResponse } from 'src/app/core/api.service';
-import { MaterialOrder } from './dmo-footing.model';
-
+import { MaterialOrder } from 'src/app/shared/material-order.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DmoFootingsService {
-
-  endpoint: string = '/decking/material-order/footings/'
+export class DmoFrameService {
+  endpoint: string = '/decking/material-order/frame/'
 
   constructor(private apiService: ApiService) { }
 

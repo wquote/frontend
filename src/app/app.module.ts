@@ -24,6 +24,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { ListComponent } from './shared/list/list.component';
 import { PhoneNumberPipe } from './shared/pipes/phone-number.pipe';
 import { DmoFootingsListComponent } from './decking-material-orders/dmo-footings-list/dmo-footings-list.component';
+import { DmoFrameListComponent } from './decking-material-orders/dmo-frame/dmo-frame-list/dmo-frame-list.component';
 
 registerLocaleData(localeEn, 'en-US');
 
@@ -47,6 +48,7 @@ registerLocaleData(localeEn, 'en-US');
         MaterialListComponent,
         PhoneNumberPipe,
         DmoFootingsListComponent,
+        DmoFrameListComponent,
     ],
     bootstrap: [AppComponent],
     imports: [

@@ -6,6 +6,8 @@ import { CustomerQuotesListComponent } from './customer/customer-quotes-list/cus
 import { DeckingQuoteEditComponent } from './decking-quotes/decking-quote-edit/decking-quote-edit.component';
 import { HomeComponent } from './home/home.component';
 import { MaterialListComponent } from './materials/material-list/material-list.component';
+import { DmoFootingsListComponent } from './decking-material-orders/dmo-footings-list/dmo-footings-list.component';
+import { DmoFrameListComponent } from './decking-material-orders/dmo-frame/dmo-frame-list/dmo-frame-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -21,7 +23,8 @@ const routes: Routes = [
   { path: 'quotes/decking/:quoteId', component: DeckingQuoteEditComponent },
 
   { path: 'materials', component: MaterialListComponent },
-  // { path: 'decking-material-order/footings', component: }
+  { path: 'decking-material-order/footings', component: DmoFootingsListComponent },
+  { path: 'decking-material-order/frame', component: DmoFrameListComponent },
 ];
 
 @NgModule({

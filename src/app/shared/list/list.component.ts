@@ -11,7 +11,7 @@ export class ListComponent implements OnChanges {
   @Input() keys: string[] = []
   @Input() columns: string[] = []
   @Input() searchColumns: string[] = []
-  @Input() endpoint: string = ''
+  @Input() url: string = ''
 
   searchTerm: string = ''
   filteredItems: any[] = []
