@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<table class="table table-hover">
+<table>
   <thead>
     <tr>
       <th *ngFor="let column of columns">{{ column }}</th>
@@ -38,7 +38,7 @@
   <tbody>
     <tr *ngFor="let item of filteredItems">
       <td *ngFor="let key of keys">{{ item[key] }}</td>
-      <td class="d-flex">
+      <td>
 
         <button class="btn btn-outline-primary btn-sm me-2"
                 [routerLink]="[ '/' + url, item.id ]"
