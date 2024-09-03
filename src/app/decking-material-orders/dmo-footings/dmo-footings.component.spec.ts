@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DmoFrameListComponent } from './dmo-frame-list.component';
+import { DmoFootingsComponent } from './dmo-footings.component';
 
-describe('DmoFrameListComponent', () => {
-  let component: DmoFrameListComponent;
-  let fixture: ComponentFixture<DmoFrameListComponent>;
+describe('DmoFootingsComponent', () => {
+  let component: DmoFootingsComponent;
+  let fixture: ComponentFixture<DmoFootingsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DmoFrameListComponent]
+      declarations: [DmoFootingsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DmoFrameListComponent);
+    fixture = TestBed.createComponent(DmoFootingsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

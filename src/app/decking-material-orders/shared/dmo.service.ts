@@ -6,8 +6,9 @@ import { MaterialOrder } from 'src/app/shared/material-order.model';
 @Injectable({
   providedIn: 'root'
 })
-export class DmoFrameService {
-  endpoint: string = '/decking/material-order/frame/'
+export class DmoService {
+
+  endpoint: string = ''
 
   constructor(private apiService: ApiService) { }
 

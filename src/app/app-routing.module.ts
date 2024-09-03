@@ -5,9 +5,9 @@ import { CustomerListComponent } from './customer/customer-list/customer-list.co
 import { CustomerQuotesListComponent } from './customer/customer-quotes-list/customer-quotes-list.component';
 import { DeckingQuoteEditComponent } from './decking-quotes/decking-quote-edit/decking-quote-edit.component';
 import { HomeComponent } from './home/home.component';
-import { MaterialListComponent } from './materials/material-list/material-list.component';
-import { DmoFootingsListComponent } from './decking-material-orders/dmo-footings-list/dmo-footings-list.component';
-import { DmoFrameListComponent } from './decking-material-orders/dmo-frame/dmo-frame-list/dmo-frame-list.component';
+import { MaterialComponent } from './materials/material.component';
+import { DmoFootingsComponent } from './decking-material-orders/dmo-footings/dmo-footings.component';
+import { DmoFrameComponent } from './decking-material-orders/dmo-frame/dmo-frame.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -22,9 +22,10 @@ const routes: Routes = [
   { path: 'quotes/decking/new', component: DeckingQuoteEditComponent },
   { path: 'quotes/decking/:quoteId', component: DeckingQuoteEditComponent },
 
-  { path: 'materials', component: MaterialListComponent },
-  { path: 'decking-material-order/footings', component: DmoFootingsListComponent },
-  { path: 'decking-material-order/frame', component: DmoFrameListComponent },
+  { path: 'materials', component: MaterialComponent },
+  
+  { path: 'material-orders/decking/footings', component: DmoFootingsComponent },
+  { path: 'material-orders/decking/frame', component: DmoFrameComponent },
 ];
 
 @NgModule({

@@ -20,13 +20,14 @@ export class MaterialOrderSpecs {
 
 
 // Lista de pedido de materiais editável pelo admin
-export interface MaterialOrderItem {
-    id: string
-    isDefault: boolean
+export class MaterialOrderItem {
+    id?: string
+    name?: string
+    formula?: string
 }
 
-export interface MaterialOrder {
-    id: string
-    name: string
-    materials: MaterialOrderItem[]
+export class MaterialOrder {
+    id?: string
+    name?: string
+    materials: MaterialOrderItem[] = []
 }

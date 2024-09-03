@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MaterialListComponent } from './material-list.component';
+import { DmoCrudComponent } from './dmo-crud.component';
 
-describe('MaterialListComponent', () => {
-  let component: MaterialListComponent;
-  let fixture: ComponentFixture<MaterialListComponent>;
+describe('DmoCrudComponent', () => {
+  let component: DmoCrudComponent;
+  let fixture: ComponentFixture<DmoCrudComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MaterialListComponent]
+      declarations: [DmoCrudComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MaterialListComponent);
+    fixture = TestBed.createComponent(DmoCrudComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

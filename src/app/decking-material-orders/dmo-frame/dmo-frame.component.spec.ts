@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListComponent } from './list.component';
+import { DmoFrameComponent } from './dmo-frame.component';
 
-describe('ListComponent', () => {
-  let component: ListComponent;
-  let fixture: ComponentFixture<ListComponent>;
+describe('DmoFrameComponent', () => {
+  let component: DmoFrameComponent;
+  let fixture: ComponentFixture<DmoFrameComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ListComponent]
+      declarations: [DmoFrameComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ListComponent);
+    fixture = TestBed.createComponent(DmoFrameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DmoFrameService } from './dmo-frame.service';
+import { DmoService } from './dmo.service';
 
-describe('DmoFrameService', () => {
-  let service: DmoFrameService;
+describe('DmoService', () => {
+  let service: DmoService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DmoFrameService);
+    service = TestBed.inject(DmoService);
   });
 
   it('should be created', () => {

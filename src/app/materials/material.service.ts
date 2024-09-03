@@ -1,40 +1,43 @@
+// todo
+// - implement a base API service that uses type CreateType, like was coded in backend
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService, CreateResponse } from 'src/app/core/api.service';
-import { MaterialOrder } from './dmo-footing.model';
+import { MaterialModel } from './material.model';
 
+type CreateType = MaterialModel
 
 @Injectable({
   providedIn: 'root'
 })
-export class DmoFootingsService {
-
-  endpoint: string = '/decking/material-order/footings/'
+export class MaterialService {
+  endpoint: string = '/materials/'
 
   constructor(private apiService: ApiService) { }
 
-  create(item: MaterialOrder): Observable<CreateResponse> {
+  create(item: CreateType): Observable<CreateResponse> {
     let url: string = this.endpoint
     const body: Object = item
 
     return this.apiService.post(url, body)
   }
 
-  readAll(): Observable<MaterialOrder[]> {
+  readAll(): Observable<MaterialModel[]> {
     let url: string = this.endpoint
 
     return this.apiService.get(url)
   }
 
-  read(itemId: string): Observable<MaterialOrder> {
+  read(itemId: string): Observable<MaterialModel> {
     let url: string = this.endpoint + itemId
 
     return this.apiService.get(url)
   }
 
-  update(itemId: string, item: MaterialOrder): Observable<any> {
+  update(itemId: string, customer: MaterialModel): Observable<any> {
     let url: string = this.endpoint + itemId
-    const body: Object = item
+    const body: Object = customer
 
     return this.apiService.put(url, body)
   }

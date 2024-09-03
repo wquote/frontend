@@ -18,13 +18,14 @@ import { DqeTakeOffLayoutComponent } from './decking-quotes/decking-quote-edit/d
 import { DqeTakeOffComponent } from './decking-quotes/decking-quote-edit/dqe-take-off/dqe-take-off.component';
 import { HomeComponent } from './home/home.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { MaterialListComponent } from './materials/material-list/material-list.component';
+import { MaterialComponent } from './materials/material.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { ListComponent } from './shared/list/list.component';
+import { ListComponent } from './shared/item-list-crud/item-list-crud.component';
 import { PhoneNumberPipe } from './shared/pipes/phone-number.pipe';
-import { DmoFootingsListComponent } from './decking-material-orders/dmo-footings-list/dmo-footings-list.component';
-import { DmoFrameListComponent } from './decking-material-orders/dmo-frame/dmo-frame-list/dmo-frame-list.component';
+import { DmoFootingsComponent } from './decking-material-orders/dmo-footings/dmo-footings.component';
+import { DmoFrameComponent } from './decking-material-orders/dmo-frame/dmo-frame.component';
+import { DmoCrudComponent } from './decking-material-orders/shared/dmo-crud/dmo-crud.component';
 
 registerLocaleData(localeEn, 'en-US');
 
@@ -45,10 +46,11 @@ registerLocaleData(localeEn, 'en-US');
         DqeTakeOffLayoutComponent,
         LandingPageComponent,
         ListComponent,
-        MaterialListComponent,
+        MaterialComponent,
         PhoneNumberPipe,
-        DmoFootingsListComponent,
-        DmoFrameListComponent,
+        DmoFootingsComponent,
+        DmoFrameComponent,
+        DmoCrudComponent,
     ],
     bootstrap: [AppComponent],
     imports: [
