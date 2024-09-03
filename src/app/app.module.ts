@@ -1,5 +1,5 @@
 import { CommonModule, registerLocaleData } from '@angular/common';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import localeEn from '@angular/common/locales/en';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -53,6 +53,7 @@ registerLocaleData(localeEn, 'en-US');
         DmoFootingsComponent,
         DmoFrameComponent,
         DmoCrudComponent,
+        LoginComponent
     ],
     bootstrap: [AppComponent],
     imports: [
@@ -67,6 +68,12 @@ registerLocaleData(localeEn, 'en-US');
         provideNgxMask(),
         { provide: LOCALE_ID, useValue: 'en-US' },
         provideHttpClient(withInterceptorsFromDi()),
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor,
+            multi: true
+        }
+
     ]
 })
 export class AppModule { }

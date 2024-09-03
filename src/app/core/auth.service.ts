@@ -10,7 +10,10 @@ export class AuthService {
   private _token: string = '';
   private _isAuthenticated: boolean = false;
 
-  constructor(private apiService: ApiService,  private router: Router) { }
+  constructor(
+    private apiService: ApiService,
+    private router: Router
+  ) { }
 
   getToken(): string {
     return this._token
@@ -26,7 +29,7 @@ export class AuthService {
     formData.append('password', password);
 
     return this.apiService.post('/login', formData)
-      .subscribe(response => {
+      .subscribe((response: any) => {
         if (response.accessToken) {
           this._token = response.accessToken;
           this._isAuthenticated = true;

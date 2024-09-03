@@ -7,7 +7,10 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthGuardService {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   // Define the canActivate function using CanActivateFn
   canActivate: CanActivateFn = () => {
