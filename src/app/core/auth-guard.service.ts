@@ -16,9 +16,10 @@ export class AuthGuardService {
   canActivate: CanActivateFn = () => {
     if (this.authService.isAuthenticated()) {
       return true;
-    } else {
+    }
+    else {
       this.router.navigate(['/login']);
       return false;
     }
-  };
+  }
 }
