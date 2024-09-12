@@ -38,16 +38,24 @@
     </div>
 
     <div class="">
+      <div class="dropdown">
+        <button class="btn btn-link"
+                data-bs-toggle="dropdown">
+          <i class="fs-5 bi bi-person-fill"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item"
+               (click)="logout()">Logout</a>
+          </li>
+
+        </ul>
+      </div>
       <!-- <button type="button" class="btn btn-outline-primary me-2">
           Sing up
         </button>
         <button type="button" class="btn btn-outline-primary me-2">
           Sing in
-        </button> -->
-      <button class="btn btn-link"
-              routerLink="/login">
-        <i class="fs-5 bi bi-person-fill"></i>
-      </button>
+        </button> -->Ø
     </div>
   </div>
 </nav>
