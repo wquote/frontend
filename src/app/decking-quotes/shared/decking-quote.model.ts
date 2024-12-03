@@ -40,6 +40,8 @@ export class Layout {
   mainAreas: Area[] = [new Area()]
   ladingAreas: Area[] = [new Area()]
   stairs: Stair[] = [new Stair()]
+  dtt1z?: number
+  dtt2z?: number
 }
 
 export class Area {
