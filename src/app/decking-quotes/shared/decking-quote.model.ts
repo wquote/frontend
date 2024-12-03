@@ -42,6 +42,7 @@ export class Layout {
   stairs: Stair[] = [new Stair()]
   dtt1z?: number
   dtt2z?: number
+  tapeOnJoists?: boolean
 }
 
 export class Area {
