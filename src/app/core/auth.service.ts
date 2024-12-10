@@ -32,7 +32,7 @@ export class AuthService {
 
   checkIfUserIsAuthenticatedEveryMinute() {
     setInterval(() => {
-      // if (this._tokenIsValid) {
+      if (this._tokenIsValid) {
         this.apiService.get('/auth/token/validate')
           .subscribe({
             error: (resp: HttpResponse<any>) => {
@@ -42,8 +42,12 @@ export class AuthService {
               }
             }
           })
-      // }
-    }, 60000)
+      }
+      else {
+        window.alert('Session expired.')
+        this.logout()
+      }
+    }, 600000)
   }
 
   login(username: string, password: string) {
