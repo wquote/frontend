@@ -115,10 +115,11 @@
 
 
 <!-- Galvanized -->
-<!-- <div class="d-flex flex-fill flex-column"
+<div class="d-flex flex-fill flex-column"
      *ngIf="menu == 'galvanized'">
-  <!-- <div class="p-2 text-center h4">Structural</div>
-  <table class="table table-hover mb-3">
+  <!-- <div class="p-2 text-center h4">Pressure Treated</div> -->
+  <table class="table table-hover mb-3"
+         *ngIf="materialOrder.galvanized && materialOrder.galvanized.selectedSpecIndex != undefined; else noGalvanizedData">
     <thead>
       <tr class="table-light text-center">
         <th>Material</th>
@@ -127,15 +128,9 @@
         <th>Total</th>
       </tr>
     </thead>
-    <tbody
-           *ngIf="deckingQuote 
-      && deckingQuote.materialOrder
-      && deckingQuote.materialOrder.galvanized 
-      && deckingQuote.materialOrder.galvanized.materialOrderSpecs 
-      && deckingQuote.materialOrder.galvanized.selectedSpecIndex != undefined
-      && deckingQuote.materialOrder.galvanized.materialOrderSpecs[deckingQuote.materialOrder.galvanized.selectedSpecIndex]">
+    <tbody>
       <tr
-          *ngFor="let material of deckingQuote.materialOrder.galvanized.materialOrderSpecs[deckingQuote.materialOrder.footings.selectedSpecIndex].materials">
+          *ngFor="let material of materialOrder.galvanized.materialOrderSpecs[materialOrder.galvanized.selectedSpecIndex].materials">
         <td class="description-column">{{material.descSnapshot}}</td>
         <td><input type="number"
                  class="form-control"
@@ -143,11 +138,15 @@
                  name="qty"
                  [(ngModel)]="material.qty"></td>
         <td>{{material.priceSnapshot}}</td>
-        <td>{{((material.qty || 0) * (material.priceSnapshot || 0)).toFixed(2)}}</td>
+        <td>{{ ( (material.qty || 0) * (material.priceSnapshot || 0) ).toFixed(2) }}</td>
       </tr>
     </tbody>
   </table>
-</div> -->
+
+  <ng-template #noGalvanizedData>
+    <p class="text-center text-secondary">There is no data.</p>
+  </ng-template>
+</div>
 
 
 <!-- Decking Board -->

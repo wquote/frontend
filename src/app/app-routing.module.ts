@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialComponent } from './materials/material.component';
+import { DmoGalvanizedComponent } from './decking-material-orders/dmo-galvanized/dmo-galvanized.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
@@ -30,6 +31,7 @@ const routes: Routes = [
 
   { path: 'material-orders/decking/footings', component: DmoFootingsComponent, canActivate: [AuthGuardService] },
   { path: 'material-orders/decking/frame', component: DmoFrameComponent, canActivate: [AuthGuardService] },
+  { path: 'material-orders/decking/galvanized', component: DmoGalvanizedComponent, canActivate: [AuthGuardService] },
 ];
 
 @NgModule({

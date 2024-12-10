@@ -26,8 +26,9 @@
         </select>
     </div>
 
-    <div hidden="true">
-        <button *ngIf="actions.includes('create')"
+    <div>
+        <button hidden="true"
+                *ngIf="actions.includes('create')"
                 class="btn btn-outline-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#createItemModal">
